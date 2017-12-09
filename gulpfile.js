@@ -12,34 +12,33 @@ const del = require('del');
 const DEST = './dist'
 const DEV = true
 
-
 const VIEWS = [
     {
-        "viewname": "index",
+        "viewName": "index",
         "components": ["Header", "Footer"]
     },
     {
-        "viewname": "home",
+        "viewName": "home",
         "components": ["Header"]
     },
 ]
 
 
 gulp.task('html', () => {
-    html(
-        ["src/views/*.html"],
+    pug(
+        ["src/views/*.pug"],
         path.join(DEST, 'templates')
     )
 });
 
 
 gulp.task('css', () => {
-    const tasks = VIEWS.map(({ viewname, components }) => {
+    const tasks = VIEWS.map(({ viewName, components }) => {
         return stylus(
-            viewname + '.css',
-            components.map((comp) => 
-                `src/components/${comp}/*.stly`
-            ).concat(`src/stylus/${viewname}.styl`),
+            viewName + '.css',
+            components.map((compName) => 
+                `src/components/${compName}/*.stly`
+            ).concat(`src/stylus/${viewName}.styl`),
             path.join(DEST, 'static/css')
         );
     })
@@ -48,12 +47,12 @@ gulp.task('css', () => {
 
 
 gulp.task('js', () => {
-    const tasks = VIEWS.map(({ viewname, components }) => {
+    const tasks = VIEWS.map(({ viewName, components }) => {
         return js(
-            viewname + '.js',
-            components.map((comp) => 
-                `src/components/${comp}/*.js`
-            ).concat(`src/js/${viewname}.js`),
+            viewName + '.js',
+            components.map((compName) => 
+                `src/components/${compName}/*.js`
+            ).concat(`src/script/${viewName}.js`),
             path.join(DEST, 'static/js')
         );
     })
@@ -66,7 +65,7 @@ gulp.task('clean', () => {
 });
 
 
-gulp.task('default', () => {
+gulp.task('default', ['clean'], () => {
     gulp.start('html', 'css', 'js');
 });
 
@@ -88,14 +87,13 @@ gulp.task('watch', () => {
 
 
 
-function html(inPath, outPath) {
+function pug(inPath, outPath) {
     return gulp.src(inPath)
         .pipe($.changed(outPath))
         .pipe($.plumber())
-        .pipe($.fileInclude({
-            prefix: '@@',
-            basepath: '@file',
-            indent: true,
+        .pipe($.pug({
+            "pretty": DEV,
+            "debug": false,
         }))
         .pipe(gulp.dest(outPath));
 }
@@ -120,7 +118,7 @@ function stylus(outName, inPath, outPath) {
         .pipe($.if(!DEV,
             $.postcss(plugins)
         ))
-        .pipe($.concat('main.css'))
+        .pipe($.concat(outName))
         .pipe(gulp.dest(outPath));
 }
 
@@ -139,7 +137,7 @@ function js(outName, inPath, outPath) {
                             "last 2 versions"
                         ]
                     },
-                    // "debug": true,
+                    "debug": false,
                 }]
             ]
         })))

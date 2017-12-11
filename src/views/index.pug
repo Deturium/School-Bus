@@ -1,9 +1,20 @@
 //- index.pug
-doctype html
-html
-  include ../components/Header/header.pug
-  body
-    h1 My Site
-    p Welcome to my super lame site.
 
-    include ../components/Footer/footer.pug
+extend ../components/Layout/layout.pug
+
+block links
+  link(rel="stylesheet", href="./static/css/index.css")
+
+block header
+  include ../components/Header/header.pug
+
+block main
+  .new
+
+block footer
+  include ../components/Footer/footer.pug
+
+block extend
+  // lifeGame
+  include ../components/LifeGame/lifeGame.pug
+  script(src="./static/js/index.min.js")

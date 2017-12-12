@@ -435,7 +435,8 @@ class LifeGameScene extends Scene {
 
             timer = setTimeout(() => {
                 this.lifeGrid.createGrid()
-            }, 3000)
+                this.lifeGrid.draw()
+            }, 2000)
         })
     }
 

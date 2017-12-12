@@ -1,18 +1,19 @@
 //- layout.pug
-html
+doctype html
+
+html(lang='en')
 
   head
-    title ZJU School-Bus
     meta(http-equiv="Content-Type", content="text/html;charset=UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
 
-    block links
+    title ZJU School-Bus
+    block link
 
   body
     block header
 
-    .layout-main
-      block main
+    block main
 
     block footer
 

@@ -1,7 +1,7 @@
 //- layout.pug
 doctype html
 
-html(lang='en')
+html(lang='zh')
 
   head
     meta(http-equiv="Content-Type", content="text/html;charset=UTF-8")
@@ -11,10 +11,13 @@ html(lang='en')
     block link
 
   body
-    block header
+    .layout-header
+      block header
 
-    block main
+    .layout-main
+      block main
 
-    block footer
+    .layout-footer
+      block footer
 
     block extend

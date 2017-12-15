@@ -15,11 +15,15 @@ const DEV = true
 const VIEWS = [
   {
     "view": "index",
-    "components": ["Layout", "Header", "Footer", "LifeGame"]
+    "components": [
+      "Layout", "Header", "News", "Intro", "Footer", "LifeGame"
+    ]
   },
   {
     "view": "play",
-    "components": ["Layout", "Header", "Footer"]
+    "components": [
+      "Layout", "Header", "Footer"
+    ]
   },
 ]
 
@@ -39,7 +43,7 @@ gulp.task('css', () => {
       view + '.css',
       components.map((comp) =>
         `src/components/${comp}/*.styl`
-      ).concat(`src/stylus/${view}.styl`),
+      ),
       path.join(DEST, 'static/css')
     );
   })
@@ -53,7 +57,7 @@ gulp.task('js', () => {
       view + '.js',
       components.map((comp) =>
         `src/components/${comp}/*.js`
-      ).concat(`src/script/${view}.js`),
+      ),
       path.join(DEST, 'static/js')
     );
   })

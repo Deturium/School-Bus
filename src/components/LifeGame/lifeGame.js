@@ -315,8 +315,8 @@ class LifeGrid extends Sprite {
         //     this.grid[x][y] = true
         // }
 
-        for (let x = 0; x < this.rows; x++) {
-            for (let y = 0; y < this.cols; y++) {
+        for (let x = 1; x < this.rows - 1; x++) {
+            for (let y = 1; y < this.cols - 1; y++) {
                 this.grid[x][y] = Math.random()*10 < 2 ? true : false
             }
         }
@@ -436,7 +436,7 @@ class LifeGameScene extends Scene {
             timer = setTimeout(() => {
                 this.lifeGrid.createGrid()
                 this.lifeGrid.draw()
-            }, 2000)
+            }, 1500)
         })
     }
 

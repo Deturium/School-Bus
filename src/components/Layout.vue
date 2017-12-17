@@ -1,4 +1,22 @@
-@import '../../stylus/var.styl'
+<template lang="pug" >
+  div
+    .layout-header
+      slot(name="header")
+    .layout-main
+      slot
+    .layout-footer
+      slot(name="footer")
+
+</template>
+
+<script>
+export default {
+  name: "Layout"
+};
+</script>
+
+<style lang="stylus">
+@import '../styles/var.styl'
 
 body
   margin: 0
@@ -22,3 +40,5 @@ body
 .layout-footer
   background-color: rgba(theme-color-700, .4)
 
+
+</style>

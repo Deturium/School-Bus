@@ -1,7 +1,8 @@
+<template lang="pug">
 
-.c-intro
+.intro
 
-  h3.tit Introcation
+  h2.tit INTRODUCTION
 
   section
     h4.h-tit What is 'AAA'?
@@ -52,4 +53,56 @@
       tr
         td QQ Group
         td 完成任意一道 'Welcome' 类的题目，群号就在 flag 中 →_→ 开始玩耍
+
+</template>
+
+<script>
+export default {
+  name: 'Intro',
+}
+</script>
+
+<style lang="stylus" scoped>
+@import '../styles/var.styl'
+
+.intro
+  max-width: 860px
+  margin: 0 auto
+  margin-top: 100px
+
+  .tit
+    margin: 40px 0
+    font-size: 3em
+
+  > section
+    margin: 40px
+    margin-bottom: 80px
+
+  .h-tit
+    text-align: center
+    font-size: 1.5em
+
+  .para
+    line-height: 1.5
+    letter-spacing: 0.1em
+    text-indent: 2em
+
+  .table
+    width: 100%
+    border-collapse: collapse
+
+  .table th,
+  .table td
+    padding: 10px 20px
+    border: 2px solid theme-color-900
+
+  em
+    font-style: normal
+    font-weight: bold
+
+  .kaishu
+    text-align: center
+    font-family:"Zhuyin Kaiti", "Han Kaiti", "KaiTi"
+
+</style>
 

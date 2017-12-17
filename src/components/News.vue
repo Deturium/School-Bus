@@ -1,9 +1,10 @@
+<template lang="pug" >
 
-.c-news
+.news
 
   h2.tit NEWS
 
-  article.arti
+  article.new
     .meta
       time 2019.10.13
       h4.js-news-title 恭喜AAA在TCTF-RisingStar CTF中荣获冠军
@@ -14,7 +15,7 @@
     .link
 
 
-  article.arti
+  article.new
     .meta
       time 2019.10.13
       h4.js-news-title 专访AAA队长朱梦凡 | 走到今天全靠成员的坚持
@@ -23,3 +24,42 @@
       |  在前不久刚结束的第四届XCTF联赛揭幕战武汉站WHCTF线上赛的比赛中，来自浙江大学的AAA战队给我们带来了一场完美的绝杀！在距离比赛还有一个小时结束时，成功反超清华大学的Redbud战队，最终赢得比赛第一名，直接杀入第四届XCTF总决赛，可以说是既精彩又刺激！
 
     .link
+
+
+</template>
+
+<script>
+export default {
+  name: "News"
+};
+</script>
+
+<style lang="stylus" scoped>
+@import '../styles/var.styl'
+
+.news
+  max-width: 860px
+  margin: 0 auto
+
+  .tit
+    margin: 40px 0
+    font-size: 3em
+
+  .new
+    margin: 40px
+
+  .meta
+    > time
+      margin: 0
+    > h4
+      margin: 10px 0 20px 0
+      font-size: 1.5em
+      cursor: pointer
+
+  .content
+    line-height: 1.5
+    letter-spacing: 0.1em
+    text-indent: 2em
+
+
+</style>

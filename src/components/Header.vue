@@ -1,6 +1,27 @@
-@import '../../stylus/var.styl'
+<template lang="pug" >
+.header
+  nav
+    a.item(href='index.html') Home
+    a.item(href='play.html') Play
+    a.item Rank
+    a.item Activities
+    a.item Bonus
 
-.c-header
+  nav
+    a.item Login in
+
+</template>
+
+<script>
+export default {
+  name: "Header"
+};
+</script>
+
+<style lang="stylus">
+@import '../styles/var.styl'
+
+.header
   max-width: layout-max-width
   margin: 0 auto
   display: flex
@@ -19,3 +40,4 @@
       border: 4px
       color: theme-color-100
       background-color: rgba(theme-color-400, .85)
+</style>

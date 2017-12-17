@@ -3,25 +3,21 @@
   "version": "0.1.0",
   "author": "Hydrogen",
   "license": "MIT",
+  "scripts": {
+    "dev": "webpack-dev-server --open --hot",
+    "build": "webpack --progress --hide-modules"
+  },
+  "dependencies": {
+    "vue": "^2.5.11"
+  },
   "devDependencies": {
-    "autoprefixer": "^7.2.2",
-    "babel-core": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "browser-sync": "^2.18.13",
-    "cssnano": "^3.10.0",
-    "del": "^3.0.0",
-    "gulp": "^3.9.1",
-    "gulp-babel": "^7.0.0",
-    "gulp-changed": "^3.1.1",
-    "gulp-concat": "^2.6.1",
-    "gulp-if": "^2.0.2",
-    "gulp-load-plugins": "^1.5.0",
-    "gulp-plumber": "^1.1.0",
-    "gulp-postcss": "^7.0.0",
-    "gulp-pug": "^3.3.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-stylus": "^2.6.0",
-    "gulp-uglify": "^3.0.0",
-    "merge-stream": "^1.0.1"
+    "css-loader": "^0.28.7",
+    "pug": "^2.0.0-rc.4",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1",
+    "vue-loader": "^13.6.0",
+    "vue-template-compiler": "^2.5.11",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.9.7"
   }
 }

@@ -30,14 +30,12 @@ export default {
   .item
     display: inline-block
     padding: 10px 20px
-    // font-size: 1.1em
     letter-spacing: 0.05em
     color: theme-color-900
     cursor: pointer
     text-decoration: none
 
     &:hover
-      border: 4px
       color: theme-color-100
       background-color: rgba(theme-color-400, .85)
 </style>

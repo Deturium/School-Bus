@@ -2,10 +2,10 @@
 
 .intro
 
-  h2.tit INTRODUCTION
+  h2.intro-tit INTRODUCTION
 
-  section
-    h4.h-tit What is 'AAA'?
+  section.sec
+    h4.tit What is 'AAA'?
     p.para
       | AAA (Azure Assassin Alliance) 战队是由浙江大学信息安全爱好者自发组织，浙江大学计算机学院支持建立的团队，队伍中每一位成员都对信息安全有无与伦比的热爱，因此对 CTF 比赛总是充满了激情。可惜人在江湖，身不由己，正所谓
 
@@ -16,7 +16,9 @@
       | AAA 的第一代主力成员现已分散在全国各地，但我们坚信   “江山代有才人出，各领风骚数百年”   希望有越来越多志同道合的朋友加入，愿 AAA 之火永不熄灭。
 
   section
-    h4.h-tit What is 'School-Bus'?
+    h4.tit What is 'School-Bus'?
+
+    img.img(:src='picAAA')
 
     p.para
       | 'School-Bus' 是一个面向所有 ZJU 学生开放的 CTF 练习平台，同学们能够在这个平台上学习和训练自己各方面的 Hacking 技能。本平台将涵盖 Pwnable, Reverse, Web, Crypto, Misc, Program 等全类型的题目，我们将会持续更新，同时对于表现出色的同学也会给予一定的奖励。
@@ -25,8 +27,8 @@
       | 平台采用 Jeopardy 解题模式，解决题目之后你将会得到一串 'AAA{*******}' 格式的字符串，将这个字符串提交到比赛平台即可获得相应的分数。
 
 
-  section
-    h4.h-tit Rules & Tips
+  section.sec
+    h4.tit Rules & Tips
 
     table.table
       tr: td
@@ -43,8 +45,8 @@
         | 6. 通过 Google 快速学习新知识是 CTF 中必不可少的技能。 Google is the best teacher in the world.
 
 
-  section
-    h4.h-tit Contact
+  section.sec
+    h4.tit Contact
 
     table.table
       tr
@@ -57,8 +59,15 @@
 </template>
 
 <script>
+import AAA from '../assets/AAA.png'
+
 export default {
   name: 'Intro',
+  data() {
+    return {
+      picAAA: AAA
+    }
+  }
 }
 </script>
 
@@ -70,17 +79,22 @@ export default {
   margin: 0 auto
   margin-top: 100px
 
-  .tit
+  .intro-tit
     margin: 40px 0
     font-size: 3em
 
-  > section
+  .sec
     margin: 40px
     margin-bottom: 80px
 
-  .h-tit
+  .tit
     text-align: center
     font-size: 1.5em
+
+  .img
+    display: block
+    width: 300px
+    margin: 30px auto
 
   .para
     line-height: 1.5

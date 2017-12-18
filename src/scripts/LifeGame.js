@@ -192,6 +192,14 @@ class LifeGameScene extends Scene {
 }
 
 
-export {
-  LifeGameScene
+function __main(canvas) {
+  const D = new Director(canvas, null, {
+    fps: 1,
+    enablePause: false
+  });
+
+  const scene = new LifeGameScene(D);
+  D.setScene(scene).run();
 }
+
+export default __main

@@ -3,26 +3,13 @@
 </template>
 
 <script>
-import { Director } from "../scripts/GameEngine";
-import { LifeGameScene } from "../scripts/LifeGame";
-
-function __main() {
-  const canvas = document.getElementById("game");
-
-  const D = new Director(canvas, null, {
-    fps: 1,
-    enablePause: false
-  });
-
-  const scene = new LifeGameScene(D);
-
-  D.setScene(scene).run();
-}
+import __main from "../scripts/LifeGame";
 
 export default {
   name: "Game",
   mounted: function() {
-    __main()
+    const canvas = document.getElementById("game");
+    __main(canvas)
   }
 };
 </script>

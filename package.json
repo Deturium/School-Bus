@@ -12,6 +12,7 @@
   },
   "devDependencies": {
     "css-loader": "^0.28.7",
+    "file-loader": "^1.1.6",
     "pug": "^2.0.0-rc.4",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",

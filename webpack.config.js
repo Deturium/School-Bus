@@ -1,18 +1,18 @@
 const path = require('path');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  context: path.resolve(__dirname, './src'),
+  context: path.resolve(__dirname, './'),
 
   entry: {
-    index: './views/index.js',
-    play: './views/play.js'
+    app: './src/main.js'
   },
 
   output: {
-    path: path.resolve(__dirname, './dist/static'),
+    path: path.resolve(__dirname, './dist'),
     filename: '[name].bundle.js',
-    publicPath: '/static',
+    // publicPath: 'static',
   },
 
   module: {
@@ -43,17 +43,29 @@ module.exports = {
     ]
   },
 
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: 'index.html',
+      inject: true,
+      // minify: {
+      //   caseSensitive: false,
+      //   collapseBooleanAttributes: true,
+      //   collapseWhitespace: true
+      // },
+    })
+  ],
+
   resolve: {
-    alias: {
-      'vue$': 'vue/dist/vue.esm.js'
-    },
+    // alias: {
+    //   'vue$': 'vue/dist/vue.esm.js'
+    // },
     extensions: ['*', '.js', '.vue', '.json']
   },
 
   devServer: {
-    contentBase: path.resolve(__dirname, './src/views'),
-    // historyApiFallback: true,
-    // noInfo: true,
-    // overlay: true
+    contentBase: path.resolve(__dirname, './'),
+    historyApiFallback: true,
+    inline: true,
   },
 };

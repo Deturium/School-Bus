@@ -4,19 +4,20 @@
   "author": "Hydrogen",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack-dev-server --open --hot",
-    "build": "webpack --progress --hide-modules"
+    "dev": "webpack-dev-server --open --hot --inline",
+    "build": "webpack --progress"
   },
   "dependencies": {
-    "vue": "^2.5.11"
+    "vue": "2.5.13"
   },
   "devDependencies": {
     "css-loader": "^0.28.7",
     "file-loader": "^1.1.6",
+    "html-webpack-plugin": "2.30.1",
     "pug": "^2.0.0-rc.4",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
-    "vue-loader": "^13.6.0",
+    "vue-loader": "^14.0.3",
     "vue-template-compiler": "^2.5.11",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.9.7"

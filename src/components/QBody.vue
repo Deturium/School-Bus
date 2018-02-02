@@ -1,6 +1,6 @@
 <template lang="pug">
 .q-body
-  .meta Check in
+  .meta Check In
 
   h2.title Description
   div
@@ -40,13 +40,15 @@ export default {
   .meta
     text-align center
     font-size 36px
-    font-weight bolder
+    font-weight bold
+    font-style: italic
     color #E1C79B
   .title
     margin 0 20px
     margin-top 30px
     font-style italic
-    font-size 36px
+    font-weight normal
+    font-size 28px
   > div
     font-size 16px
     margin-left 72px
@@ -60,13 +62,14 @@ export default {
     border-radius 5px
     outline none
     font-size 16px
+    font-weight bold
     font-style italic
 
   .ans-button
-    width 100px
+    width 80px
     height 35px
     margin 10px
-    margin-left 40px
+    margin-left 20px
     vertical-align top
     font-size 16px
     font-style italic

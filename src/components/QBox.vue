@@ -41,12 +41,12 @@ box-width = 200px
     flex-grow 2
     display flex
     align-items center
-    font-size 36px
-    font-weight bolder
+    font-size 28px
+    font-weight bold
     color #646464
     text-align center
     word-wrap break-word
-    // font-weight bolder
+    cursor pointer
     line-height 1.1
 
     &:hover
@@ -56,6 +56,7 @@ box-width = 200px
     font-size 18px
     color #FFFFFF
     margin 0px
+    font-weight bold
 
   .score
     font-size 10px

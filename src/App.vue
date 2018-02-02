@@ -20,5 +20,6 @@ export default {
 body
   background-color #1F1F1F
   color white
-  font-family: 'Carrois Gothic', sans-serif;
+  font-size 14px
+  font-family: 'Century Gothic', sans-serif;
 </style>

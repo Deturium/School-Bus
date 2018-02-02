@@ -1,5 +1,6 @@
 <template lang="pug">
 ul.type-bar
+  li.item_chose ALL
   li.item(v-for="t in type")
     | {{ t }}
 </template>
@@ -10,13 +11,12 @@ export default {
   data: function() {
     return {
       type: [
-        "ALL",
-        "RESOLVED",
+        "UNSOLVED",
         "CRYPTO",
         "MISC",
         "PPC",
         "PWN",
-        "RESERVE",
+        "REVERSE",
         "WEB"
       ]
     }
@@ -37,6 +37,18 @@ export default {
     text-transform uppercase
     cursor pointer
     color #8E8E8E
+
+    &:hover
+      color white
+
+  .item_chose
+    padding 3px
+    list-style none
+    text-transform uppercase
+    cursor pointer
+    color white
+    font-weight bold
+    border-bottom 1px solid white
 
     &:hover
       color white

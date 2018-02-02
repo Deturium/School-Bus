@@ -43,15 +43,16 @@ export default {
     font-weight bold
     font-style: italic
     color #E1C79B
+    margin-left auto
   .title
-    margin 0 20px
+    margin 0 140px
     margin-top 30px
     font-style italic
-    font-weight normal
-    font-size 28px
+    font-weight lighter
+    font-size 24px
   > div
-    font-size 16px
-    margin-left 72px
+    font-size 14px
+    margin-left 200px
 
   .ans-input
     width 500px

@@ -2,12 +2,13 @@
 .top-nav
   img(src="../assets/AAA_logo.png")
   ul.nav
-    li.item_chose challenges
+    li.item.chose challenges
     li.item scoreboard
     li.item about & news
     li.item award
-  .lifegame
-    img(src="../assets/lifegame.png")
+
+  img.lifegame(src="../assets/lifegame.png")
+
   .login
     img(src="../assets/huahuo.png")
 
@@ -30,26 +31,11 @@ export default {
     width 100px
     margin 20px
 
-  .lifegame
-    >img
-      width 1160px
-      margin 20px
-
   .nav
     width 600px
     margin 20px auto
     display flex
     justify-content space-between
-
-  .item_chose
-    box-sizing border-box
-    padding 3px
-    list-style none
-    text-transform uppercase
-    cursor pointer
-    color white
-    font-weight bold
-    border-bottom 1px solid white
 
   .item
     box-sizing border-box
@@ -59,8 +45,17 @@ export default {
     cursor pointer
     color #8E8E8E
 
+  .chose
+    color white
+    font-weight bold
+    border-bottom 1px solid white
+
     &:hover
       color white
+
+  .lifegame
+    width 1160px
+    margin 20px 0
 
   .login
     position absolute

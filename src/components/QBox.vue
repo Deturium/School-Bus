@@ -1,5 +1,7 @@
 <template lang="pug">
-.q-box
+.q-box(
+  @click="onClick(id)"
+)
   p.name {{ name }}
   p.type {{ type }}
   p.score {{ score + "pt" }}
@@ -9,22 +11,21 @@
 export default {
   name: "QBox",
   props: [
+    "id",
     "name",
     "type",
-    "score"
-  ]
+    "score",
+    "onClick",
+  ],
 }
 </script>
 
 <style lang="stylus">
-
-box-width = 200px
-
 .q-box
-  width box-width
-  height box-width
+  width 200px
+  height 180px
   box-sizing border-box
-  margin 30px
+  margin 20px 30px
   padding 20px
   padding-bottom 0
   background-color #181818

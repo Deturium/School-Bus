@@ -2,16 +2,18 @@
 div
   top-nav
   play
+  foot
 </template>
 
 <script>
 import TopNav from './components/TopNav'
+import Foot from './components/Foot'
 import Play from './container/Play'
 
 export default {
 	name: 'app',
 	components: {
-    TopNav, Play
+    TopNav, Foot, Play
 	}
 }
 </script>

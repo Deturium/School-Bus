@@ -1,6 +1,6 @@
 <template lang="pug">
 .q-body
-  .meta Check In
+  h1.meta Check In
 
   h2.title Description
   div
@@ -21,8 +21,8 @@
   h2.title Completed
   div
     p
-      span chenyuan
-      span zuhxs
+      span.name chenyuan
+      span.name zuhxs
 </template>
 
 <script>
@@ -35,48 +35,64 @@ export default {
 <style lang="stylus">
 .q-body
   width 1000px
+  margin 20px 0
   padding 40px
   background-color #181818
+
   .meta
+    margin 0 auto
     text-align center
     font-size 36px
     font-weight bold
-    font-style: italic
+    font-style italic
     color #E1C79B
-    margin-left auto
+
+  >div
+    font-size 14px
+    margin 15px 0
+    margin-left 200px
+
+  p
+    margin 5px
+    // letter-spacing 1px
+
   .title
     margin 0 140px
     margin-top 30px
     font-style italic
     font-weight lighter
     font-size 24px
-  > div
-    font-size 14px
-    margin-left 200px
 
-  .ans-input
-    width 500px
-    height 25px
-    margin 10px 0
-    padding 4px 10px
-    border 1px solid #979797
-    border-radius 5px
-    outline none
-    font-size 16px
-    font-weight bold
-    font-style italic
-
-  .ans-button
-    width 80px
+  ans-common()
     height 35px
-    margin 10px
-    margin-left 20px
+    margin 5px 0
     vertical-align top
     font-size 16px
     font-style italic
-    color #5D8F0A
-    border 1px solid #93ED00
+    border 1px solid #979797
     border-radius 5px
     outline none
+
+  .ans-input
+    ans-common()
+    width 500px
+    box-sizing border-box
+    padding 4px 10px
+    // actually height = 25 + 2 * (4 + 1)
+    font-weight bold
+    color #181818
+
+  .ans-button
+    ans-common()
+    width 80px
+    margin-left 20px
+    color #5D8F0A
     background-color transparent
+    border-color #93ED00
+    cursor pointer
+
+  .name
+    margin-right 20px
+    font-weight bold
+    font-style italic
 </style>

@@ -1,7 +1,10 @@
 <template lang="pug">
 ul.type-bar
-  li.item_chose ALL
-  li.item(v-for="t in type")
+  li.item(
+    v-for="t in type"
+    :class="{ chose: t == select }"
+    @click="filterType(t)"
+  )
     | {{ t }}
 </template>
 
@@ -11,14 +14,22 @@ export default {
   data: function() {
     return {
       type: [
+        "ALL",
         "UNSOLVED",
         "CRYPTO",
         "MISC",
         "PPC",
         "PWN",
         "REVERSE",
-        "WEB"
-      ]
+        "WEB",
+      ],
+      select: "ALL",
+    }
+  },
+  methods: {
+    filterType: function(type) {
+      this.select = type
+      // TODO: filter action
     }
   }
 }
@@ -26,13 +37,13 @@ export default {
 
 <style lang="stylus">
 .type-bar
-  width 900px
+  width 840px
   margin 0 auto
+  padding 0
   display flex
   justify-content space-between
 
   .item
-    padding 3px
     list-style none
     text-transform uppercase
     cursor pointer
@@ -41,16 +52,9 @@ export default {
     &:hover
       color white
 
-  .item_chose
-    padding 3px
-    list-style none
-    text-transform uppercase
-    cursor pointer
+  .chose
     color white
     font-weight bold
     border-bottom 1px solid white
-
-    &:hover
-      color white
 </style>
 

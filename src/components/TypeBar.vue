@@ -2,7 +2,7 @@
 ul.type-bar
   li.item(
     v-for="t in type"
-    :class="{ chose: t == select }"
+    :class="{ chose: t == selected }"
     @click="filterType(t)"
   )
     | {{ t }}
@@ -23,13 +23,13 @@ export default {
         "REVERSE",
         "WEB",
       ],
-      select: "ALL",
+      selected: "ALL",
     }
   },
   methods: {
     filterType: function(type) {
-      this.select = type
-      // TODO: filter action
+      this.selected = type
+      this.$store.commit('changeFliterType', type)
     }
   }
 }

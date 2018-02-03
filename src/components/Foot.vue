@@ -8,7 +8,8 @@ footer.foot
 <style lang="stylus">
 .foot
   width 1160px
-  margin-top 50px
+  margin 50px auto
+  margin-bottom 0
   text-align center
   >img
     width 100px

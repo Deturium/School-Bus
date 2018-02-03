@@ -25,6 +25,7 @@ export default {
   position relative
   width 1160px
   margin 40px auto
+  margin-bottom 0
   text-align center
 
   >img

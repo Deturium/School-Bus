@@ -8,7 +8,8 @@
     "build": "webpack --progress"
   },
   "dependencies": {
-    "vue": "2.5.13"
+    "vue": "2.5.13",
+    "vuex": "3.0.1"
   },
   "devDependencies": {
     "css-loader": "^0.28.7",

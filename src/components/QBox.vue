@@ -1,8 +1,8 @@
 <template lang="pug">
-.q-box(
-  @click="onClick(id)"
-)
-  p.name {{ name }}
+.q-box
+  p.name(
+    @click="onClick(id)"
+  ) {{ name }}
   p.type {{ type }}
   p.score {{ score + "pt" }}
 </template>

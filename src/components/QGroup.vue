@@ -2,17 +2,20 @@
 .q-group(v-show="qs.length")
   .tit
     | - Welcome -
-  .line
+  .flex
     q-box(
       v-for="(q, i) in qs"
       :key="q.name + i"
-      :id="i+1"
+      :order="(~~(i/boxPerLine))*2"
       :name="q.name"
       :type="q.type"
       :score="q.score"
       :onClick="handleClick"
     )
-  q-body(v-if="isShow")
+    q-body(
+      v-show="isShow"
+      :order="order"
+    )
 </template>
 
 <script>
@@ -27,14 +30,18 @@ export default {
   data: function() {
     return {
       isShow: false,
+      order: 0,
+
+      boxPerLine: 4 // a const config now
     }
   },
   props: [
     "qs"
   ],
   methods: {
-    handleClick: function(id) {
+    handleClick: function(order) {
       this.isShow = !this.isShow
+      this.order = order+1
     }
   },
 }
@@ -48,10 +55,10 @@ export default {
     font-weight bold
     text-align center
 
-  .line
+  .flex
     width: 260 * 4px;
     margin: auto;
     display: flex;
     flex-wrap wrap
-    // justify-content center
+    justify-content center
 </style>

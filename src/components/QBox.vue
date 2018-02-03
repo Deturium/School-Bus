@@ -1,7 +1,9 @@
 <template lang="pug">
-.q-box
+.q-box(
+  :style="{order: order}"
+)
   p.name(
-    @click="onClick(id)"
+    @click="onClick(order)"
   ) {{ name }}
   p.type {{ type }}
   p.score {{ score + "pt" }}
@@ -11,7 +13,7 @@
 export default {
   name: "QBox",
   props: [
-    "id",
+    "order",
     "name",
     "type",
     "score",

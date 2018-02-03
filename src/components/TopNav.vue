@@ -1,6 +1,6 @@
 <template lang="pug">
 .top-nav
-  img(src="../assets/AAA_logo.png")
+  img.logo(src="../assets/AAA_logo.png")
   ul.nav
     li.item.chose challenges
     li.item scoreboard
@@ -28,7 +28,7 @@ export default {
   margin-bottom 0
   text-align center
 
-  >img
+  .logo
     width 100px
     margin 20px
 
@@ -56,7 +56,7 @@ export default {
 
   .lifegame
     width 1160px
-    margin 20px 0
+    margin-bottom 20px
 
   .login
     position absolute

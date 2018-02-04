@@ -15,12 +15,12 @@ const state = {
     },
     {
       name: "Check In Two Lines",
-      type: "Unsolved",
+      type: "Crypto",
       score: 100
     },
     {
       name: "Check In 2 Lines",
-      type: "Unsolved",
+      type: "Crypto",
       score: 130
     },
     {
@@ -30,7 +30,7 @@ const state = {
     },
     {
       name: "Check In 2 Lines",
-      type: "Ppc",
+      type: "PPC",
       score: 100
     },
     {

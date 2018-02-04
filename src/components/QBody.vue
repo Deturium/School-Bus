@@ -87,6 +87,7 @@ export default {
     padding 4px 10px
     // actually height = 25 + 2 * (4 + 1)
     font-weight bold
+    font-family: 'Century Gothic', sans-serif;
     color #181818
 
   .ans-button
@@ -96,6 +97,8 @@ export default {
     color #5D8F0A
     background-color transparent
     border-color #93ED00
+    font-family: 'Century Gothic', sans-serif;
+    font-weight bold
     cursor pointer
 
   .name

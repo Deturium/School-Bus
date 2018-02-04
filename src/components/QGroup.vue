@@ -50,15 +50,16 @@ export default {
 <style lang="stylus">
 .q-group
   .tit
-    margin-top 30px
+    margin-top 50px
     font-size 26px
     font-weight bold
     text-align center
+    margin-bottom 15px
 
   .flex
     width: 260 * 4px;
     margin: auto;
     display: flex;
     flex-wrap wrap
-    justify-content center
+    justify-content flex-start
 </style>

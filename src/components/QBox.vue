@@ -25,7 +25,7 @@ export default {
 <style lang="stylus">
 .q-box
   width 200px
-  height 180px
+  height 200px
   box-sizing border-box
   margin 20px 30px
   padding 20px

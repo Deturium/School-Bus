@@ -2,7 +2,7 @@
 footer.foot
   img.lifegame(src="../assets/lifegame.png")
   img(src="../assets/AAA_logo.png")
-  p &copy; ZJU SCHOOL-BUS - ALL RIGHTS RESERVED.
+  p &copy; ZJU AAA School-Bus  -  ALL RIGHTS RESERVED.
 </template>
 
 <style lang="stylus">

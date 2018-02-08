@@ -9,10 +9,19 @@ header.head
 
   img.lifegame(src="../assets/lifegame.png")
 
-  .login
-    img(src="../assets/huahuo.png")
-
+  login
 </template>
+
+<script>
+import Login from './Login'
+
+export default {
+  components: {
+    Login
+  }
+}
+</script>
+
 
 <style lang="stylus">
 .head
@@ -51,12 +60,4 @@ header.head
   .lifegame
     width 1160px
     margin-bottom 20px
-
-  .login
-    position absolute
-    top 20px
-    right 20px
-    >img
-      width 35px
-      border-radius 50%
 </style>

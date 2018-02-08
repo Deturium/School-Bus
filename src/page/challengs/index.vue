@@ -1,5 +1,5 @@
 <template lang="pug">
-.play
+.challengs
   type-bar
   q-group(
     :qs="qs"
@@ -10,11 +10,11 @@
 </template>
 
 <script>
-import TypeBar from "../components/TypeBar";
-import QGroup from "../components/QGroup";
+import TypeBar from "./children/TypeBar";
+import QGroup from "./children/QGroup";
 
 export default {
-  name: "play",
+  name: "challengs",
   data: function() {
     return {
       isShow: false,

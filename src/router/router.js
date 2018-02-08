@@ -1,12 +1,12 @@
-import Play from '../views/Play'
+import challenges from '../page/challengs'
 
 export default [
   {
     path: '/',
-    component: Play,
+    component: challenges,
   },
   {
     path: '/challenges',
-    component: Play,
+    component: challenges,
   }
 ]

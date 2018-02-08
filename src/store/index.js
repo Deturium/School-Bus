@@ -6,6 +6,10 @@ import actions from './action'
 Vue.use(Vuex)
 
 const state = {
+  userInfo: {
+
+  },
+
   fliterType: "ALL",
   qs: [
     {

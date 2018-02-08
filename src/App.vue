@@ -1,19 +1,19 @@
 <template lang="pug">
 div
-  top-nav
-  play
-  foot
+  head-nav
+  .main-container
+    router-view
+  foot-nav
 </template>
 
 <script>
-import TopNav from './components/TopNav'
-import Foot from './components/Foot'
-import Play from './container/Play'
+import HeadNav from './components/HeadNav'
+import FootNav from './components/FootNav'
 
 export default {
 	name: 'app',
 	components: {
-    TopNav, Foot, Play
+    HeadNav, FootNav
 	}
 }
 </script>
@@ -24,4 +24,7 @@ body
   color white
   font-size 14px
   font-family: 'Century Gothic', sans-serif;
+
+.main-container
+  min-height 80vh
 </style>

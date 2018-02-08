@@ -1,11 +1,11 @@
 <template lang="pug">
-.top-nav
+header.head
   img.logo(src="../assets/AAA_logo.png")
   ul.nav
-    li.item.chose challenges
-    li.item scoreboard
-    li.item about & news
-    li.item award
+    router-link.item(tag="li" to="challenges") challenges
+    router-link.item(tag="li" to="scoreboard") scoreboard
+    router-link.item(tag="li" to="about") about & news
+    router-link.item(tag="li" to="award") award
 
   img.lifegame(src="../assets/lifegame.png")
 
@@ -14,14 +14,8 @@
 
 </template>
 
-<script>
-export default {
-  name: "TopNav"
-}
-</script>
-
 <style lang="stylus">
-.top-nav
+.head
   position relative
   width 1160px
   margin 40px auto
@@ -43,10 +37,10 @@ export default {
     padding 3px
     list-style none
     text-transform uppercase
-    cursor pointer
     color #8E8E8E
+    cursor pointer
 
-  .chose
+  .router-link-active
     color white
     font-weight bold
     border-bottom 1px solid white

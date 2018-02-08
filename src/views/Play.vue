@@ -33,7 +33,6 @@ export default {
 
 <style lang="stylus">
 .play {
-  min-height 80vh
   margin: 0 auto;
 }
 </style>

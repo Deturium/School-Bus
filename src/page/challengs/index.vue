@@ -1,6 +1,6 @@
 <template lang="pug">
 .challengs
-  type-bar
+  fliter-bar
   q-group(
     :qs="qs"
   )
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import TypeBar from "./children/TypeBar";
+import FliterBar from "./children/FliterBar";
 import QGroup from "./children/QGroup";
 
 export default {
@@ -26,7 +26,7 @@ export default {
     }
   },
   components: {
-    QGroup, TypeBar
+    QGroup, FliterBar
   }
 };
 </script>

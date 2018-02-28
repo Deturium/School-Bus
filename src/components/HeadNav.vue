@@ -9,15 +9,15 @@ header.head
 
   img.lifegame(src="../assets/lifegame.png")
 
-  login
+  user-info
 </template>
 
 <script>
-import Login from './Login'
+import UserInfo from './UserInfo'
 
 export default {
   components: {
-    Login
+    UserInfo
   }
 }
 </script>

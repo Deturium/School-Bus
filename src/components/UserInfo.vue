@@ -19,7 +19,7 @@
 
 <script>
 export default {
-  name: "login",
+  name: "user-info",
   data: function() {
     return {
       isLogin: true,

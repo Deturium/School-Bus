@@ -10,7 +10,7 @@ ul.type-bar
 
 <script>
 export default {
-  name: "type-bar",
+  name: "fliter-bar",
   data: function() {
     return {
       type: [

@@ -1,5 +1,6 @@
 <template lang="pug">
 div
+  overlay
   head-nav
   .main-container
     router-view
@@ -9,11 +10,12 @@ div
 <script>
 import HeadNav from './components/HeadNav'
 import FootNav from './components/FootNav'
+import Overlay from './components/Overlay'
 
 export default {
 	name: 'app',
 	components: {
-    HeadNav, FootNav
+    HeadNav, FootNav, Overlay
 	}
 }
 </script>
@@ -27,4 +29,5 @@ body
 
 .main-container
   min-height 80vh
+  margin 0 auto
 </style>

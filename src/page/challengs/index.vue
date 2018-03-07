@@ -32,7 +32,4 @@ export default {
 </script>
 
 <style lang="stylus">
-.play {
-  margin: 0 auto;
-}
 </style>

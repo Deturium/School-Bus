@@ -1,4 +1,5 @@
 import challenges from '../page/challengs'
+import scoreboard from '../page/scoreboard'
 
 export default [
   {
@@ -8,5 +9,9 @@ export default [
   {
     path: '/challenges',
     component: challenges,
-  }
+  },
+  {
+    path: '/scoreboard',
+    component: scoreboard,
+  },
 ]

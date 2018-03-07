@@ -10,6 +10,7 @@ const state = {
 
   },
 
+  // challengs
   fliterType: "ALL",
   qs: [
     {
@@ -41,6 +42,30 @@ const state = {
       name: "Check In Two Lines",
       type: "Web",
       score: 100
+    },
+  ],
+
+  // scoreboard
+  rank: [
+    {
+      user: "prayer",
+      points: "8000",
+      comments: "我爱himyth，himyth使我快乐"
+    },
+    {
+      user: "hyln9",
+      points: "7000",
+      comments: "感谢各位大佬Orz"
+    },
+    {
+      user: "zuhxs",
+      points: "6000",
+      comments: "<script>alert('xss')</script>"
+    },
+    {
+      user: "Clapeysron",
+      points: "5000",
+      comments: "<script>alert('xss')</script>"
     },
   ]
 }

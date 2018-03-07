@@ -3,6 +3,9 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
+
+  mode: "development",
+
   context: path.resolve(__dirname, './'),
 
   entry: {

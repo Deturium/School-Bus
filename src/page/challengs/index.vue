@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import FliterBar from "./children/FliterBar";
+import FliterBar from "../../components/FliterBar";
 import QGroup from "./children/QGroup";
 
 export default {

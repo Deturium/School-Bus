@@ -1,6 +1,6 @@
 <template lang="pug">
 div
-  overlay
+  popup
   head-nav
   .main-container
     router-view
@@ -10,12 +10,12 @@ div
 <script>
 import HeadNav from './components/HeadNav'
 import FootNav from './components/FootNav'
-import Overlay from './components/Overlay'
+import Popup from './components/Popup'
 
 export default {
 	name: 'app',
 	components: {
-    HeadNav, FootNav, Overlay
+    HeadNav, FootNav, Popup
 	}
 }
 </script>

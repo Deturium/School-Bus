@@ -1,24 +1,27 @@
 <template lang="pug">
-table.rank-table
-  tr.rank-head
-    th RANK
-    th USER
-    th POINTS
-    th COMMENTS
-  tr: td.empty-tr
-  rank-tr(
-    v-for="(r, i) in rank"
-    :key="r.user"
-    :rank='i + 1'
-    :user="r.user"
-    :points="r.points"
-    :comments="r.comments"
-  )
+.div
+  fliter-bar
+  table.rank-table
+    tr.rank-head
+      th RANK
+      th USER
+      th POINTS
+      th COMMENTS
+    tr: td.empty-tr
+    rank-tr(
+      v-for="(r, i) in rank"
+      :key="r.user"
+      :rank='i + 1'
+      :user="r.user"
+      :points="r.points"
+      :comments="r.comments"
+    )
 
 </template>
 
 <script>
 
+import FliterBar from "../../components/FliterBar";
 import RankTr from './children/RankTr'
 
 export default {
@@ -29,7 +32,7 @@ export default {
     }
   },
   components: {
-    RankTr
+    RankTr, FliterBar
   }
 };
 </script>
@@ -37,7 +40,7 @@ export default {
 <style lang="stylus">
 .rank-table
   width 1100px
-  margin 0 auto
+  margin 40px auto
   border-collapse collapse
 
   .rank-head

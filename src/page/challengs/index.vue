@@ -1,17 +1,17 @@
 <template lang="pug">
 .challengs
   fliter-bar
-  q-group(
-    :qs="qs"
+  c-group(
+    :challengs="challengs"
   )
-  q-group(
-    :qs="qs"
+  c-group(
+    :challengs="challengs"
   )
 </template>
 
 <script>
-import FliterBar from "../../components/FliterBar";
-import QGroup from "./children/QGroup";
+import FliterBar from "~/FliterBar";
+import CGroup from "./CGroup";
 
 export default {
   name: "challengs",
@@ -21,12 +21,12 @@ export default {
     };
   },
   computed: {
-    qs () {
-	    return this.$store.getters.questions
+    challengs () {
+	    return this.$store.getters.challengs
     }
   },
   components: {
-    QGroup, FliterBar
+    FliterBar, CGroup
   }
 };
 </script>

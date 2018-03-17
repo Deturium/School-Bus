@@ -1,9 +1,9 @@
 <template lang="pug">
-.q-box(
+.c-box(
   :style="{order: order}"
 )
   p.name(
-    @click="onClick(order)"
+    @click="clickHandle(id, order)"
   ) {{ name }}
   p.type {{ type }}
   p.score {{ score + "pt" }}
@@ -11,13 +11,14 @@
 
 <script>
 export default {
-  name: "QBox",
+  name: "c-box",
   props: [
     "order",
+    "id",
     "name",
     "type",
     "score",
-    "onClick",
+    "clickHandle",
   ],
 }
 </script>
@@ -26,7 +27,7 @@ export default {
 
 $box-width = 200px
 
-.q-box
+.c-box
   width $box-width
   height $box-width
   box-sizing border-box

@@ -1,5 +1,5 @@
 <template lang="pug">
-.q-body(
+.c-body(
   :style="{order: order}"
 )
   h1.meta Check In
@@ -29,7 +29,7 @@
 
 <script>
 export default {
-  name: "q-body",
+  name: "c-body",
   props: [
     "order"
   ]
@@ -38,7 +38,7 @@ export default {
 
 <style lang="stylus">
 
-.q-body
+.c-body
   width 100%
   margin 30px auto
   padding 40px

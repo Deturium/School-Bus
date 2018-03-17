@@ -1,9 +1,15 @@
-<template lang="pug" functional>
+<template lang="pug">
 footer.foot
   img.lifegame(src="../assets/lifegame.png")
   img.logo(src="../assets/AAA_logo.png")
   p.foot-text &copy; ZJU AAA School-Bus  -  ALL RIGHTS RESERVED.
 </template>
+
+<script>
+export default {
+  name: "foot-nav"
+}
+</script>
 
 <style lang="stylus">
 

@@ -10,7 +10,7 @@ table.rank-table
     tr: th.margin-tr
   tbody
     rank-tr(
-      v-for="(r, i) in rank"
+      v-for="(r, i) in ranks"
       :key="r.user"
       :rank='i + 1'
       :user="r.user"
@@ -20,15 +20,14 @@ table.rank-table
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import RankTr from './RankTr'
 
 export default {
   name: "rank-table",
-  data: function() {
-    return {
-      rank: this.$store.state.rank
-    }
-  },
+  computed: mapState([
+    "ranks"
+  ]),
   components: {
     RankTr
   }

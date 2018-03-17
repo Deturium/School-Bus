@@ -9,6 +9,8 @@ ul.type-bar
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: "fliter-bar",
   data: function() {
@@ -23,14 +25,19 @@ export default {
         "REVERSE",
         "WEB",
       ],
-      selected: "ALL",
     }
   },
+  computed: mapState({
+    selected: "fliterType"
+  }),
   methods: {
     filterType: function(type) {
-      this.selected = type
       this.$store.commit('changeFliterType', type)
     }
+  },
+  beforeDestroy: function() {
+    // reset fliterType
+    this.$store.commit('changeFliterType', "ALL")
   }
 }
 </script>

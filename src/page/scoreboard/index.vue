@@ -6,8 +6,8 @@
 
 <script>
 
-import FliterBar from "../../components/FliterBar";
-import RankTable from './children/RankTable'
+import FliterBar from "~/FliterBar";
+import RankTable from './RankTable'
 
 export default {
   name: "scoreboard",

@@ -1,14 +1,14 @@
 <template lang="pug">
 .userinfo
-  .login(v-if="isLogin")
-    p.name {{ name }}
-    p Rank {{ rank }}
-    p Score {{ score }}
+  .login(v-if="isLogIn")
+    p.name {{ userInfo.name }}
+    p Rank {{ userInfo.rank }}
+    p Score {{ userInfo.score }}
   .unlogin(v-else) Log In / Register
 
   img.avatar(src="../assets/huahuo.png")
 
-  ul.list(v-if="isLogin")
+  ul.list(v-if="isLogIn")
     li.list-item Update Passw0rd
     li.list-item Update Info
     li.list-item(
@@ -22,22 +22,20 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: "user-info",
-  data: function() {
-    return {
-      isLogin: true,
-      name: "Clapeysron",
-      rank: "5",
-      score: "8250",
-    }
-  },
+  computed: mapState([
+    "isLogIn",
+    "userInfo"
+  ]),
   methods: {
     logIn() {
-      this.isLogin = true
+      this.$store.commit('showPopupForm', 'Log In')
     },
     logOut() {
-      this.isLogin = false
+       this.$store.commit('LogOut')
     }
   }
 }

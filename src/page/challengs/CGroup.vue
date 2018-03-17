@@ -1,49 +1,60 @@
 <template lang="pug">
-.q-group(v-show="qs.length")
-  .tit
+.c-group(v-show="challengs.length")
+  .c-tit
     | - Welcome -
   .flex
-    q-box(
-      v-for="(q, i) in qs"
-      :key="q.name + i"
+    c-box(
+      v-for="(c, i) in challengs"
+      :key="c.name + i"
       :order="(~~(i/boxPerLine))*2"
-      :name="q.name"
-      :type="q.type"
-      :score="q.score"
-      :onClick="handleClick"
+
+      :id="c.name + i"
+      :name="c.name"
+      :type="c.type"
+      :score="c.score"
+      :clickHandle="clickHandle"
     )
     transition(name="fade")
-      q-body(
+      c-body(
         v-show="isShow"
         :order="bodyOrder"
       )
 </template>
 
 <script>
-import QBox from "./QBox";
-import QBody from "./QBody";
+import CBox from "./CBox";
+import CBody from "./CBody";
 
 export default {
-  name: "QGroup",
-  components: {
-    QBox, QBody
-  },
+  name: "c-group",
   data: function() {
     return {
       isShow: false,
       bodyOrder: 0,
+      id: "",
 
       boxPerLine: 4 // a const config now
     }
   },
   props: [
-    "qs"
+    "challengs"
   ],
   methods: {
-    handleClick: function(order) {
-      this.isShow = !this.isShow
-      this.bodyOrder = order + 1
+    clickHandle: function(id, order) {
+      if (!this.isShow) {
+        this.isShow = true
+        this.bodyOrder = order + 1
+      } else if (this.id === id){
+        this.isShow = false
+      } else {
+        this.bodyOrder = order + 1
+      }
+
+      this.id = id
     }
+  },
+  components: {
+    CBox, CBody
   },
 }
 </script>
@@ -51,12 +62,12 @@ export default {
 <style lang="stylus">
 
 $container-width = 1040px // 260 * 4
-.q-group
+.c-group
 
   width $container-width
   margin 0 auto
 
-  .tit
+  .c-tit
     margin-top 50px
     margin-bottom 15px
     font-size 26px

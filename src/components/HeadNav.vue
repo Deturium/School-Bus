@@ -8,20 +8,14 @@ header.head
     router-link.item(tag="li" to="award") award
 
   img.lifegame(src="../assets/lifegame.png")
-
-  user-info
+  slot
 </template>
 
 <script>
-import UserInfo from './UserInfo'
-
 export default {
-  components: {
-    UserInfo
-  }
+  name: "head-nav"
 }
 </script>
-
 
 <style lang="stylus">
 

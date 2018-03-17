@@ -1,21 +1,23 @@
 <template lang="pug">
 div
-  popup
+  popup-form
   head-nav
+    user-info
   .main-container
     router-view
   foot-nav
 </template>
 
 <script>
-import HeadNav from './components/HeadNav'
-import FootNav from './components/FootNav'
-import Popup from './components/Popup'
+import HeadNav from '@/HeadNav'
+import FootNav from '@/FootNav'
+import UserInfo from '~/UserInfo'
+import PopupForm from '~/PopupForm'
 
 export default {
 	name: 'app',
 	components: {
-    HeadNav, FootNav, Popup
+    HeadNav, FootNav, UserInfo, PopupForm
 	}
 }
 </script>

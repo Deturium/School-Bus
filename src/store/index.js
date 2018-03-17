@@ -6,13 +6,27 @@ import actions from './action'
 Vue.use(Vuex)
 
 const state = {
-  userInfo: {
 
+  // PopForm
+  popForm: {
+    isShow: false,
+    formName: "Log In"
   },
 
-  // challengs
+
+  // UserInfo
+  isLogIn: false,
+  userInfo: {
+    name: "Clapeysron",
+    rank: "5",
+    score: "8250",
+  },
+
+  // FliterBar
   fliterType: "ALL",
-  qs: [
+
+  // challengs
+  challengs: [
     {
       name: "Check In",
       type: "Misc",
@@ -46,11 +60,11 @@ const state = {
   ],
 
   // scoreboard
-  rank: [
+  ranks: [
     {
-      user: "prayer",
+      user: "Hydrogen",
       points: "8000",
-      comments: "我爱himyth，himyth使我快乐"
+      comments: "假装自己是第一"
     },
     {
       user: "hyln9",
@@ -60,7 +74,7 @@ const state = {
     {
       user: "zuhxs",
       points: "6000",
-      comments: "<script>alert('xss')</script>"
+      comments: "<script>alert('alert')</script>"
     },
     {
       user: "Clapeysron",
@@ -71,11 +85,11 @@ const state = {
 }
 
 const getters = {
-  questions: state => {
+  challengs: state => {
     return state.fliterType === 'ALL'
-      ? state.qs
-      : state.qs.filter(
-        q => q.type.toUpperCase() === state.fliterType
+      ? state.challengs
+      : state.challengs.filter(
+        c => c.type.toUpperCase() === state.fliterType
       )
   }
 }

@@ -23,9 +23,12 @@ export default {
 </script>
 
 <style lang="stylus">
+
+$box-width = 200px
+
 .q-box
-  width 200px
-  height 200px
+  width $box-width
+  height $box-width
   box-sizing border-box
   margin 20px 30px
   padding 20px
@@ -35,35 +38,33 @@ export default {
   display flex
   flex-direction column
   align-items center
-  justify-content flex-end
 
   >p
     font-style italic
+    font-weight bold
 
   .name
     flex-grow 2
     display flex
     align-items center
     font-size 28px
-    font-weight bold
     color #646464
     text-align center
     word-wrap break-word
-    cursor pointer
     line-height 1.1
+    cursor pointer
 
     &:hover
       color #E1C79B
 
   .type
-    font-size 18px
-    color #FFFFFF
     margin 0px
-    font-weight bold
+    font-size 20px
+    color #eee
 
   .score
-    font-size 10px
+    margin 5px
+    font-size 12px
+    font-weight normal
     color #7C6E59
-    margin 0
-    margin-bottom  5px
 </style>

@@ -1,23 +1,29 @@
 <template lang="pug" functional>
 footer.foot
   img.lifegame(src="../assets/lifegame.png")
-  img(src="../assets/AAA_logo.png")
-  p &copy; ZJU AAA School-Bus  -  ALL RIGHTS RESERVED.
+  img.logo(src="../assets/AAA_logo.png")
+  p.foot-text &copy; ZJU AAA School-Bus  -  ALL RIGHTS RESERVED.
 </template>
 
 <style lang="stylus">
+
+$max-width = 1160px
+
 .foot
-  width 1160px
+  width $max-width
   margin 50px auto
   margin-bottom 0
   text-align center
-  >img
+
+  .lifegame
+    width $max-width
+    margin 20px 0
+
+  .logo
     width 100px
     margin 10px
-  .lifegame
-    width 1160px
-    margin 20px 0
-  >p
+
+  .foot-text
     font-size 11px
     font-style italic
 </style>

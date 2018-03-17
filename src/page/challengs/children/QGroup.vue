@@ -12,10 +12,11 @@
       :score="q.score"
       :onClick="handleClick"
     )
-    q-body(
-      v-show="isShow"
-      :order="order"
-    )
+    transition(name="fade")
+      q-body(
+        v-show="isShow"
+        :order="bodyOrder"
+      )
 </template>
 
 <script>
@@ -30,7 +31,7 @@ export default {
   data: function() {
     return {
       isShow: false,
-      order: 0,
+      bodyOrder: 0,
 
       boxPerLine: 4 // a const config now
     }
@@ -41,25 +42,39 @@ export default {
   methods: {
     handleClick: function(order) {
       this.isShow = !this.isShow
-      this.order = order+1
+      this.bodyOrder = order + 1
     }
   },
 }
 </script>
 
 <style lang="stylus">
+
+$container-width = 1040px // 260 * 4
 .q-group
+
+  width $container-width
+  margin 0 auto
+
   .tit
     margin-top 50px
+    margin-bottom 15px
     font-size 26px
     font-weight bold
     text-align center
-    margin-bottom 15px
 
   .flex
-    width: 260 * 4px;
-    margin: auto;
-    display: flex;
+    display flex
     flex-wrap wrap
-    justify-content flex-start
+
+  .fade-enter-active
+    transition all 1s
+  .fade-leave-active
+    transition all .5s
+
+  .fade-enter,
+  .fade-leave-to
+    transform translateX(20%)
+    opacity: 0
+
 </style>

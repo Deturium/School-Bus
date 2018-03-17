@@ -4,23 +4,23 @@
 )
   h1.meta Check In
 
-  h2.tit Description
+  h2.sub-tit Description
   div
     p 本题是传说中的签到题，flag为：AAA{Welcome_to_School_Bus}
     p 获取到flag后(当然这里只要Ctrl+C)，填入下方框框中，提交即可获得本题分数
     p 这里flag都是AAA{...}的格式，如果你做出了任何一个题目，欢迎加入qq群，群号就在flag里面。
     p AAA期待你的加入！
 
-  h2.tit Hint
+  h2.sub-tit Hint
   div
     p 没有hint
 
-  h2.tit Your Answer
+  h2.sub-tit Your Answer
   div
     input.ans-input(value="AAA{this_a_flag}")
     button.ans-button Solved
 
-  h2.tit Completed
+  h2.sub-tit Completed
   div
     p
       span.name chenyuan
@@ -39,8 +39,7 @@ export default {
 <style lang="stylus">
 
 .q-body
-  width 1160px
-  box-sizing border-box
+  width 100%
   margin 30px auto
   padding 40px
   background-color #181818
@@ -54,52 +53,53 @@ export default {
     color #E1C79B
 
   >div
+    width 666px
+    margin 15px auto
+    padding-left 80px
+    // border 1px solid #fff
     font-size 14px
-    margin 15px 100px
-    margin-left 200px
 
   p
-    margin 5px
+    margin .8em
     // letter-spacing 1px
 
-  .tit
+  .sub-tit
     margin 0 140px
     margin-top 30px
-    font-style italic
-    font-weight lighter
     font-size 24px
+    font-weight lighter
+    font-style italic
     text-align left
 
-  ans-common()
+  ans-mixins()
     height 35px
-    margin 5px 0
-    vertical-align top
+    font-family 'Century Gothic'
     font-size 16px
+    font-weight bold
     font-style italic
-    border 1px solid #979797
     border-radius 5px
     outline none
 
   .ans-input
-    ans-common()
+    ans-mixins()
     width 500px
     box-sizing border-box
     padding 4px 10px
-    // actually height = 25 + 2 * (4 + 1)
-    font-weight bold
-    font-family: 'Century Gothic', sans-serif;
     color #181818
+    border 1px solid #979797
+    // actually height = 25 + 2 * (4 + 1)
 
   .ans-button
-    ans-common()
+    ans-mixins()
     width 80px
     margin-left 20px
     color #5D8F0A
     background-color transparent
-    border-color #93ED00
-    font-family: 'Century Gothic', sans-serif;
-    font-weight bold
+    border 1.5px solid currentColor
     cursor pointer
+
+    &:hover
+      border-color #93ED00
 
   .name
     margin-right 20px

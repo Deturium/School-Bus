@@ -24,11 +24,15 @@ export default {
 
 
 <style lang="stylus">
+
+$max-width = 1160px
+$text-color = #8e8e8e
+$text-color-hover = #ffffff
+
 .head
   position relative
-  width 1160px
-  margin 40px auto
-  margin-bottom 0
+  width $max-width
+  margin 30px auto
   text-align center
 
   .logo
@@ -38,26 +42,25 @@ export default {
   .nav
     width 600px
     margin 20px auto
+    padding 0
     display flex
     justify-content space-between
 
   .item
-    box-sizing border-box
     padding 3px
     list-style none
     text-transform uppercase
-    color #8E8E8E
+    color $text-color
     cursor pointer
 
-  .router-link-active
-    color white
-    font-weight bold
-    border-bottom 1px solid white
-
     &:hover
-      color white
+      color $text-color-hover
+
+  .router-link-active
+    font-weight bold
+    color $text-color-hover
+    border-bottom 1px solid $text-color-hover
 
   .lifegame
-    width 1160px
-    margin-bottom 20px
+    width 100%
 </style>

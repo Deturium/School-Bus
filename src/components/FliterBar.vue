@@ -36,25 +36,28 @@ export default {
 </script>
 
 <style lang="stylus">
+
+$text-color = #8e8e8e
+$text-color-hover = #ffffff
+
 .type-bar
-  width 840px
-  margin 0 auto
   padding 0
   display flex
-  justify-content space-between
+  justify-content center
 
   .item
+    margin 0 25px
     list-style none
     text-transform uppercase
     cursor pointer
-    color #8E8E8E
+    color $text-color
 
     &:hover
-      color white
+      color $text-color-hover
 
   .chose
-    color white
     font-weight bold
-    border-bottom 1px solid white
+    color $text-color-hover
+    border-bottom 1px solid $text-color-hover
 </style>
 

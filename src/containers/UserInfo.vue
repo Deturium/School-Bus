@@ -35,7 +35,7 @@ export default {
       this.$store.commit('showPopupForm', 'Log In')
     },
     logOut() {
-       this.$store.commit('LogOut')
+      this.$store.commit('LogOut')
     }
   }
 }

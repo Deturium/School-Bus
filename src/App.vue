@@ -11,8 +11,8 @@ div
 <script>
 import HeadNav from '@/HeadNav'
 import FootNav from '@/FootNav'
-import UserInfo from '~/UserInfo'
-import PopupForm from '~/PopupForm'
+import UserInfo from '@@/UserInfo'
+import PopupForm from '@@/PopupForm'
 
 export default {
 	name: 'app',

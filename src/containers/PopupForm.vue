@@ -50,7 +50,10 @@ export default {
 
 <style lang="stylus" scoped>
 
+@import "../stylus/mixins"
+
 $font-color = #ddd
+$input-height = 30px
 
 .form
   margin 25px
@@ -71,31 +74,23 @@ $font-color = #ddd
 
     >label
       width 90px
-      line-height 30px
+      line-height $input-height
       text-align center
       color $font-color
 
     >input
-      height 30px
+      input-mixins()
+      height $input-height
       width 250px
-      border 1px solid #979797
-      border-radius 5px
-      outline none
-      box-sizing border-box
       padding 2px 10px
+      font-size 14px
 
   >button
-    height 30px
+    button-mixins()
+    height $input-height
     width 100px
     margin 10px 0
-    line-height 30px
     font-size 14px
-    font-weight bold
-    font-style italic
-    border 0
-    border-radius 5px
-    outline none
-    cursor pointer
 
   .comfirm
     margin-left 90px

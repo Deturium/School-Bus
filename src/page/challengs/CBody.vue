@@ -38,6 +38,8 @@ export default {
 
 <style lang="stylus">
 
+@import "../../stylus/mixins"
+
 .c-body
   width 100%
   margin 30px auto
@@ -71,17 +73,9 @@ export default {
     font-style italic
     text-align left
 
-  ans-mixins()
-    height 35px
-    font-family 'Century Gothic'
-    font-size 16px
-    font-weight bold
-    font-style italic
-    border-radius 5px
-    outline none
-
   .ans-input
-    ans-mixins()
+    input-mixins()
+    height 35px
     width 500px
     box-sizing border-box
     padding 4px 10px
@@ -90,13 +84,13 @@ export default {
     // actually height = 25 + 2 * (4 + 1)
 
   .ans-button
-    ans-mixins()
+    button-mixins()
+    height 35px
     width 80px
     margin-left 20px
     color #5D8F0A
     background-color transparent
     border 1.5px solid currentColor
-    cursor pointer
 
     &:hover
       border-color #93ED00

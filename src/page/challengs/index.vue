@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import FliterBar from "~/FliterBar";
+import FliterBar from "@@/FliterBar";
 import CGroup from "./CGroup";
 
 export default {

@@ -1,6 +1,6 @@
 <template lang="pug">
 .c-group(v-show="challengs.length")
-  .c-tit
+  h2.tit
     | - Welcome -
   .flex
     c-box(
@@ -61,18 +61,16 @@ export default {
 
 <style lang="stylus">
 
+@import "../../stylus/mixins"
+
 $container-width = 1040px // 260 * 4
 .c-group
 
   width $container-width
   margin 0 auto
 
-  .c-tit
-    margin-top 50px
-    margin-bottom 15px
-    font-size 26px
-    font-weight bold
-    text-align center
+  .tit
+    title-mixins()
 
   .flex
     display flex

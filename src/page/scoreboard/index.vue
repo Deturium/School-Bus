@@ -6,7 +6,7 @@
 
 <script>
 
-import FliterBar from "~/FliterBar";
+import FliterBar from "@@/FliterBar";
 import RankTable from './RankTable'
 
 export default {

@@ -1,6 +1,5 @@
 <template lang="pug">
 div
-  slot
   popup(
     :isShow="isShow"
     :blurHandle="cancelHandle"
@@ -53,7 +52,7 @@ export default {
 @import "../stylus/mixins"
 
 $font-color = #ddd
-$input-height = 30px
+$label-width = 90px
 
 .form
   margin 25px
@@ -73,28 +72,26 @@ $input-height = 30px
     margin 15px 0
 
     >label
-      width 90px
-      line-height $input-height
+      width $label-width
+      line-height 30px
       text-align center
       color $font-color
 
     >input
       input-mixins()
-      height $input-height
       width 250px
       padding 2px 10px
       font-size 14px
 
   >button
     button-mixins()
-    height $input-height
     width 100px
     margin 10px 0
     font-size 14px
     font-style italic
 
   .comfirm
-    margin-left 90px
+    margin-left $label-width
     background-color #AAA
 
   .cancel

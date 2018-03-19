@@ -1,5 +1,6 @@
 <template lang="pug">
 table.rank-table
+  caption.table-tit - Rank Table -
   thead
     tr.rank-head
       th RANK
@@ -35,14 +36,20 @@ export default {
 </script>
 
 <style lang="stylus">
+@import "../../stylus/mixins"
 
-$max-width = 1000px
+$max-width = 810px
 $th-color = #8e8e8e
 
 .rank-table
   width $max-width
-  margin 40px auto
+  margin 50px auto
   border-collapse collapse
+
+  .table-tit
+    title-mixins()
+    margin 0
+    margin-bottom 40px
 
   .rank-head
     border-bottom 1px solid $th-color

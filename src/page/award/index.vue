@@ -9,8 +9,9 @@
     li 每天可以获得一次 bonus，如果今天已经获取，欢迎明天再来
     li AAA 对本 bonus 不做担保，规则以后可能发生变化
 
-  p.prompt(v-show="showPrompt")
-    | 您今天已经签到，请明天再来~
+  transition(name="fade-in")
+    p.prompt(v-show="showPrompt")
+      | 您今天已经签到，请明天再来~
 
   button.exchange(
     @click.prevent="exchange"
@@ -43,6 +44,7 @@ export default {
 
   .tit
     title-mixins()
+    margin-top 70px
 
   .sub-tit
     sub-tit-mixins()
@@ -50,6 +52,7 @@ export default {
 
   .rules
     margin-left 3em
+    margin-bottom 30px
     text-align left
 
     >li
@@ -70,4 +73,13 @@ export default {
 
   .exchange
     button-mixins()
+
+  .fade-in-enter-active
+    transition all 1s
+  // .fade-in-leave-active
+
+  .fade-in-enter,
+  .fade-in-leave-to
+    transform translateX(20%)
+    opacity 0
 </style>

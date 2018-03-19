@@ -40,11 +40,11 @@
 - [ ] css animition
 
 
-3. fetch
+3. api
 
 - [x] log in & out
-- [ ] fetch challenges
-- [ ] fetch ranks
+- [ ] challenges
+- [ ] ranks
 
 4. others
 

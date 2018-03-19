@@ -84,6 +84,6 @@ $container-width = 1040px // 260 * 4
   .fade-enter,
   .fade-leave-to
     transform translateX(20%)
-    opacity: 0
+    opacity 0
 
 </style>

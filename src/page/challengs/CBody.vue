@@ -75,8 +75,8 @@ export default {
 
   .ans-input
     input-mixins()
-    height 35px
     width 500px
+    height 35px
     box-sizing border-box
     padding 4px 10px
     color #181818
@@ -85,9 +85,10 @@ export default {
 
   .ans-button
     button-mixins()
-    height 35px
     width 80px
+    height 35px
     margin-left 20px
+    font-style italic
     color #5D8F0A
     background-color transparent
     border 1.5px solid currentColor

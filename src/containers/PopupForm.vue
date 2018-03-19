@@ -91,6 +91,7 @@ $input-height = 30px
     width 100px
     margin 10px 0
     font-size 14px
+    font-style italic
 
   .comfirm
     margin-left 90px

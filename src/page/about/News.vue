@@ -45,12 +45,13 @@ export default {
     margin 0
     margin-top 25px
     font-size 18px
+    font-weight bold
     color #ddd
     cursor pointer
 
   .news-time
     margin-left 6em
-    margin-right 2em
+    margin-right 1.5em
 
   .news-tit:hover
     color #fff

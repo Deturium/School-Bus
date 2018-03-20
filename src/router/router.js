@@ -1,4 +1,4 @@
-import challenges from '../page/challengs'
+import challenges from '../page/challenges'
 import scoreboard from '../page/scoreboard'
 import about from '../page/about'
 import award from '../page/award'

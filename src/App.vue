@@ -1,5 +1,5 @@
 <template lang="pug">
-div
+div.app-root
   popup-form
   head-nav
     user-info
@@ -23,11 +23,17 @@ export default {
 </script>
 
 <style lang="stylus">
+$max-width = 1160px
+
 body
-  background-color #1F1F1F
-  color white
   font-size 14px
-  font-family: 'Century Gothic', sans-serif;
+  font-family 'Century Gothic', sans-serif
+  color white
+  background-color #1F1F1F
+
+.app-root
+  width $max-width
+  margin 0 auto
 
 .main-container
   min-height 80vh

@@ -1,57 +1,78 @@
 <template lang="pug">
-.c-group(v-show="challengs.length")
+.c-group(v-show="challenges.length")
   h2.tit
     | - Welcome -
   .flex
     c-box(
-      v-for="(c, i) in challengs"
-      :key="c.name + i"
-      :order="(~~(i/boxPerLine))*2"
+      v-for="(c, i) in challenges"
+      :key="c.id"
+      :order="(~~(i/4))*2"
 
-      :id="c.name + i"
-      :name="c.name"
-      :type="c.type"
-      :score="c.score"
+      :id="c.id"
+      :title="c.title"
+      :points="c.points"
+
       :clickHandle="clickHandle"
     )
     transition(name="fade")
       c-body(
         v-show="isShow"
         :order="bodyOrder"
+
+        :challenge="challenge"
+        :submitHandle="submitHandle"
       )
 </template>
 
 <script>
 import CBox from "./CBox";
 import CBody from "./CBody";
+import { functionDeclaration } from 'babel-types';
 
 export default {
   name: "c-group",
+  props: [
+    "challenges"
+  ],
   data: function() {
     return {
       isShow: false,
       bodyOrder: 0,
-      id: "",
-
-      boxPerLine: 4 // a const config now
+      id: this.challenges[0].id,
     }
   },
-  props: [
-    "challengs"
-  ],
+  computed: {
+    challenge: function() {
+      return this.challenges[this.id-1]
+    }
+  },
   methods: {
     clickHandle: function(id, order) {
+      // show
       if (!this.isShow) {
+        this.id = id
         this.isShow = true
         this.bodyOrder = order + 1
-      } else if (this.id === id){
-        this.isShow = false
-      } else {
-        this.bodyOrder = order + 1
+        return
       }
 
+      // hide
+      if (this.id === id){
+        this.isShow = false
+        return
+      }
+
+      // toggle another challenge
       this.id = id
-    }
+      this.bodyOrder = order + 1
+    },
+    submitHandle(id, isSolved) {
+      if (isSolved)
+        return
+
+      // TODO:
+      this.challenges[id-1].is_solved = true
+    },
   },
   components: {
     CBox, CBody

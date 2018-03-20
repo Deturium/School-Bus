@@ -6,17 +6,18 @@ table.rank-table
       th RANK
       th USER
       th POINTS
-      th COMMENTS
+      th COMMENT
     //- used as margin-bottom
     tr: th.margin-tr
   tbody
+    //- TODO: key = r.userid
     rank-tr(
       v-for="(r, i) in ranks"
-      :key="r.user"
+      :key="r.username"
       :rank='i + 1'
-      :user="r.user"
+      :username="r.username"
       :points="r.points"
-      :comments="r.comments"
+      :comment="r.comment"
     )
 </template>
 

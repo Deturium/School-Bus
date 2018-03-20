@@ -1,9 +1,9 @@
 <template lang="pug">
 tr.rank-tr
   td(:style="{color: rankColor}") {{ rank }}
-  td {{ user }}
+  td {{ username }}
   td {{ points }}
-  td.comments {{ comments }}
+  td.comment {{ comment }}
 </template>
 
 <script>
@@ -11,9 +11,9 @@ export default {
   name: "rank-tr",
   props: [
     "rank",
-    "user",
+    "username",
     "points",
-    "comments",
+    "comment",
   ],
   computed: {
     rankColor: function() {
@@ -36,7 +36,7 @@ export default {
     padding 15px
     font-weight bold
 
-  .comments
+  .comment
     font-weight normal
 
   &:hover

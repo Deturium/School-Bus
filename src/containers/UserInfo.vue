@@ -9,16 +9,20 @@
   img.avatar(src="../assets/huahuo.png")
 
   ul.list(v-if="isLogIn")
-    li.list-item Update Passw0rd
-    li.list-item Update Info
+    li.list-item(
+      @click="updateInfo"
+    ) Update Info
     li.list-item(
       @click="logOut"
     ) Log Out
+
   ul.list(v-else)
     li.list-item(
       @click="logIn"
     ) Log In
-    li.list-item Register
+    li.list-item(
+      @click="register"
+    ) Register
 </template>
 
 <script>
@@ -32,10 +36,16 @@ export default {
   ]),
   methods: {
     logIn() {
-      this.$store.commit('showPopupForm', 'Log In')
+      this.$store.commit('showPopupForm', 'LogIn')
     },
     logOut() {
       this.$store.commit('LogOut')
+    },
+    register() {
+      this.$store.commit('showPopupForm', 'Register')
+    },
+    updateInfo() {
+      this.$store.commit('showPopupForm', 'UpdateInfo')
     }
   }
 }

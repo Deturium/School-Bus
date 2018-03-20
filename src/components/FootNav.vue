@@ -13,16 +13,14 @@ export default {
 
 <style lang="stylus">
 
-$max-width = 1160px
-
 .foot
-  width $max-width
+  width 100%
   margin 50px auto
   margin-bottom 0
   text-align center
 
   .lifegame
-    width $max-width
+    width 100%
     margin 20px 0
 
   .logo

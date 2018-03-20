@@ -1,11 +1,11 @@
 <template lang="pug">
-.challengs
+.challenges
   fliter-bar
   c-group(
-    :challengs="challengs"
+    :challenges="challenges"
   )
   c-group(
-    :challengs="challengs"
+    :challenges="challenges"
   )
 </template>
 
@@ -14,15 +14,10 @@ import FliterBar from "@@/FliterBar";
 import CGroup from "./CGroup";
 
 export default {
-  name: "challengs",
-  data: function() {
-    return {
-      isShow: false,
-    };
-  },
+  name: "challenges",
   computed: {
-    challengs () {
-	    return this.$store.getters.challengs
+    challenges () {
+	    return this.$store.state.challenges
     }
   },
   components: {

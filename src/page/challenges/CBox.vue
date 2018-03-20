@@ -2,11 +2,13 @@
 .c-box(
   :style="{order: order}"
 )
-  p.name(
+  p.title(
     @click="clickHandle(id, order)"
-  ) {{ name }}
-  p.type {{ type }}
-  p.score {{ score + "pt" }}
+  ) {{ title }}
+
+  //- TODO:
+  p.type {{ "TYPE" }}
+  p.points {{ points + "pt" }}
 </template>
 
 <script>
@@ -15,9 +17,8 @@ export default {
   props: [
     "order",
     "id",
-    "name",
-    "type",
-    "score",
+    "title",
+    "points",
     "clickHandle",
   ],
 }
@@ -44,7 +45,7 @@ $box-width = 200px
     font-style italic
     font-weight bold
 
-  .name
+  .title
     flex-grow 2
     display flex
     align-items center
@@ -63,7 +64,7 @@ $box-width = 200px
     font-size 20px
     color #eee
 
-  .score
+  .points
     margin 5px
     font-size 12px
     font-weight normal

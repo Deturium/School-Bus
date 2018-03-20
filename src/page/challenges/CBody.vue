@@ -2,37 +2,54 @@
 .c-body(
   :style="{order: order}"
 )
-  h1.meta Check In
+  h1.meta {{ c.title }}
 
   h2.sub-tit Description
   div
-    p 本题是传说中的签到题，flag为：AAA{Welcome_to_School_Bus}
-    p 获取到flag后(当然这里只要Ctrl+C)，填入下方框框中，提交即可获得本题分数
-    p 这里flag都是AAA{...}的格式，如果你做出了任何一个题目，欢迎加入qq群，群号就在flag里面。
-    p AAA期待你的加入！
+    p {{ c.description }}
 
   h2.sub-tit Hint
   div
-    p 没有hint
+    p {{ c.hint }}
 
   h2.sub-tit Your Answer
   div
     input.ans-input(value="AAA{this_a_flag}")
-    button.ans-button Solved
+    button.ans-button(
+      :class="{ solved: c.is_solved }"
+      @click.prevent="submitHandle(c.id, c.is_solved)"
+    ) {{ c.is_solved ? "Solved" : "Submit" }}
 
   h2.sub-tit Completed
   div
     p
-      span.name chenyuan
-      span.name zuhxs
+      span.name(
+        v-for="(pwner, i) in c.early_pwner"
+        :key="i"
+      ) {{ pwner }}
 </template>
 
 <script>
 export default {
   name: "c-body",
   props: [
-    "order"
-  ]
+    "order",
+    "challenge",
+    "submitHandle"
+  ],
+  computed: {
+    c() {
+      return this.challenge
+    }
+    // "title",
+    // "description",
+    // "hint",
+    // "attachments",
+    // "points",
+    // "is_solved",
+    // "pwned_times",
+    // "early_pwner"
+  },
 }
 </script>
 
@@ -63,6 +80,8 @@ export default {
 
   p
     margin .8em
+    white-space pre
+    line-height 1.7
     // letter-spacing 1px
 
   .sub-tit
@@ -89,10 +108,15 @@ export default {
     height 35px
     margin-left 20px
     font-style italic
-    color #5D8F0A
+    color #aaa
     background-color transparent
     border 1.5px solid currentColor
+    vertical-align top
+    &:hover
+      border-color #ddd
 
+  .solved
+    color #5D8F0A
     &:hover
       border-color #93ED00
 

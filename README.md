@@ -33,6 +33,7 @@
 - [x] scoreboard
 - [x] about
 - [x] award
+- [ ] 404
 
 2. css
 
@@ -49,6 +50,5 @@
 4. others
 
 - [ ] favicion
-- [ ] user avator ?
-
-
+- [ ] user avator
+- [ ] CSRF

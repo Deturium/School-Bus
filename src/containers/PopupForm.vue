@@ -1,62 +1,55 @@
 <template lang="pug">
-div
-  popup(
-    :isShow="isShow"
-    :blurHandle="cancelHandle"
+popup(
+  :isShow="isShow"
+  :blurHandle="blurHandle"
+)
+  log-in-form(
+    v-if="formName==='LogIn'"
   )
-    form.form
-      .form-tit Log In
-      .form-input
-        label(for="username") Username
-        input#username
-      .form-input
-        label Passw0rd
-        input#password
 
-      button.comfirm(
-        @click.prevent="confirmHandle"
-      ) Log In
-      button.cancel(
-        @click.prevent="cancelHandle"
-      ) Cancel
+  update-info-form(
+    v-if="formName==='UpdateInfo'"
+  )
 
+  register-form(
+    v-if="formName==='Register'"
+  )
 </template>
 
 <script>
 import { mapState } from 'vuex'
 import Popup from '@/Popup'
 
+import LogInForm from './Form/LogInForm'
+import UpdateInfoForm from './Form/UpdateInfoForm'
+import RegisterForm from './Form/RegisterForm'
+
 export default {
   name: "popup-form",
   computed: mapState({
     isShow: state => state.popForm.isShow,
-    formName: state => state.popForm.fromName
+    formName: state => state.popForm.formName
   }),
   methods: {
-    confirmHandle() {
-      this.$store.commit('LogIn')
+    blurHandle() {
       this.$store.commit('hidePopupForm')
-    },
-    cancelHandle() {
-      this.$store.commit('hidePopupForm')
-    },
+    }
   },
   components: {
-    Popup
+    Popup, LogInForm, UpdateInfoForm, RegisterForm
   }
 }
 </script>
 
-<style lang="stylus" scoped>
+<style lang="stylus"> // style for './Form'
 
 @import "../stylus/mixins"
 
 $font-color = #ddd
-$label-width = 90px
+$label-width = 100px
 
 .form
   margin 25px
-  font-family: 'Century Gothic';
   font-style italic
   font-weight bold
 
@@ -67,19 +60,21 @@ $label-width = 90px
     text-align center
     color $font-color
 
-  .form-input
+  .form-item
     display flex
     margin 15px 0
 
     >label
       width $label-width
+      margin-left -20px
+      margin-right 20px
       line-height 30px
-      text-align center
+      text-align right
       color $font-color
 
     >input
       input-mixins()
-      width 250px
+      width 270px
       padding 2px 10px
       font-size 14px
 
@@ -93,9 +88,13 @@ $label-width = 90px
   .comfirm
     margin-left $label-width
     background-color #AAA
+    &:hover
+      background-color #666
 
   .cancel
-    margin-left 50px
-    background-color #555
+    margin-left 70px
+    background-color #666
+    &:hover
+      background-color #AAA
 
 </style>

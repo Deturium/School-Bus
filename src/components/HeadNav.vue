@@ -1,5 +1,8 @@
 <template lang="pug">
 header.head
+  //- for UserInfo
+  slot
+
   img.logo(src="../assets/AAA_logo.png")
   ul.nav
     router-link.item(tag="li" to="challenges") challenges
@@ -8,7 +11,6 @@ header.head
     router-link.item(tag="li" to="award") award
 
   img.lifegame(src="../assets/lifegame.png")
-  slot
 </template>
 
 <script>
@@ -19,13 +21,12 @@ export default {
 
 <style lang="stylus">
 
-$max-width = 1160px
 $text-color = #8e8e8e
 $text-color-hover = #ffffff
 
 .head
   position relative
-  width $max-width
+  width 100%
   margin 30px auto
   text-align center
 

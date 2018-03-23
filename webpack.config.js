@@ -15,7 +15,7 @@ module.exports = {
 
   output: {
     path: path.resolve(__dirname, './dist'),
-    filename: '[name].bundle.js',
+    filename: '[name].[hash].js',
     // publicPath: 'static',
   },
 
@@ -73,5 +73,8 @@ module.exports = {
     contentBase: path.resolve(__dirname, './'),
     historyApiFallback: true,
     inline: true,
+    proxy: {
+      "/api": "http://localhost:3000"
+    }
   },
 };

@@ -30,9 +30,12 @@ export default {
   computed: mapState([
     "ranks"
   ]),
+    created: function() {
+    this.$store.dispatch('fetchRank')
+  },
   components: {
     RankTr
-  }
+  },
 };
 </script>
 

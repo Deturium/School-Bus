@@ -1,7 +1,6 @@
 <template lang="pug">
-.c-group(v-show="challenges.length")
-  h2.tit
-    | - Welcome -
+.c-group
+  h2.tit {{ category }}
   .flex
     c-box(
       v-for="(c, i) in challenges"
@@ -10,6 +9,7 @@
 
       :id="c.id"
       :title="c.title"
+      :type="c.type"
       :points="c.points"
 
       :clickHandle="clickHandle"
@@ -27,23 +27,30 @@
 <script>
 import CBox from "./CBox";
 import CBody from "./CBody";
-import { functionDeclaration } from 'babel-types';
 
 export default {
   name: "c-group",
   props: [
-    "challenges"
+    "category",
+    "types"
   ],
   data: function() {
     return {
       isShow: false,
       bodyOrder: 0,
-      id: this.challenges[0].id,
+      id: -1
     }
   },
   computed: {
-    challenge: function() {
-      return this.challenges[this.id-1]
+    challenges() {
+      const challenges = []
+      for (let t of this.types)
+        for (let c of t.challenges)
+          challenges.push(c)
+      return challenges
+    },
+    challenge() {
+      return this.challenges.find( c => c.id === this.id )
     }
   },
   methods: {
@@ -70,8 +77,7 @@ export default {
       if (isSolved)
         return
 
-      // TODO:
-      this.challenges[id-1].is_solved = true
+      this.challenge.is_solved = true
     },
   },
   components: {

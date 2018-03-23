@@ -6,8 +6,7 @@
     @click="clickHandle(id, order)"
   ) {{ title }}
 
-  //- TODO:
-  p.type {{ "TYPE" }}
+  p.type {{ type }}
   p.points {{ points + "pt" }}
 </template>
 
@@ -18,6 +17,7 @@ export default {
     "order",
     "id",
     "title",
+    "type",
     "points",
     "clickHandle",
   ],

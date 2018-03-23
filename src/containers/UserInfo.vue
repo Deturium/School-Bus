@@ -36,6 +36,8 @@ export default {
   ]),
   methods: {
     logIn() {
+      this.$store.dispatch('fetchAnnouncement')
+
       this.$store.commit('showPopupForm', 'LogIn')
     },
     logOut() {

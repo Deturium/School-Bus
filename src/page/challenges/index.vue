@@ -2,10 +2,10 @@
 .challenges
   fliter-bar
   c-group(
-    :challenges="challenges"
-  )
-  c-group(
-    :challenges="challenges"
+    v-for="group in challenges"
+    :key="group.category"
+    :category="group.category"
+    :types="group.types"
   )
 </template>
 
@@ -19,6 +19,9 @@ export default {
     challenges () {
 	    return this.$store.state.challenges
     }
+  },
+  created() {
+    this.$store.dispatch('fetchChallenge')
   },
   components: {
     FliterBar, CGroup

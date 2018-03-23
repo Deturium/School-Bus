@@ -10,7 +10,7 @@
 
   h2.sub-tit Hint
   div
-    p {{ c.hint }}
+    p {{ c.hint ? c.hint : 'No hint'}}
 
   h2.sub-tit Your Answer
   div
@@ -80,7 +80,7 @@ export default {
 
   p
     margin .8em
-    white-space pre
+    // white-space pre
     line-height 1.7
     // letter-spacing 1px
 

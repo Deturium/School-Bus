@@ -1,15 +1,13 @@
 <template lang="pug">
 .about
   h2.tit - News -
-  news(
-    time="2018-03-17"
-    title="SCHOOL-BUS 启用新计分系统 "
-    body="SCHOOL-BUS 即日起将启用新计分系统，每道题目的分值将采用动态计分制，每道题的初分值一致，动态分值与解出题目的人数相关，具体计算公式如下"
-  )
-  news(
-    time="2017-09-27"
-    title="专访AAA队长朱梦凡 | 走到今天全靠成员的坚持"
-    body="在前不久刚结束的第四届XCTF联赛揭幕战武汉站WHCTF线上赛的比赛中，来自浙江大学的AAA战队给我们带来了一场完美的绝杀！在距离比赛还有一个小时结束时，成功反超清华大学的Redbud战队，最终赢得比赛第一名，直接杀入第四届XCTF总决赛，可以说是既精彩又刺激！"
+  announcement(
+    v-for="(anno, i) in announcements"
+    :key="i"
+    :initShow="false"
+    :time="anno[0]"
+    :title="anno[1]"
+    :body="anno[2]"
   )
 
   h2.tit - About AAA -
@@ -57,12 +55,19 @@
 </template>
 
 <script>
-import News from './News'
+import Announcement from './Announcement'
+import { mapState } from 'vuex'
 
 export default {
   name: "about",
   components: {
-    News
+    Announcement
+  },
+  computed: mapState([
+    "announcements"
+  ]),
+  created: function() {
+    this.$store.dispatch('fetchAnnouncement')
   }
 }
 </script>

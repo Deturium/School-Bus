@@ -1,6 +1,6 @@
 <template lang="pug">
 .c-group
-  h2.tit {{ category }}
+  h2.tit - {{ category }} -
   .flex
     c-box(
       v-for="(c, i) in challenges"
@@ -16,7 +16,7 @@
     )
     transition(name="fade")
       c-body(
-        v-show="isShow"
+        v-if="isShow"
         :order="bodyOrder"
 
         :challenge="challenge"
@@ -38,15 +38,17 @@ export default {
     return {
       isShow: false,
       bodyOrder: 0,
-      id: -1
+      id: NaN
     }
   },
   computed: {
     challenges() {
       const challenges = []
       for (let t of this.types)
-        for (let c of t.challenges)
+        for (let c of t.challenges) {
+          c.type = t.type
           challenges.push(c)
+        }
       return challenges
     },
     challenge() {

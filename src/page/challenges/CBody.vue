@@ -2,29 +2,29 @@
 .c-body(
   :style="{order: order}"
 )
-  h1.meta {{ c.title }}
+  h1.meta {{ challenge.title }}
 
   h2.sub-tit Description
   div
-    p {{ c.description }}
+    p {{ challenge.description }}
 
   h2.sub-tit Hint
   div
-    p {{ c.hint ? c.hint : 'No hint'}}
+    p {{ challenge.hint ? challenge.hint : 'No hint'}}
 
   h2.sub-tit Your Answer
   div
     input.ans-input(value="AAA{this_a_flag}")
     button.ans-button(
-      :class="{ solved: c.is_solved }"
-      @click.prevent="submitHandle(c.id, c.is_solved)"
-    ) {{ c.is_solved ? "Solved" : "Submit" }}
+      :class="{ solved: challenge.is_solved }"
+      @click.prevent="submitHandle(challenge.id, challenge.is_solved)"
+    ) {{ challenge.is_solved ? "Solved" : "Submit" }}
 
   h2.sub-tit Completed
   div
     p
       span.name(
-        v-for="(pwner, i) in c.early_pwner"
+        v-for="(pwner, i) in challenge.early_pwner"
         :key="i"
       ) {{ pwner }}
 </template>
@@ -35,21 +35,17 @@ export default {
   props: [
     "order",
     "challenge",
+      // "title",
+      // "description",
+      // "hint",
+      // "attachments",
+      // "points",
+      // "is_solved",
+      // "pwned_times",
+      // "early_pwner"
+
     "submitHandle"
   ],
-  computed: {
-    c() {
-      return this.challenge
-    }
-    // "title",
-    // "description",
-    // "hint",
-    // "attachments",
-    // "points",
-    // "is_solved",
-    // "pwned_times",
-    // "early_pwner"
-  },
 }
 </script>
 

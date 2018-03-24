@@ -5,10 +5,10 @@ header.head
 
   img.logo(src="../assets/AAA_logo.png")
   ul.nav
-    router-link.item(tag="li" to="challenges") challenges
-    router-link.item(tag="li" to="scoreboard") scoreboard
-    router-link.item(tag="li" to="about") about & news
-    router-link.item(tag="li" to="award") award
+    router-link.item(tag="li" to="/challenges") challenges
+    router-link.item(tag="li" to="/scoreboard") scoreboard
+    router-link.item(tag="li" to="/about") about & news
+    router-link.item(tag="li" to="/award") award
 
   img.lifegame(src="../assets/lifegame.png")
 </template>

@@ -44,13 +44,13 @@ export default {
     align-items center
 
     margin-top 50px
+    color #ddd
 
   .anno-time,
   .anno-tit
     margin 0
     font-size 18px
     font-weight bold
-    color #ddd
     cursor pointer
 
   .anno-time
@@ -58,7 +58,7 @@ export default {
     margin-left 4em
     margin-right 1.5em
 
-  .anno-tit:hover
+  &:hover .anno-meta
     color #fff
 
   .anno-body
@@ -66,5 +66,9 @@ export default {
     margin-bottom 80px
 
     text-align center
+
+  a
+    color currentColor
+    text-decoration none
 
 </style>

@@ -46,11 +46,11 @@
 
 
   h2.tit - Contact -
-  h4.sub-tit EMAIL
+  h4.subtit EMAIL
   p aaa.zju@zju.gmail
-  h4.sub-tit ZJU Security QQ群
+  h4.subtit ZJU Security QQ群
   p 完成任意一道 'Welcome' 类的题目<br>群号就在 flag 中
-  h4.sub-tit Develop Team
+  h4.subtit Develop Team
   p Hydrogen Clapeysron
 </template>
 
@@ -112,8 +112,8 @@ $max-width = 750px
     font-weight bold
     font-style normal
 
-  .sub-tit
-    sub-tit-mixins()
+  .subtit
+    subtit-mixins()
 
     +p
       margin-top 5px

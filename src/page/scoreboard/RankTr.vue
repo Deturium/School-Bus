@@ -35,6 +35,7 @@ export default {
   > td
     padding 15px
     font-weight bold
+    color #ccc
 
   .comment
     font-weight normal

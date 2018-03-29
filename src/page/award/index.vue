@@ -1,7 +1,7 @@
 <template lang="pug">
 .award
   h2.tit - NHD 魔力值兑换 -
-  h4.sub-tit 兑换规则
+  h4.subtit 兑换规则
   ol.rules
     li 签到不消耗积分，但需要积分满足一定条件，需要的积分由本公式给出：
       code int(math.ceil((float(i)/20)**5 * 20000 + 150)) if i<20 else 20150
@@ -46,8 +46,8 @@ export default {
     title-mixins()
     margin-top 70px
 
-  .sub-tit
-    sub-tit-mixins()
+  .subtit
+    subtit-mixins()
     margin-top 50px
 
   .rules

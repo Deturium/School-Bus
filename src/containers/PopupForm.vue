@@ -8,11 +8,11 @@ popup(
   )
 
   update-info-form(
-    v-if="formName==='UpdateInfo'"
+    v-else-if="formName==='UpdateInfo'"
   )
 
   register-form(
-    v-if="formName==='Register'"
+    v-else-if="formName==='Register'"
   )
 </template>
 

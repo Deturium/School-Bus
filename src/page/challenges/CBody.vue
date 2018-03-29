@@ -4,15 +4,15 @@
 )
   h1.meta {{ challenge.title }}
 
-  h2.sub-tit Description
+  h2.subtit Description
   div
     p {{ challenge.description }}
 
-  h2.sub-tit Hint
+  h2.subtit Hint
   div
     p {{ challenge.hint ? challenge.hint : 'No hint'}}
 
-  h2.sub-tit Your Answer
+  h2.subtit Your Answer
   div
     input.ans-input(value="AAA{this_a_flag}")
     button.ans-button(
@@ -20,7 +20,7 @@
       @click.prevent="submitHandle(challenge.id, challenge.is_solved)"
     ) {{ challenge.is_solved ? "Solved" : "Submit" }}
 
-  h2.sub-tit Completed
+  h2.subtit Completed
   div
     p
       span.name(
@@ -80,7 +80,7 @@ export default {
     line-height 1.7
     // letter-spacing 1px
 
-  .sub-tit
+  .subtit
     margin 0 140px
     margin-top 30px
     font-size 24px

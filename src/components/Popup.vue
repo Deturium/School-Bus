@@ -30,12 +30,12 @@ $bg-color = #111
   left 0
   width 100vw
   height 100vh
-  background-color hsla(0, 0%, 0%, .6)
+  background-color hsla(0, 0%, 0%, .8)
   z-index $base-z-index
 
 .popup
   position absolute
-  top 40%
+  top 42%
   left 50%
   transform translate(-50%, -50%)
 

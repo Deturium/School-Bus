@@ -23,7 +23,7 @@ const state = {
   },
 
   // FliterBar
-  fliterType: "ALL",
+  filterType: "ALL",
 
   // challenges
   challenges: [

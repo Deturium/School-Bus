@@ -22,6 +22,8 @@
 
 ### Preview
 
+校内预览：http://10.214.23.218:3000
+
 ![about](./images/about&news.png)
 
 
@@ -35,6 +37,7 @@
 - [x] award
 - [ ] 404
 
+
 2. css
 
 - [x] styus mixins
@@ -43,9 +46,11 @@
 
 3. api
 
-- [x] log in & out
-- [ ] challenges
-- [ ] ranks
+- [ ] log in & out
+- [x] challenges
+- [x] ranks
+- [x] announcements
+
 
 4. others
 

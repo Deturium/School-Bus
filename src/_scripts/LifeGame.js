@@ -1,8 +1,8 @@
 
 import {
-  Director,
-  Scene,
-  Sprite
+    Director,
+    Scene,
+    Sprite
 } from "./GameEngine";
 
 // config color
@@ -193,13 +193,13 @@ class LifeGameScene extends Scene {
 
 
 function __main(canvas) {
-  const D = new Director(canvas, null, {
-    fps: 1,
-    enablePause: false
-  });
+    const D = new Director(canvas, null, {
+      fps: 1,
+      enablePause: false
+    });
 
-  const scene = new LifeGameScene(D);
-  D.setScene(scene).run();
+    const scene = new LifeGameScene(D);
+    D.setScene(scene).run();
 }
 
 export default __main

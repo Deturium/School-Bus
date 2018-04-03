@@ -27,8 +27,9 @@ $max-width = 1160px
 
 body
   font-size 14px
-  font-family -apple-system, 'Century Gothic', "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif
-  color white
+  font-family system, -apple-system, BlinkMacSystemFont, \
+    'Century Gothic', \
+    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei"
   background-color #1F1F1F
 
 .app-root

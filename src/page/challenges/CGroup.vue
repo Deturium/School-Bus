@@ -1,24 +1,22 @@
 <template lang="pug">
-.c-group
+.c-group(
+  v-show="filterChallenges.length"
+)
   h2.tit - {{ category }} -
   .flex
     c-box(
-      v-for="(c, i) in challenges"
+      v-for="(c, i) in filterChallenges"
       :key="c.id"
       :order="(~~(i/4))*2"
-
-      :id="c.id"
-      :title="c.title"
-      :type="c.type"
-      :points="c.points"
-
+      :challenge="c"
       :clickHandle="clickHandle"
     )
-    transition(name="fade")
+    transition(
+      name="fade"
+    )
       c-body(
-        v-if="isShow"
+        v-if="isShow && checkFilterType(challenge)"
         :order="bodyOrder"
-
         :challenge="challenge"
         :submitHandle="submitHandle"
       )
@@ -32,7 +30,7 @@ export default {
   name: "c-group",
   props: [
     "category",
-    "types"
+    "challenges"
   ],
   data: function() {
     return {
@@ -42,20 +40,26 @@ export default {
     }
   },
   computed: {
-    challenges() {
-      const challenges = []
-      for (let t of this.types)
-        for (let c of t.challenges) {
-          c.type = t.type
-          challenges.push(c)
-        }
-      return challenges
+    filterType() {
+      return this.$store.state.filterType
+    },
+    filterChallenges() {
+      return this.challenges.filter(this.checkFilterType)
     },
     challenge() {
       return this.challenges.find( c => c.id === this.id )
-    }
+    },
   },
   methods: {
+    checkFilterType(challenge) {
+      if (this.filterType === 'ALL')
+        return true
+      if (this.filterType === 'UNSOLVED')
+        return !challenge.is_solved
+
+      return this.filterType === challenge.type.toUpperCase()
+    },
+
     clickHandle: function(id, order) {
       // show
       if (!this.isShow) {
@@ -65,21 +69,25 @@ export default {
         return
       }
 
-      // hide
+      // hide or toggle
+      this.isShow = false
       if (this.id === id){
-        this.isShow = false
         return
       }
 
-      // toggle another challenge
       this.id = id
       this.bodyOrder = order + 1
+      setImmediate(() => {
+        this.isShow = true
+      })
     },
+
     submitHandle(id, isSolved) {
       if (isSolved)
         return
 
       this.challenge.is_solved = true
+      this.challenge.early_pwner.push('Username')
     },
   },
   components: {
@@ -112,7 +120,7 @@ $container-width = 1040px // 260 * 4
 
   .fade-enter,
   .fade-leave-to
-    transform translateX(20%)
+    transform translateY(-80px)
     opacity 0
 
 </style>

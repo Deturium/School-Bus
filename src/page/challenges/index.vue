@@ -5,7 +5,7 @@
     v-for="group in challenges"
     :key="group.category"
     :category="group.category"
-    :types="group.types"
+    :challenges="group.challenges"
   )
 </template>
 

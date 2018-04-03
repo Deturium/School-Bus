@@ -4,7 +4,10 @@
     p.name {{ userInfo.name }}
     p Rank {{ userInfo.rank }}
     p Score {{ userInfo.score }}
-  .unlogin(v-else) Log In / Register
+  .unlogin(v-else)
+    span(@click="logIn") Log In
+    | &nbsp;/&nbsp;
+    span(@click="register") Register
 
   img.avatar(src="../assets/huahuo.png")
 
@@ -66,6 +69,7 @@ $list-bg-color = #111
   right 25px
   display flex
   align-items center
+  color white
 
   .avatar
     box-sizing border-box
@@ -78,6 +82,11 @@ $list-bg-color = #111
   .unlogin
     font-size 16px
     font-weight bold
+
+    >span
+      cursor pointer
+      &:hover
+        color #e1c79b
 
   .login
     >p // name, rank, score

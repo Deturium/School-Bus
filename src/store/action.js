@@ -1,11 +1,10 @@
 async function zjusecFetch(url) {
   const baseUrl = "api/v1/"
 
-  console.log("fetch " + url)
+  // console.log("fetch " + url)
 
   const res = await fetch(baseUrl + url)
     .then((res) => {
-      console.log(res.json)
       return res.json()
     })
 
@@ -13,9 +12,10 @@ async function zjusecFetch(url) {
   if (res.Succeed) {
     return res["Message"]
   }
+
   // const xhr = new XMLHttpRequest()
   // xhr.onload = function() {
-
+  //
   // }
   // xhr.open('get', baseUrl + url, true)
   // xhr.send()
@@ -32,6 +32,25 @@ export default {
   },
 
   async fetchChallenge({ state }) {
-    state.challenges = await zjusecFetch('Challenges')
+    const fetchChallenges = await zjusecFetch('Challenges')
+    const stateChallenges = []
+
+    for (let cate of fetchChallenges) {
+      const challengeArr = []
+
+      for (let t of cate.types) {
+        for (let c of t.challenges) {
+          c.type = t.type
+          challengeArr.push(c)
+        }
+      }
+
+      stateChallenges.push({
+        category: cate.category,
+        challenges: challengeArr
+      })
+    }
+
+    state.challenges = stateChallenges
   },
 }

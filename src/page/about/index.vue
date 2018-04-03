@@ -3,6 +3,18 @@
   h2.tit - News -
   announcement(
     v-for="(anno, i) in announcements"
+    v-if="i < 3"
+    :key="i"
+    :initShow="false"
+    :time="anno[0]"
+    :title="anno[1]"
+    :body="anno[2]"
+  )
+
+  h2.tit.pointer(@click="showMore") - More News -
+  announcement(
+    v-for="(anno, i) in announcements"
+    v-if="showMoreAnno && i >= 3"
     :key="i"
     :initShow="false"
     :time="anno[0]"
@@ -63,12 +75,22 @@ export default {
   components: {
     Announcement
   },
+  data: function() {
+    return {
+      showMoreAnno: false
+    }
+  },
   computed: mapState([
     "announcements"
   ]),
   created: function() {
     this.$store.dispatch('fetchAnnouncement')
-  }
+  },
+  methods: {
+    showMore() {
+      this.showMoreAnno = true
+    }
+  },
 }
 </script>
 
@@ -90,6 +112,13 @@ $max-width = 750px
   .tit
     title-mixins()
     margin-top 70px
+
+  .pointer
+    color #aaa
+    cursor pointer
+
+    &:hover
+      color #eee
 
   p, li
     line-height 1.8

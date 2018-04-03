@@ -3,11 +3,12 @@
   :style="{order: order}"
 )
   p.title(
-    @click="clickHandle(id, order)"
-  ) {{ title }}
+    :class="{solved: challenge.is_solved, small: isTitleTooLong}"
+    @click="clickHandle(challenge.id, order)"
+  ) {{ challenge.title }}
 
-  p.type {{ type }}
-  p.points {{ points + "pt" }}
+  p.type {{ challenge.type }}
+  p.points {{ challenge.points + "pt" }}
 </template>
 
 <script>
@@ -16,11 +17,14 @@ export default {
   props: [
     "order",
     "id",
-    "title",
-    "type",
-    "points",
+    "challenge",
     "clickHandle",
   ],
+  computed: {
+    isTitleTooLong() {
+      return this.challenge.title.split(' ').some( letter => letter.length > 9 )
+    }
+  }
 }
 </script>
 
@@ -59,10 +63,16 @@ $box-width = 200px
     &:hover
       color #E1C79B
 
+  .solved
+    color #E1C79B
+
+  .small
+    font-size 24px
+
   .type
     margin 0px
     font-size 20px
-    color #eee
+    color #ccc
 
   .points
     margin 5px

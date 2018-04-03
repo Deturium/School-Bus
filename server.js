@@ -14,7 +14,6 @@ const announcement = require('./mock/announcement.js')
 
 router.get('/api/v1/announcement', (ctx, next) => {
   ctx.body = announcement
-  console.log("/announcement")
 })
 
 
@@ -23,7 +22,6 @@ const ranks = require('./mock/ranks.js')
 
 router.get('/api/v1/ranks', (ctx, next) => {
   ctx.body = ranks
-  console.log("/ranks")
 })
 
 // api/v1/challenges
@@ -31,7 +29,13 @@ const challenges = require('./mock/challenges.js')
 
 router.get('/api/v1/challenges', (ctx, next) => {
   ctx.body = challenges
-  console.log("/challenges")
+})
+
+
+// log request url
+app.use(async (ctx, next) => {
+  console.log(ctx.url)
+  next()
 })
 
 app
@@ -47,4 +51,4 @@ app.use(async (ctx) => {
 
 app.listen(3000);
 
-console.log('Mock server start!')
+console.log('Mock server start!\n')

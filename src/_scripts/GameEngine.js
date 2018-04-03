@@ -253,7 +253,7 @@ class Sprite {
 //export
 
 export {
-  Director,
-  Scene,
-  Sprite
+    Director,
+    Scene,
+    Sprite
 }

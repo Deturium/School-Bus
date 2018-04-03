@@ -55,9 +55,10 @@ export default {
 
 .c-body
   width 100%
-  margin 30px auto
+  margin 30px
   padding 40px
   background-color #181818
+  color #eee
 
   .meta
     margin 0 auto
@@ -69,19 +70,22 @@ export default {
 
   >div
     width 666px
-    margin 15px auto
-    padding-left 80px
+    margin 10px auto 15px auto
+    padding-left 100px
     // border 1px solid #fff
     font-size 14px
 
   p
-    margin .8em
-    // white-space pre
+    margin .8em 0
     line-height 1.7
     // letter-spacing 1px
+    white-space pre-wrap
+    // word-wrap wrap
+    overflow hidden
+    text-overflow ellipsis
 
   .subtit
-    margin 0 140px
+    margin 0 120px
     margin-top 30px
     font-size 24px
     font-weight lighter
@@ -120,4 +124,5 @@ export default {
     margin-right 20px
     font-weight bold
     font-style italic
+    color #aaa
 </style>

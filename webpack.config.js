@@ -72,7 +72,7 @@ module.exports = {
   devServer: {
     contentBase: path.resolve(__dirname, './'),
     historyApiFallback: true,
-    inline: true,
+    open: true,
     proxy: {
       "/api": "http://localhost:3000"
     }

@@ -28,7 +28,7 @@ export default {
     }
   },
   computed: mapState({
-    selected: "fliterType"
+    selected: "filterType"
   }),
   methods: {
     filterType: function(type) {
@@ -36,7 +36,7 @@ export default {
     }
   },
   beforeDestroy: function() {
-    // reset fliterType
+    // reset filterType
     this.$store.commit('changeFliterType', "ALL")
   }
 }

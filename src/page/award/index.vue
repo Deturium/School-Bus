@@ -70,6 +70,7 @@ export default {
     margin 30px
     font-size 16px
     font-weight bold
+    color #eee
 
   .exchange
     button-mixins()

@@ -19,6 +19,8 @@ export default {
   },
 
   changeFliterType(state, type) {
-    state.fliterType = type.toUpperCase()
+    state.filterType = type.toUpperCase()
   },
+
+
 }

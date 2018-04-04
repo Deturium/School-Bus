@@ -36,7 +36,7 @@ export default {
     return {
       isShow: false,
       bodyOrder: 0,
-      id: NaN
+      id: parseInt(this.$route.params.id, 10),
     }
   },
   computed: {
@@ -61,22 +61,26 @@ export default {
     },
 
     clickHandle: function(id, order) {
-      // show
-      if (!this.isShow) {
-        this.id = id
-        this.isShow = true
-        this.bodyOrder = order + 1
-        return
-      }
 
-      // hide or toggle
-      this.isShow = false
-      if (this.id === id){
+      // hide
+      if (this.isShow && this.id === id){
+        this.isShow = false
+        history.replaceState(null, "AAA challenges", "/challenges")
         return
       }
 
       this.id = id
       this.bodyOrder = order + 1
+      history.replaceState(null, this.challenge.title, "/challenges/" + id)
+
+      // show
+      if (!this.isShow) {
+        this.isShow = true
+        return
+      }
+
+      // toggle anthor challenges
+      this.isShow = false
       setImmediate(() => {
         this.isShow = true
       })
@@ -86,8 +90,11 @@ export default {
       if (isSolved)
         return
 
+      // TODO:
+      const userInfo = this.$store.state.userInfo
       this.challenge.is_solved = true
-      this.challenge.early_pwner.push('Username')
+      this.challenge.early_pwner.push(userInfo.name)
+      userInfo.score += this.challenge.points
     },
   },
   components: {

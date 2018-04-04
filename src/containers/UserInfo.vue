@@ -9,23 +9,24 @@
     | &nbsp;/&nbsp;
     span(@click="register") Register
 
-  img.avatar(src="../assets/huahuo.png")
+  .wrapper
+    img.avatar(src="../assets/huahuo.png")
 
-  ul.list(v-if="isLogIn")
-    li.list-item(
-      @click="updateInfo"
-    ) Update Info
-    li.list-item(
-      @click="logOut"
-    ) Log Out
+    ul.list(v-if="isLogIn")
+      li.list-item(
+        @click="updateInfo"
+      ) Update Info
+      li.list-item(
+        @click="logOut"
+      ) Log Out
 
-  ul.list(v-else)
-    li.list-item(
-      @click="logIn"
-    ) Log In
-    li.list-item(
-      @click="register"
-    ) Register
+    ul.list(v-else)
+      li.list-item(
+        @click="logIn"
+      ) Log In
+      li.list-item(
+        @click="register"
+      ) Register
 </template>
 
 <script>
@@ -71,18 +72,9 @@ $list-bg-color = #111
   align-items center
   color white
 
-  .avatar
-    box-sizing border-box
-    width $avatar-width
-    height $avatar-width
-    margin-left 5px
-    padding 10px
-    border-radius 50%
-
   .unlogin
     font-size 16px
     font-weight bold
-
     >span
       cursor pointer
       &:hover
@@ -100,47 +92,56 @@ $list-bg-color = #111
       font-weight bold
       color $font-color-light
 
-  .list
-    position absolute
-    top $avatar-width + 5
-    right ($avatar-width / 2)
-    transform translateX(50%)
+  .wrapper
+    .avatar
+      box-sizing border-box
+      width $avatar-width
+      height $avatar-width
+      margin-left 5px
+      padding 10px
+      border-radius 50%
 
-    margin 0
-    padding 2px 12px
-
-    background-color $list-bg-color
-    border-radius 12px
-
-    opacity 0
-    transition opacity 1s ease
-
-    &:before
-      $triangle-width = 8px
-
+    .list
       position absolute
-      top - $triangle-width
-      right 50%
+      top $avatar-width + 5
+      right ($avatar-width / 2)
       transform translateX(50%)
-      content " "
-      border-left $triangle-width solid transparent
-      border-right $triangle-width solid transparent
-      border-bottom $triangle-width solid $list-bg-color
 
-  .list-item
-    margin 8px
-    list-style none
-    font-size $font-size-small
-    color $font-color
-    white-space nowrap
-    cursor pointer
+      margin 0
+      padding 2px 12px
 
-    &:hover
-      color $font-color-light
+      background-color $list-bg-color
+      border-radius 12px
 
+      opacity 0
+      transition opacity 1s ease
 
-  &:hover .list
-    opacity 1
+      &:before
+        $triangle-width = 8px
+
+        position absolute
+        top - $triangle-width
+        right 50%
+        transform translateX(50%)
+        content " "
+        border-left $triangle-width solid transparent
+        border-right $triangle-width solid transparent
+        border-bottom $triangle-width solid $list-bg-color
+
+    .list-item
+      margin 8px
+      list-style none
+      font-size $font-size-small
+      color $font-color
+      white-space nowrap
+      cursor pointer
+
+      &:hover
+        color $font-color-light
+
+    &:hover .list
+      opacity 1
+
 
 </style>
 

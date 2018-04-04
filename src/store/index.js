@@ -19,7 +19,7 @@ const state = {
   userInfo: {
     name: "Clapeysron",
     rank: "5",
-    score: "8250",
+    score: 8250,
   },
 
   // FliterBar

@@ -38,10 +38,12 @@ app.use(async (ctx, next) => {
   next()
 })
 
+
 app
   .use(router.routes())
   .use(router.allowedMethods())
   .use(serve('./dist'))
+
 
 // stupid redirect
 app.use(async (ctx) => {

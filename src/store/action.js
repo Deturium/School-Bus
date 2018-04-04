@@ -1,7 +1,7 @@
 async function zjusecFetch(url) {
-  const baseUrl = "api/v1/"
+  const baseUrl = "/api/v1/"
 
-  // console.log("fetch " + url)
+  console.log("fetch " + url)
 
   const res = await fetch(baseUrl + url)
     .then((res) => {
@@ -32,12 +32,12 @@ export default {
   },
 
   async fetchChallenge({ state }) {
-    const fetchChallenges = await zjusecFetch('Challenges')
+    const fetchChallenges = await zjusecFetch('challenges')
     const stateChallenges = []
 
     for (let cate of fetchChallenges) {
-      const challengeArr = []
 
+      const challengeArr = []
       for (let t of cate.types) {
         for (let c of t.challenges) {
           c.type = t.type

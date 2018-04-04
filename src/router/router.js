@@ -2,6 +2,7 @@ import challenges from '../page/challenges'
 import scoreboard from '../page/scoreboard'
 import about from '../page/about'
 import award from '../page/award'
+import notFound from '../page/notFound'
 
 export default [
   {
@@ -9,11 +10,11 @@ export default [
     component: challenges,
   },
   {
-    path: '/challenges',
+    path: '/challenges/:id?',
     component: challenges,
   },
   {
-    path: '/scoreboard',
+    path: '/scoreboard/:type?',
     component: scoreboard,
   },
   {
@@ -24,4 +25,8 @@ export default [
     path: '/award',
     component: award,
   },
+  {
+    path: '*',
+    component: notFound
+  }
 ]

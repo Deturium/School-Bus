@@ -1,6 +1,7 @@
 <template lang="pug">
 .c-box(
   :style="{order: order}"
+  ref="theBox"
 )
   p.title(
     :class="{solved: challenge.is_solved, small: isTitleTooLong}"
@@ -16,10 +17,23 @@ export default {
   name: "c-box",
   props: [
     "order",
-    "id",
     "challenge",
     "clickHandle",
   ],
+  mounted: function() {
+    if (this.challenge.id !== parseInt(this.$route.params.id, 10)) {
+      return
+    }
+
+    // FIXME:  url such as 'challenges/36' not scroll to the correct position
+    this.$nextTick(function (){
+      // scroll to crruent challenge
+      const rect = this.$refs.theBox.getBoundingClientRect()
+      window.scrollTo(0, rect.top + window.pageYOffset - 40)
+
+      this.clickHandle(this.challenge.id, this.order)
+    })
+  },
   computed: {
     isTitleTooLong() {
       return this.challenge.title.split(' ').some( letter => letter.length > 9 )

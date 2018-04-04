@@ -14,12 +14,13 @@
     transition(
       name="fade"
     )
-      c-body(
-        v-if="isShow && checkFilterType(challenge)"
-        :order="bodyOrder"
-        :challenge="challenge"
-        :submitHandle="submitHandle"
-      )
+      keep-alive
+        c-body(
+          v-if="isShow && checkFilterType(challenge)"
+          :order="bodyOrder"
+          :challenge="challenge"
+          :submitHandle="submitHandle"
+        )
 </template>
 
 <script>
@@ -60,18 +61,17 @@ export default {
       return this.filterType === challenge.type.toUpperCase()
     },
 
-    clickHandle: function(id, order) {
-
+    clickHandle(id, order) {
       // hide
-      if (this.isShow && this.id === id){
+      if (this.isShow && this.id === id) {
         this.isShow = false
-        history.replaceState(null, "AAA challenges", "/challenges")
+        this.$router.replace("/challenges")
         return
       }
 
       this.id = id
       this.bodyOrder = order + 1
-      history.replaceState(null, this.challenge.title, "/challenges/" + id)
+      this.$router.replace("/challenges/" + id)
 
       // show
       if (!this.isShow) {
@@ -81,7 +81,7 @@ export default {
 
       // toggle anthor challenges
       this.isShow = false
-      setImmediate(() => {
+      this.$nextTick(function() {
         this.isShow = true
       })
     },
@@ -90,7 +90,8 @@ export default {
       if (isSolved)
         return
 
-      // TODO:
+      // TODO: dispatch submitFlag
+
       const userInfo = this.$store.state.userInfo
       this.challenge.is_solved = true
       this.challenge.early_pwner.push(userInfo.name)

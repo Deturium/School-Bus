@@ -20,24 +20,32 @@ export default {
     "challenge",
     "clickHandle",
   ],
+  computed: {
+    isTitleTooLong() {
+      return this.challenge.title.split(' ').some(letter => letter.length > 9)
+    }
+  },
   mounted: function() {
     if (this.challenge.id !== parseInt(this.$route.params.id, 10)) {
       return
     }
 
-    // FIXME:  url such as 'challenges/36' not scroll to the correct position
+    this.clickHandle(this.challenge.id, this.order)
+
     this.$nextTick(function (){
       // scroll to crruent challenge
       const rect = this.$refs.theBox.getBoundingClientRect()
       window.scrollTo(0, rect.top + window.pageYOffset - 40)
-
-      this.clickHandle(this.challenge.id, this.order)
     })
   },
-  computed: {
-    isTitleTooLong() {
-      return this.challenge.title.split(' ').some( letter => letter.length > 9 )
+  beforeDestroy: function() {
+    if (this.challenge.id !== parseInt(this.$route.params.id, 10)) {
+      return
     }
+    // hide the CBody
+    this.clickHandle(this.challenge.id, this.order)
+    // reset url
+    this.$router.replace("/challenges")
   }
 }
 </script>

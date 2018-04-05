@@ -37,7 +37,7 @@ export default {
     return {
       isShow: false,
       bodyOrder: 0,
-      id: parseInt(this.$route.params.id, 10),
+      id: NaN,
     }
   },
   computed: {

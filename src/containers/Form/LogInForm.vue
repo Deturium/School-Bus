@@ -6,7 +6,7 @@ form.form
     input
   .form-item
     label Passw0rd
-    input
+    input(type="password")
 
   button.comfirm(
     @click.prevent="logInHandle"

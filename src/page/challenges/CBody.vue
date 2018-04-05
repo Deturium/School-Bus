@@ -98,20 +98,19 @@ export default {
     height 35px
     box-sizing border-box
     padding 4px 10px
-    color #181818
-    border 1px solid #979797
     // actually height = 25 + 2 * (4 + 1)
 
   .ans-button
     button-mixins()
     width 80px
     height 35px
+    line-height 35px
     margin-left 20px
     font-style italic
     color #aaa
     background-color transparent
-    border 1.5px solid currentColor
-    vertical-align top
+    border 1px solid currentColor
+    vertical-align bottom
     &:hover
       border-color #ddd
 

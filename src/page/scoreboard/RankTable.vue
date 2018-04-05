@@ -10,10 +10,9 @@ table.rank-table
     //- used as margin-bottom
     tr: th.margin-tr
   tbody
-    //- TODO: key = r.userid
     rank-tr(
       v-for="(r, i) in ranks"
-      :key="r.username"
+      :key="r.userid"
       :rank='i + 1'
       :username="r.username"
       :points="r.points"

@@ -19,13 +19,12 @@
           v-if="isShow && checkFilterType(challenge)"
           :order="bodyOrder"
           :challenge="challenge"
-          :submitHandle="submitHandle"
         )
 </template>
 
 <script>
-import CBox from "./CBox";
-import CBody from "./CBody";
+import CBox from "./CBox"
+import CBody from "./CBody"
 
 export default {
   name: "c-group",
@@ -84,18 +83,6 @@ export default {
       this.$nextTick(function() {
         this.isShow = true
       })
-    },
-
-    submitHandle(id, isSolved) {
-      if (isSolved)
-        return
-
-      // TODO: dispatch submitFlag
-
-      const userInfo = this.$store.state.userInfo
-      this.challenge.is_solved = true
-      this.challenge.early_pwner.push(userInfo.name)
-      userInfo.score += this.challenge.points
     },
   },
   components: {

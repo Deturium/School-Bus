@@ -3,20 +3,24 @@ form.form
   .form-tit Register
   .form-item
     label Stu. No
-    input
+    m-input
   .form-item
     label Passw0rd
-    input
-
-  button.comfirm(
-    @click.prevent="registerHandle"
-  ) Register
-  button.cancel(
-    @click.prevent="cancelHandle"
-  ) Cancel
+    m-input
+  m-button.comfirm(
+    text="Register"
+    :clickHandle="registerHandle"
+  )
+  m-button.cancel(
+    text="Cancel"
+    :clickHandle="cancelHandle"
+  )
 </template>
 
 <script>
+import MInput from '@/MInput'
+import MButton from '@/MButton'
+
 export default {
   name: "register-form",
   methods: {
@@ -27,6 +31,9 @@ export default {
       this.$store.commit('hidePopupForm')
     },
   },
+  components: {
+    MInput, MButton
+  }
 }
 </script>
 

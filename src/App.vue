@@ -1,5 +1,6 @@
 <template lang="pug">
 div.app-root
+  notification
   popup-form
   head-nav
     user-info
@@ -11,13 +12,14 @@ div.app-root
 <script>
 import HeadNav from '@/HeadNav'
 import FootNav from '@/FootNav'
-import UserInfo from '@@/UserInfo'
+import Notification from '@/Notification'
 import PopupForm from '@@/PopupForm'
+import UserInfo from '@@/UserInfo'
 
 export default {
 	name: 'app',
 	components: {
-    HeadNav, FootNav, UserInfo, PopupForm
+    HeadNav, FootNav, PopupForm, Notification, UserInfo
 	}
 }
 </script>
@@ -27,13 +29,12 @@ $max-width = 1160px
 
 @font-face
   font-family CenturyGothic
-  src url('/assets/CenturyGothic.ttf')
+  src url('./assets/CenturyGothic.ttf') format('truetype')
 
 body
   font-size 14px
-  font-family 'CenturyGothic', \
+  font-family 'CenturyGothic', 'Century Gothic', \
     system, -apple-system, BlinkMacSystemFont, \
-    'Century Gothic', \
     "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei"
   background-color #1F1F1F
 

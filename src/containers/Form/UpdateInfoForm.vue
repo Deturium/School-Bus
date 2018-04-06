@@ -3,27 +3,31 @@ form.form
   .form-tit Update Info
   .form-item
     label Old Passw0rd
-    input
+    m-input
   .form-item
     label New Passw0rd
-    input
+    m-input
   .form-item
     label Phone
-    input
+    m-input
   .form-item
     label Comment
-    input
+    m-input
 
-  button.comfirm(
-    @click.prevent="updateHandle"
-  ) Update
-  button.cancel(
-    @click.prevent="cancelHandle"
-  ) Cancel
-
+  m-button.comfirm(
+    text="Update"
+    :clickHandle="updateHandle"
+  )
+  m-button.cancel(
+    text="Cancel"
+    :clickHandle="cancelHandle"
+  )
 </template>
 
 <script>
+import MInput from '@/MInput'
+import MButton from '@/MButton'
+
 export default {
   name: "update-info-form",
   methods: {
@@ -34,6 +38,9 @@ export default {
       this.$store.commit('hidePopupForm')
     },
   },
+  components: {
+    MInput, MButton
+  }
 }
 </script>
 

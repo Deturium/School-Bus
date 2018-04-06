@@ -3,20 +3,25 @@ form.form
   .form-tit Log In
   .form-item
     label Username
-    input
+    m-input
   .form-item
     label Passw0rd
-    input(type="password")
+    m-input(type="password")
 
-  button.comfirm(
-    @click.prevent="logInHandle"
-  ) Log In
-  button.cancel(
-    @click.prevent="cancelHandle"
-  ) Cancel
+  m-button.comfirm(
+    text="Log In"
+    :clickHandle="logInHandle"
+  )
+  m-button.cancel(
+    text="Cancel"
+    :clickHandle="cancelHandle"
+  )
 </template>
 
 <script>
+import MInput from '@/MInput'
+import MButton from '@/MButton'
+
 export default {
   name: "log-in-form",
   methods: {
@@ -28,6 +33,9 @@ export default {
       this.$store.commit('hidePopupForm')
     },
   },
+  components: {
+    MInput, MButton
+  }
 }
 </script>
 

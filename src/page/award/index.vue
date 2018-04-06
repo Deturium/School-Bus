@@ -13,12 +13,15 @@
     p.prompt(v-show="showPrompt")
       | 您今天已经签到，请明天再来~
 
-  button.exchange(
-    @click.prevent="exchange"
-  ) 兑换
+  m-button.exchange(
+    text="兑换"
+    :clickHandle="exchange"
+  )
 </template>
 
 <script>
+import MButton from '@/MButton'
+
 export default {
   name: "award",
   data: function() {
@@ -30,6 +33,9 @@ export default {
     exchange() {
       this.showPrompt = true
     }
+  },
+  components: {
+    MButton
   }
 }
 </script>
@@ -71,9 +77,6 @@ export default {
     font-size 16px
     font-weight bold
     color #eee
-
-  .exchange
-    button-mixins()
 
   .fade-in-enter-active
     transition all 1s

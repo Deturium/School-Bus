@@ -3,17 +3,9 @@ popup(
   :isShow="isShow"
   :blurHandle="blurHandle"
 )
-  log-in-form(
-    v-if="formName==='LogIn'"
-  )
-
-  update-info-form(
-    v-else-if="formName==='UpdateInfo'"
-  )
-
-  register-form(
-    v-else-if="formName==='Register'"
-  )
+  log-in-form(v-if="formName==='LogIn'")
+  update-info-form(v-else-if="formName==='UpdateInfo'")
+  register-form(v-else-if="formName==='Register'")
 </template>
 
 <script>
@@ -72,29 +64,12 @@ $label-width = 100px
       text-align right
       color $font-color
 
-    >input
-      input-mixins()
-      width 270px
-      padding 2px 10px
-      font-size 14px
-
-  >button
-    button-mixins()
-    width 100px
-    margin 10px 0
-    font-size 14px
-    font-style italic
-
-  .comfirm
+  .comfirm,
+  .cancel
+    margin-top 20px
     margin-left $label-width
-    background-color #AAA
-    &:hover
-      background-color #666
 
   .cancel
-    margin-left 70px
-    background-color #666
-    &:hover
-      background-color #AAA
+    margin-left 45px
 
 </style>

@@ -5,7 +5,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
 
   mode: "development",
-  // mode: "production",
 
   context: path.resolve(__dirname, './'),
 
@@ -15,7 +14,7 @@ module.exports = {
 
   output: {
     path: path.resolve(__dirname, './dist'),
-    filename: '[name].[hash].js',
+    filename: '[name].[hash:8].js',
     publicPath: '/'
   },
 
@@ -38,10 +37,10 @@ module.exports = {
       //   exclude: /node_modules/
       // },
       {
-        test: /\.(png|jpg|gif|svg)$/,
+        test: /\.(png|jpg|gif|svg|ttf)$/,
         loader: 'file-loader',
         options: {
-          name: '[name].[ext]?[hash]'
+          name: '[name].[hash:8].[ext]'
         }
       },
     ]
@@ -52,11 +51,6 @@ module.exports = {
       filename: 'index.html',
       template: 'index.html',
       inject: true,
-      // minify: {
-      //   caseSensitive: false,
-      //   collapseBooleanAttributes: true,
-      //   collapseWhitespace: true
-      // },
     })
   ],
 

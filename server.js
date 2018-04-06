@@ -35,7 +35,7 @@ router.get('/api/v1/challenges', (ctx, next) => {
 // log request url
 app.use(async (ctx, next) => {
   console.log(ctx.url)
-  next()
+  await next()
 })
 
 

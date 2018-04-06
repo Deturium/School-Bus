@@ -8,28 +8,38 @@
   div
     p {{ challenge.description }}
 
-  h2.subtit Hint
+  h2.subtit.hint(
+    @click="showHint()"
+  ) Hint
+
   div
-    p {{ challenge.hint ? challenge.hint : 'No hint'}}
+    p(v-if="isShowHint") {{ challenge.hint ? challenge.hint : 'No hint'}}
 
   h2.subtit Your Answer
   div
-    input.ans-input(value="AAA{this_a_flag}")
-    button.ans-button(
-      :class="{ solved: challenge.is_solved }"
-      @click.prevent="submitHandle(challenge.id, challenge.is_solved)"
-    ) {{ challenge.is_solved ? "Solved" : "Submit" }}
+    m-input.ans-input(
+      v-model="flag"
+      placeholder="AAA{here_is_your_flag}"
+    )
+    m-button.ans-button(
+      :text="challenge.is_solved ? 'Solved' : 'Submit'"
+      :clickHandle="submitHandle"
+    )
 
   h2.subtit Completed
   div
     p
       span.name(
         v-for="(pwner, i) in challenge.early_pwner"
+        v-if="i < 10"
         :key="i"
       ) {{ pwner }}
 </template>
 
 <script>
+import MInput from '@/MInput'
+import MButton from '@/MButton'
+
 export default {
   name: "c-body",
   props: [
@@ -43,9 +53,35 @@ export default {
       // "is_solved",
       // "pwned_times",
       // "early_pwner"
-
-    "submitHandle"
   ],
+  data: function() {
+    return {
+      isShowHint: false,
+      flag: "",
+    }
+  },
+  methods: {
+    showHint() {
+      this.isShowHint = true
+    },
+    submitHandle() {
+      if (this.challenge.is_solved)
+        return
+      // TODO: dispatch submitFlag
+
+      const userInfo = this.$store.state.userInfo
+      this.challenge.is_solved = true
+      this.challenge.early_pwner.push(userInfo.name)
+      userInfo.score += this.challenge.points
+    },
+  },
+  activated: function() {
+    this.isShowHint = false
+    this.flag = ""
+  },
+  components: {
+    MInput, MButton
+  }
 }
 </script>
 
@@ -85,6 +121,7 @@ export default {
     text-overflow ellipsis
 
   .subtit
+    display inline-block
     margin 0 120px
     margin-top 30px
     font-size 24px
@@ -92,36 +129,18 @@ export default {
     font-style italic
     text-align left
 
+  .hint
+    cursor pointer
+
   .ans-input
-    input-mixins()
     width 500px
-    height 35px
-    box-sizing border-box
-    padding 4px 10px
-    // actually height = 25 + 2 * (4 + 1)
 
   .ans-button
-    button-mixins()
-    width 80px
-    height 35px
-    line-height 35px
     margin-left 20px
-    font-style italic
-    color #aaa
-    background-color transparent
-    border 1px solid currentColor
-    vertical-align bottom
-    &:hover
-      border-color #ddd
-
-  .solved
-    color #5D8F0A
-    &:hover
-      border-color #93ED00
 
   .name
     margin-right 20px
-    font-weight bold
+    // font-weight bold
     font-style italic
     color #aaa
 </style>

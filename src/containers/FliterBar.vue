@@ -1,7 +1,7 @@
 <template lang="pug">
 ul.type-bar
   li.item(
-    v-for="t in type"
+    v-for="t in types"
     :class="{ chose: t == selected }"
     @click="filterType(t)"
   )
@@ -13,20 +13,9 @@ import { mapState } from 'vuex'
 
 export default {
   name: "fliter-bar",
-  data: function() {
-    return {
-      type: [
-        "ALL",
-        "UNSOLVED",
-        "CRYPTO",
-        "MISC",
-        "PPC",
-        "PWN",
-        "REVERSE",
-        "WEB",
-      ],
-    }
-  },
+  props: [
+    "types"
+  ],
   computed: mapState({
     selected: "filterType"
   }),

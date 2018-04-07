@@ -1,6 +1,8 @@
 <template lang="pug">
 .challenges
-  fliter-bar
+  fliter-bar(
+    :types='["ALL", "UNSOLVED", "CRYPTO", "MISC", "PPC", "PWN", "REVERSE", "WEB"]'
+  )
   c-group(
     v-for="group in challenges"
     :key="group.category"

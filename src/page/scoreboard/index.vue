@@ -1,6 +1,8 @@
 <template lang="pug">
 .div
-  fliter-bar
+  fliter-bar(
+    :types='["ALL", "CRYPTO", "MISC", "PPC", "PWN", "REVERSE", "WEB"]'
+  )
   rank-table
 </template>
 

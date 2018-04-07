@@ -13,6 +13,10 @@ const state = {
     formName: "LogIn"
   },
 
+  // Notification
+  notification: {
+
+  },
 
   // UserInfo
   isLogIn: false,

@@ -12,7 +12,7 @@ div.app-root
 <script>
 import HeadNav from '@/HeadNav'
 import FootNav from '@/FootNav'
-import Notification from '@/Notification'
+import Notification from '@@/Notification'
 import PopupForm from '@@/PopupForm'
 import UserInfo from '@@/UserInfo'
 
@@ -28,7 +28,7 @@ export default {
 $max-width = 1160px
 
 @font-face
-  font-family CenturyGothic
+  font-family 'CenturyGothic'
   src url('./assets/CenturyGothic.ttf') format('truetype')
 
 body
@@ -39,6 +39,7 @@ body
   background-color #1F1F1F
 
 .app-root
+  // position relative
   width $max-width
   margin 0 auto
 

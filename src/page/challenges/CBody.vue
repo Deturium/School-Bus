@@ -7,11 +7,19 @@
   h2.subtit Description
   div
     p {{ challenge.description }}
+    .links
+      a(
+        v-for="(atta, i) in challenge.attachments"
+        :href="atta"
+        target="_blank"
+      ) {{ `[ Link ${i} ]` }}
 
   h2.subtit.hint(
     @click="showHint()"
   ) Hint
-
+    i.tri-icon(
+      :class="{rotate: isShowHint }"
+    ) --
   div
     p(v-if="isShowHint") {{ challenge.hint ? challenge.hint : 'No hint'}}
 
@@ -105,9 +113,11 @@ export default {
     color #E1C79B
 
   >div
+    box-sizing border-box
     width 666px
     margin 10px auto 15px auto
-    padding-left 100px
+    padding-left 40px
+    // padding-right 40px
     // border 1px solid #fff
     font-size 14px
 
@@ -119,6 +129,26 @@ export default {
     // word-wrap wrap
     overflow hidden
     text-overflow ellipsis
+
+  .links
+    margin-top 30px
+    margin-bottom -20px
+
+  a
+    color currentColor
+    letter-spacing .2em
+    font-weight bold
+    color #ccc
+    text-decoration none
+    &:hover
+      text-decoration underline
+
+  .tri-icon
+    display inline-block
+    margin-left 20px
+
+  .rotate
+    transform rotate(90deg)
 
   .subtit
     display inline-block

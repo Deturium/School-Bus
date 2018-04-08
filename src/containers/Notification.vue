@@ -35,7 +35,7 @@ export default {
 .notification
   position fixed
   right 20px
-  width 380px
+  width 350px
   background-color #444
   z-index 1000
   opacity .9

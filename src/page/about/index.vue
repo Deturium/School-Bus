@@ -11,7 +11,10 @@
     :body="anno[2]"
   )
 
-  h2.tit.pointer(@click="showMore") - More News -
+  h3.more(
+    v-if="!showMoreAnno"
+    @click="showMore"
+  ) more news
   announcement(
     v-for="(anno, i) in announcements"
     v-if="showMoreAnno && i >= 3"
@@ -101,6 +104,7 @@ export default {
 $max-width = 750px
 
 .about
+  position relative
   width $max-width
   margin 0 auto
 
@@ -113,7 +117,10 @@ $max-width = 750px
     title-mixins()
     margin-top 70px
 
-  .pointer
+  .more
+    position absolute
+    top 20px
+    right 0
     color #aaa
     cursor pointer
 

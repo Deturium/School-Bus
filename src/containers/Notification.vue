@@ -1,31 +1,32 @@
 <template lang="pug">
-.notification(
-  v-show="isShow"
+transition(
+  name="fade"
 )
-  h4 {{ title }}
-  p {{ description }}
-  div.close(
-    @click="close"
-  ) X
+  .notification(
+    v-show="isShow"
+  )
+    h4 {{ title }}
+    p {{ description }}
+    svg.icon.close(
+      aria-hidden="true"
+      @click="close"
+    )
+      use(xlink:href="#icon-close")
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: "notification",
-  // props: [
-  //   "title",
-  //   "description",
-  // ],
-  data: function() {
-    return {
-      isShow: true,
-      title: "登陆失败",
-      description: "Network Error, please check and retry."
-    }
-  },
+  computed: mapState({
+    isShow: state => state.notification.isShow,
+    title: state => state.notification.title,
+    description: state => state.notification.description,
+  }),
   methods: {
     close() {
-      this.isShow = false
+      this.$store.commit('hideNotification')
     }
   },
 }
@@ -59,4 +60,15 @@ export default {
     right 20px
     color #fff
     cursor pointer
+
+.fade-enter-active
+  transition all .5s
+.fade-leave-active
+  transition all .3s
+
+.fade-enter,
+.fade-leave-to
+  transform translateY(-30px)
+  opacity 0
+
 </style>

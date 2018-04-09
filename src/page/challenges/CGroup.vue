@@ -29,6 +29,7 @@ import CBody from "./CBody"
 export default {
   name: "c-group",
   props: [
+    "filterType",
     "category",
     "challenges"
   ],
@@ -40,9 +41,6 @@ export default {
     }
   },
   computed: {
-    filterType() {
-      return this.$store.state.filterType
-    },
     filterChallenges() {
       return this.challenges.filter(this.checkFilterType)
     },

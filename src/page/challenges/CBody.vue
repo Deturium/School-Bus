@@ -16,10 +16,13 @@
 
   h2.subtit.hint(
     @click="showHint()"
-  ) Hint
-    i.tri-icon(
+  ) Hint&nbsp;&nbsp;
+    svg.icon(
+      aria-hidden="true"
       :class="{rotate: isShowHint }"
-    ) --
+    )
+      use(xlink:href="#icon-more")
+
   div
     p(v-if="isShowHint") {{ challenge.hint ? challenge.hint : 'No hint'}}
 
@@ -75,12 +78,11 @@ export default {
     submitHandle() {
       if (this.challenge.is_solved)
         return
-      // TODO: dispatch submitFlag
 
-      const userInfo = this.$store.state.userInfo
-      this.challenge.is_solved = true
-      this.challenge.early_pwner.push(userInfo.name)
-      userInfo.score += this.challenge.points
+      this.$store.dispatch('submitFlag', {
+        flag: this.flag,
+        challenge: this.challenge
+      })
     },
   },
   activated: function() {
@@ -131,21 +133,16 @@ export default {
     text-overflow ellipsis
 
   .links
-    margin-top 30px
+    margin-top 25px
     margin-bottom -20px
 
   a
     color currentColor
-    letter-spacing .2em
     font-weight bold
     color #ccc
     text-decoration none
     &:hover
       text-decoration underline
-
-  .tri-icon
-    display inline-block
-    margin-left 20px
 
   .rotate
     transform rotate(90deg)
@@ -161,6 +158,9 @@ export default {
 
   .hint
     cursor pointer
+    &:hover
+      >svg
+        visibility visible
 
   .ans-input
     width 500px

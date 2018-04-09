@@ -3,31 +3,20 @@ ul.type-bar
   li.item(
     v-for="t in types"
     :class="{ chose: t == selected }"
-    @click="filterType(t)"
+    @click="typeChangeHandle(t)"
   )
     | {{ t }}
 </template>
 
 <script>
-import { mapState } from 'vuex'
 
 export default {
   name: "fliter-bar",
   props: [
-    "types"
+    "selected",
+    "types",
+    "typeChangeHandle",
   ],
-  computed: mapState({
-    selected: "filterType"
-  }),
-  methods: {
-    filterType: function(type) {
-      this.$store.commit('changeFliterType', type)
-    }
-  },
-  beforeDestroy: function() {
-    // reset filterType
-    this.$store.commit('changeFliterType', "ALL")
-  }
 }
 </script>
 

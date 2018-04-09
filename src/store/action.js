@@ -3,14 +3,18 @@ async function zjusecFetch(url) {
 
   console.log("fetch " + url)
 
-  const res = await fetch(baseUrl + url)
-    .then((res) => {
-      return res.json()
-    })
+  try {
+    const res = await fetch(baseUrl + url)
+      .then((res) => {
+        return res.json()
+      })
 
+    if (res.Succeed) {
+      return res["Message"]
+    }
 
-  if (res.Succeed) {
-    return res["Message"]
+  } catch(e) {
+    console.log('Error: fetch fail')
   }
 
   // const xhr = new XMLHttpRequest()
@@ -27,8 +31,9 @@ export default {
     state.announcements = await zjusecFetch('announcement')
   },
 
-  async fetchRank({ state }) {
-    state.ranks = await zjusecFetch('ranks')
+  async fetchRank({ state }, type) {
+    type = type === 'ALL' ? '' : '/' + type.toLowerCase()
+    state.ranks = await zjusecFetch('ranks' + type)
   },
 
   async fetchChallenge({ state }) {
@@ -36,7 +41,6 @@ export default {
     const stateChallenges = []
 
     for (let cate of fetchChallenges) {
-
       const challengeArr = []
       for (let t of cate.types) {
         for (let c of t.challenges) {
@@ -44,7 +48,6 @@ export default {
           challengeArr.push(c)
         }
       }
-
       stateChallenges.push({
         category: cate.category,
         challenges: challengeArr
@@ -53,4 +56,20 @@ export default {
 
     state.challenges = stateChallenges
   },
+
+  async submitFlag({state, commit}, {flag, challenge}) {
+    // TODO:
+
+    // flag error
+    commit('showNotification', {
+      title: 'submit fail',
+      description: '革命尚未成功，同志仍需努力'
+    })
+    setTimeout(() => commit('hideNotification'), 1000 * 7)
+
+    // correct
+    challenge.is_solved = true
+    challenge.early_pwner.push(state.userInfo.name)
+    state.userInfo.score += challenge.points
+  }
 }

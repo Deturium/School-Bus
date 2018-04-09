@@ -15,7 +15,9 @@ const state = {
 
   // Notification
   notification: {
-
+    isShow: false,
+    title: "",
+    description: "",
   },
 
   // UserInfo
@@ -25,9 +27,6 @@ const state = {
     rank: "5",
     score: 8250,
   },
-
-  // FliterBar
-  filterType: "ALL",
 
   // challenges
   challenges: [

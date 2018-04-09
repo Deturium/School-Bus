@@ -1,5 +1,6 @@
 <template lang="pug">
 div.app-root
+  icons
   notification
   popup-form
   head-nav
@@ -10,6 +11,7 @@ div.app-root
 </template>
 
 <script>
+import Icons from '@/Icons'
 import HeadNav from '@/HeadNav'
 import FootNav from '@/FootNav'
 import Notification from '@@/Notification'
@@ -19,7 +21,7 @@ import UserInfo from '@@/UserInfo'
 export default {
 	name: 'app',
 	components: {
-    HeadNav, FootNav, PopupForm, Notification, UserInfo
+    HeadNav, FootNav, PopupForm, Notification, UserInfo, Icons
 	}
 }
 </script>
@@ -27,9 +29,10 @@ export default {
 <style lang="stylus">
 $max-width = 1160px
 
-@font-face
-  font-family 'CenturyGothic'
-  src url('./assets/CenturyGothic.ttf') format('truetype')
+// TODO:
+// @font-face
+//   font-family 'CenturyGothic'
+//   src url('./assets/CenturyGothic.ttf') format('truetype')
 
 body
   font-size 14px

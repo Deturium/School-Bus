@@ -18,9 +18,14 @@ export default {
     state.popForm.isShow = false
   },
 
-  changeFliterType(state, type) {
-    state.filterType = type.toUpperCase()
+  showNotification(state, {title, description}) {
+    state.notification.isShow = true
+    state.notification.title = title
+    state.notification.description = description
   },
 
+  hideNotification(state) {
+    state.notification.isShow = false
+  },
 
 }

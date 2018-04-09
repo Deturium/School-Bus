@@ -21,17 +21,13 @@ table.rank-table
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import RankTr from './RankTr'
 
 export default {
   name: "rank-table",
-  computed: mapState([
+  props: [
     "ranks"
-  ]),
-    created: function() {
-    this.$store.dispatch('fetchRank')
-  },
+  ],
   components: {
     RankTr
   },

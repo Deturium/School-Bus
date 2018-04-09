@@ -7,7 +7,7 @@
     @input="inputHandle($event.target.value)"
   )
   hr.line
-  hr.focus-line
+  hr.line.focus
 </template>
 
 <script>
@@ -42,12 +42,12 @@ export default {
     font-family 'Roboto'
     font-size 16px
     font-weight bold
-    border none
     color #ddd
     background-color transparent
+    border none
     outline none
 
-  >hr
+  .line
     position absolute
     left 0
     right 0
@@ -56,13 +56,13 @@ export default {
     border none
     background-color #646464
 
-  .focus-line
+  .focus
     transform scaleX(0)
 
   >input:focus+.line
     visibility hidden
 
-  >input:focus+.line+.focus-line
+  >input:focus+.line+.focus
     height 2px
     background-color #979797
     margin-top -1px

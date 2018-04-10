@@ -35,7 +35,7 @@ $bg-color = #111
 
 .popup
   position absolute
-  top 42%
+  top 44%
   left 50%
   transform translate(-50%, -50%)
 

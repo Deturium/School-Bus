@@ -35,6 +35,7 @@ export default {
     display inline-block
 
   >input
+    display inline-block
     box-sizing border-box
     width 100%
     height 30px

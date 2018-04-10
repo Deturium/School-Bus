@@ -1,35 +1,42 @@
 <template lang="pug">
-form.form
-  .form-tit Update Info
-  .form-item
-    label Old Passw0rd
-    m-input
-  .form-item
-    label New Passw0rd
-    m-input
-  .form-item
-    label Phone
-    m-input
-  .form-item
-    label Comment
-    m-input
-
-  m-button.comfirm(
-    text="Update"
-    :clickHandle="updateHandle"
+m-form(
+  formTitle="Update Info"
+  comfirmText='Update'
+  :comfirmHandle="updateHandle"
+  :cancelHandle="cancelHandle"
+)
+  m-form-item(
+    labelName="Old Passw0rd"
+    :value.sync="oldPassword"
   )
-  m-button.cancel(
-    text="Cancel"
-    :clickHandle="cancelHandle"
+  m-form-item(
+    labelName="New Passw0rd"
+    :value.sync="newPassword"
+  )
+  m-form-item(
+    labelName="Phone"
+    :value.sync="phone"
+  )
+  m-form-item(
+    labelName="Comment"
+    :value.sync="comment"
   )
 </template>
 
 <script>
-import MInput from '@/MInput'
-import MButton from '@/MButton'
+import MForm from '@/MForm'
+import MFormItem from '@/MFormItem'
 
 export default {
   name: "update-info-form",
+  data: function() {
+    return {
+      oldPassword: "",
+      newPassword: "",
+      phone: "",
+      comment: ""
+    }
+  },
   methods: {
     updateHandle() {
       this.$store.commit('hidePopupForm')
@@ -39,7 +46,7 @@ export default {
     },
   },
   components: {
-    MInput, MButton
+    MForm, MFormItem
   }
 }
 </script>

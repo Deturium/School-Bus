@@ -8,7 +8,7 @@
   div
     p {{ challenge.description }}
     .links
-      a(
+      a.link(
         v-for="(atta, i) in challenge.attachments"
         :href="atta"
         target="_blank"
@@ -136,7 +136,7 @@ export default {
     margin-top 25px
     margin-bottom -20px
 
-  a
+  .link
     color currentColor
     font-weight bold
     color #ccc

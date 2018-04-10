@@ -1,29 +1,34 @@
 <template lang="pug">
-form.form
-  .form-tit Log In
-  .form-item
-    label Username
-    m-input
-  .form-item
-    label Passw0rd
-    m-input(type="password")
+m-form(
+  formTitle="Log In"
+  comfirmText='Log In'
+  :comfirmHandle="logInHandle"
+  :cancelHandle="cancelHandle"
+)
+  m-form-item(
+    labelName="Username"
+    :value.sync="username"
+  )
+  m-form-item(
+    labelName="Passw0rd"
+    :value.sync="password"
+    type="password"
+  )
 
-  m-button.comfirm(
-    text="Log In"
-    :clickHandle="logInHandle"
-  )
-  m-button.cancel(
-    text="Cancel"
-    :clickHandle="cancelHandle"
-  )
 </template>
 
 <script>
-import MInput from '@/MInput'
-import MButton from '@/MButton'
+import MForm from '@/MForm'
+import MFormItem from '@/MFormItem'
 
 export default {
   name: "log-in-form",
+  data: function() {
+    return {
+      username: "",
+      password: ""
+    }
+  },
   methods: {
     logInHandle() {
       this.$store.commit('LogIn')
@@ -34,7 +39,7 @@ export default {
     },
   },
   components: {
-    MInput, MButton
+    MForm, MFormItem
   }
 }
 </script>

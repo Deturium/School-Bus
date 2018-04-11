@@ -28,7 +28,9 @@ async function zjusecFetch(url) {
 
 export default {
   async fetchAnnouncement({ state }) {
-    state.announcements = await zjusecFetch('announcement')
+    const announcements = await zjusecFetch('announcement')
+    if (announcement)
+      state.announcements = announcements
   },
 
   async fetchRank({ state }, type) {

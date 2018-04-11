@@ -1,19 +1,21 @@
 <template lang="pug">
 .form
   .form-tit {{ formTitle }}
+  img.lifegame(src="../assets/lifegame.png")
 
   //- slot for form-item
-  slot
+  .form-items
+    slot
 
-  .form-buttons
-    m-button.comfirm(
-      :text="comfirmText ? comfirmText : 'Comfirm'"
-      :clickHandle="comfirmHandle"
-    )
-    m-button.cancel(
-      :text="cancelText ? cancelText : 'Cancel'"
-      :clickHandle="cancelHandle"
-    )
+    .form-buttons
+      m-button.comfirm(
+        :text="comfirmText ? comfirmText : 'Comfirm'"
+        :clickHandle="comfirmHandle"
+      )
+      m-button.cancel(
+        :text="cancelText ? cancelText : 'Cancel'"
+        :clickHandle="cancelHandle"
+      )
 
 </template>
 
@@ -40,48 +42,55 @@ export default {
 <style lang="stylus">
 
 $font-color = #bbb
-$label-width = 100px
-$input-width = 240px
+$label-width = 120px
+$input-width = 270px
 
 .form
-  position relative
-  margin 30px 0
-  margin-right 30px
+  margin 30px auto
   // font-style italic
   font-weight bold
 
   .form-tit
-    margin-left 35px // not absolutely centered
-    margin-bottom 20px
     font-size 30px
     text-align center
     color $font-color
 
-  .form-item
+  .lifegame
+    width 580px
+    margin 20px 0
+
+  .form-items
     display flex
-    margin 15px 0
+    flex-direction column
+    align-items center
+    margin 0 auto
 
-  .form-label
-    position relative
-    left -20px
-    top 4px
-    width $label-width
-    line-height 30px
-    text-align right
-    color $font-color
+    .form-item
+      display flex
+      margin 8px 0
 
-  .form-input
-    width $input-width
+    .form-label
+      position relative
+      left -20px
+      width $label-width
+      line-height 30px
+      text-align center
+      color $font-color
+      border 1px solid #646464
+      border-radius 5px
 
-  .form-buttons
-    margin-top 35px
+    .form-input
+      width $input-width
 
-  .comfirm,
-  .cancel
-    margin-left $label-width
-    padding 0
+    .form-buttons
+      margin-top 30px
 
-  .cancel
-    margin-left $input-width - 90px * 2
+    .comfirm,
+    .cancel
+      margin-left $label-width
+      padding 0
+
+    .cancel
+      margin-left $input-width - 90px * 2
 
 </style>

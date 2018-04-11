@@ -20,7 +20,7 @@
     :body="anno[2]"
   )
   .more(
-    v-if="!showMoreAnno"
+    v-if="!showMoreAnno && announcements.length > 3"
     @click="showMore"
   ) more news
 
@@ -68,30 +68,16 @@
     p.center 完成任意一道 'Welcome' 类的题目<br>群号就在 flag 中
 
   h4.subtit Develop Team
-    .develope-team
-      p
-        span.duty 设计
-        span.id Clapeysron
-      p
-        span.duty 前端
-        span.id Hydrogen
-      p
-        span.duty 后端
-        span.id Himyth
-      p
-        span.duty 运维
-        span.id ChenYuan
+  develope-team
 </template>
 
 <script>
-import Announcement from './Announcement'
 import { mapState } from 'vuex'
+import Announcement from './Announcement'
+import DevelopeTeam from './DevelopeTeam'
 
 export default {
   name: "about",
-  components: {
-    Announcement
-  },
   data: function() {
     return {
       showMoreAnno: false
@@ -107,6 +93,9 @@ export default {
     showMore() {
       this.showMoreAnno = true
     }
+  },
+  components: {
+    Announcement, DevelopeTeam
   },
 }
 </script>
@@ -173,22 +162,4 @@ $max-width = 750px
       margin-top 5px
       text-align center
       text-indent 0
-
-  .develope-team
-    margin 5px auto
-    text-align center
-
-    >p
-      margin 0
-      text-align center
-      text-indent 0
-
-    .duty
-      display inline-block
-      width 70px
-      font-weight bold
-
-    .id
-      display inline-block
-      width 120px
 </style>

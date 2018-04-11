@@ -22,7 +22,7 @@ export default {
 <style lang="stylus">
 
 $base-z-index = 100
-$bg-color = #111
+$bg-color = #151515
 
 .overlay
   position fixed
@@ -30,7 +30,7 @@ $bg-color = #111
   left 0
   width 100vw
   height 100vh
-  background-color hsla(0, 0%, 0%, .85)
+  background-color hsla(0, 0%, 0%, .8)
   z-index $base-z-index
 
 .popup

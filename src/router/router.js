@@ -26,6 +26,10 @@ export default [
     component: award,
   },
   {
+    path: '/404',
+    component: notFound
+  },
+  {
     path: '*',
     component: notFound
   }

@@ -29,6 +29,7 @@ export default {
     typeChangeHandle(type) {
       this.selected = type
       this.$store.dispatch('fetchRank', this.selected)
+      this.$router.replace('/scoreboard/' + type.toLowerCase())
     }
   },
   created() {

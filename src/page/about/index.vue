@@ -10,11 +10,6 @@
     :title="anno[1]"
     :body="anno[2]"
   )
-
-  h3.more(
-    v-if="!showMoreAnno"
-    @click="showMore"
-  ) more news
   announcement(
     v-for="(anno, i) in announcements"
     v-if="showMoreAnno && i >= 3"
@@ -24,7 +19,12 @@
     :title="anno[1]"
     :body="anno[2]"
   )
+  .more(
+    v-if="!showMoreAnno"
+    @click="showMore"
+  ) more news
 
+  div(v-once)
   h2.tit - About AAA -
   img.team-icon(src="../../assets/AAA_logo_with_name.png")
 
@@ -62,11 +62,25 @@
 
   h2.tit - Contact -
   h4.subtit EMAIL
-  p aaa.zju@zju.gmail
+    p.center aaa.zju@zju.gmail
+
   h4.subtit ZJU Security QQ群
-  p 完成任意一道 'Welcome' 类的题目<br>群号就在 flag 中
+    p.center 完成任意一道 'Welcome' 类的题目<br>群号就在 flag 中
+
   h4.subtit Develop Team
-  p Hydrogen Clapeysron
+    .develope-team
+      p
+        span.duty 设计
+        span.id Clapeysron
+      p
+        span.duty 前端
+        span.id Hydrogen
+      p
+        span.duty 后端
+        span.id Himyth
+      p
+        span.duty 运维
+        span.id ChenYuan
 </template>
 
 <script>
@@ -118,14 +132,18 @@ $max-width = 750px
     margin-top 70px
 
   .more
-    position absolute
-    top 20px
-    right 0
-    color #aaa
+    margin 40px auto
+    width 100px
+    height 30px
+    line-height 30px
+    text-align center
+    color #ccc
+    background-color #333
+    border-radius 2px
     cursor pointer
 
     &:hover
-      color #eee
+      background-color #444
 
   p, li
     line-height 1.8
@@ -142,7 +160,7 @@ $max-width = 750px
       padding .7em 1em
       text-indent 0
       line-height 1.5
-      // list-style-type decimal
+      list-style-type decimal
 
   em
     font-weight bold
@@ -151,8 +169,26 @@ $max-width = 750px
   .subtit
     subtit-mixins()
 
-    +p
+  .center
       margin-top 5px
       text-align center
       text-indent 0
+
+  .develope-team
+    margin 5px auto
+    text-align center
+
+    >p
+      margin 0
+      text-align center
+      text-indent 0
+
+    .duty
+      display inline-block
+      width 70px
+      font-weight bold
+
+    .id
+      display inline-block
+      width 120px
 </style>

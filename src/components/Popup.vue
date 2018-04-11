@@ -30,16 +30,16 @@ $bg-color = #111
   left 0
   width 100vw
   height 100vh
-  background-color hsla(0, 0%, 0%, .8)
+  background-color hsla(0, 0%, 0%, .85)
   z-index $base-z-index
 
 .popup
   position absolute
-  top 44%
+  top 25%
   left 50%
-  transform translate(-50%, -50%)
+  transform translate(-50%)
 
-  width 600px
+  width 580px
 
   display flex
   flex-direction column

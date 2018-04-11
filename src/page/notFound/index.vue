@@ -1,5 +1,5 @@
 <template lang="pug">
-div.not-found 418
+div.not-found 404
 </template>
 
 <script>

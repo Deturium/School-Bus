@@ -31,16 +31,14 @@ export default {
   display inline-block
   position relative
 
-  >label
-    display inline-block
-
   >input
     display inline-block
     box-sizing border-box
     width 100%
     height 30px
+    line-height 30px
     padding 0 10px
-    font-family 'Roboto'
+    // font-family 'Roboto'
     font-size 16px
     font-weight bold
     color #ddd
@@ -52,21 +50,21 @@ export default {
     position absolute
     left 0
     right 0
+    bottom 0
     height 1px
     margin 0
     border none
     background-color #646464
 
   .focus
+    height 2px
     transform scaleX(0)
+    background-color #979797
 
   >input:focus+.line
     visibility hidden
 
-  >input:focus+.line+.focus
-    height 2px
-    background-color #979797
-    margin-top -1px
+  >input:focus~.focus
     transform scaleX(1)
     transition transform .45s cubic-bezier(.23, 1, .32, 1)
 

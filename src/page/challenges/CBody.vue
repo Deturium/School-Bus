@@ -12,10 +12,10 @@
         v-for="(atta, i) in challenge.attachments"
         :href="atta"
         target="_blank"
-      ) {{ `[ Link ${i} ]` }}
+      ) {{ `Link ${i}` }}
 
   h2.subtit.hint(
-    @click="showHint()"
+    @click="toggleHint()"
   ) Hint&nbsp;&nbsp;
     svg.icon(
       aria-hidden="true"
@@ -24,7 +24,7 @@
       use(xlink:href="#icon-more")
 
   div
-    p(v-if="isShowHint") {{ challenge.hint ? challenge.hint : 'No hint'}}
+    p(v-if="isShowHint") {{ challenge.hint ? challenge.hint : 'No hint (╯°口°)╯(┴—┴'}}
 
   h2.subtit Your Answer
   div
@@ -72,8 +72,8 @@ export default {
     }
   },
   methods: {
-    showHint() {
-      this.isShowHint = true
+    toggleHint() {
+      this.isShowHint = !this.isShowHint
     },
     submitHandle() {
       if (this.challenge.is_solved)
@@ -137,9 +137,15 @@ export default {
     margin-bottom -20px
 
   .link
-    color currentColor
-    font-weight bold
-    color #ccc
+    display inline-block
+    width 70px
+    height 26px
+    line-height 26px
+    margin-right 10px
+    text-align center
+    color #999
+    background-color #222
+    border-radius 2px
     text-decoration none
     &:hover
       text-decoration underline
@@ -151,7 +157,7 @@ export default {
     display inline-block
     margin 0 120px
     margin-top 30px
-    font-size 24px
+    font-size 22px
     font-weight lighter
     font-style italic
     text-align left

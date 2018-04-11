@@ -44,12 +44,14 @@ $label-width = 100px
 $input-width = 240px
 
 .form
-  margin 30px
+  position relative
+  margin 30px 0
+  margin-right 30px
   // font-style italic
   font-weight bold
 
   .form-tit
-    margin-left 30px // not absolutely centered
+    margin-left 35px // not absolutely centered
     margin-bottom 20px
     font-size 30px
     text-align center

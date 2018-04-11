@@ -22,7 +22,8 @@ export default {
   box-sizing border-box
   width 90px
   height 30px
-  font-family 'Roboto'
+  line-height 30px
+  // font-family 'Roboto'
   font-size 14px
   font-weight bold
   border 0
@@ -31,10 +32,14 @@ export default {
   cursor pointer
 
   // TODO: choose color
-  color #f5f5f5
-  background-color #9e9e9e
+  color #ccc
+  background-color #444
 
   &:hover
-    background-color #bdbdbd
+    background-color #555
+
+  // remove dashed border in firefox
+  &::-moz-focus-inner
+    border none
 </style>
 

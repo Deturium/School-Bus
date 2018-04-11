@@ -3,9 +3,14 @@
   :style="{order: order}"
 )
   h1.meta {{ challenge.title }}
+  .close-box(
+    @click="closeHandle(challenge.id)"
+  )
+    svg.icon(aria-hidden="true")
+      use(xlink:href="#icon-close")
 
   h2.subtit Description
-  div
+  div.content
     p {{ challenge.description }}
     .links
       a.link(
@@ -14,20 +19,19 @@
         target="_blank"
       ) {{ `Link ${i}` }}
 
-  h2.subtit.hint(
-    @click="toggleHint()"
-  ) Hint&nbsp;&nbsp;
+  h2.subtit.hint Hint&nbsp;&nbsp;
     svg.icon(
       aria-hidden="true"
       :class="{rotate: isShowHint }"
+      @click="toggleHint()"
     )
       use(xlink:href="#icon-more")
 
-  div
+  div.content
     p(v-if="isShowHint") {{ challenge.hint ? challenge.hint : 'No hint (╯°口°)╯(┴—┴'}}
 
   h2.subtit Your Answer
-  div
+  div.content
     m-input.ans-input(
       v-model="flag"
       placeholder="AAA{here_is_your_flag}"
@@ -38,7 +42,7 @@
     )
 
   h2.subtit Completed
-  div
+  div.content
     p
       span.name(
         v-for="(pwner, i) in challenge.early_pwner"
@@ -64,6 +68,7 @@ export default {
       // "is_solved",
       // "pwned_times",
       // "early_pwner"
+    "closeHandle"
   ],
   data: function() {
     return {
@@ -100,6 +105,7 @@ export default {
 @import "../../stylus/mixins"
 
 .c-body
+  position relative
   width 100%
   margin 30px
   padding 40px
@@ -114,7 +120,38 @@ export default {
     font-style italic
     color #E1C79B
 
-  >div
+  .close-box
+    position absolute
+    top 0
+    right 0
+    width 130px
+    height 120px
+    display flex
+    justify-content center
+    align-items center
+    font-size 20px
+    color #ccc
+    cursor pointer
+
+    .icon
+      visibility hidden
+
+    &:hover .icon
+      visibility visible
+      transform rotate(540deg)
+      transition-duration 1.5s
+      transition-timing-function linear
+
+  .subtit
+    display inline-block
+    margin 0 120px
+    margin-top 30px
+    font-size 22px
+    font-weight lighter
+    // font-style italic
+    text-align left
+
+  .content
     box-sizing border-box
     width 666px
     margin 10px auto 15px auto
@@ -153,16 +190,7 @@ export default {
   .rotate
     transform rotate(90deg)
 
-  .subtit
-    display inline-block
-    margin 0 120px
-    margin-top 30px
-    font-size 22px
-    font-weight lighter
-    font-style italic
-    text-align left
-
-  .hint
+  .hint .icon
     cursor pointer
     &:hover
       >svg
@@ -175,8 +203,8 @@ export default {
     margin-left 20px
 
   .name
-    margin-right 20px
+    margin-right 16px
     // font-weight bold
-    font-style italic
+    // font-style italic
     color #aaa
 </style>

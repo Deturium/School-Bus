@@ -48,6 +48,6 @@ $bg-color = #151515
 
   background-color $bg-color
   z-index $base-z-index + 1
-  border-radius 15px
+  border-radius 5px
 
 </style>

@@ -1,7 +1,8 @@
 <template lang="pug">
 .form
   .form-tit {{ formTitle }}
-  img.lifegame(src="../assets/lifegame.png")
+  //- .lifegame
+  //-   img(src="../assets/lifegame.png")
 
   //- slot for form-item
   .form-items
@@ -43,51 +44,51 @@ export default {
 
 $font-color = #bbb
 $label-width = 120px
-$input-width = 270px
+$input-width = 260px
 
 .form
   margin 30px auto
   // font-style italic
-  font-weight bold
 
   .form-tit
     font-size 30px
+    font-weight bold
     text-align center
     color $font-color
 
-  .lifegame
-    width 580px
-    margin 20px 0
+  // .lifegame
+  //   width 580px
+  //   overflow-x hidden
+  //   margin 20px 0
+  //   >img
+  //     height 50px
 
   .form-items
     display flex
     flex-direction column
     align-items center
     margin 0 auto
+    margin-top 25px
 
     .form-item
       display flex
+      flex-direction column
+      align-items flex-start
       margin 8px 0
 
     .form-label
-      position relative
-      left -20px
-      width $label-width
-      line-height 30px
-      text-align center
+      font-size 14px
       color $font-color
-      border 1px solid #646464
-      border-radius 5px
 
     .form-input
       width $input-width
 
     .form-buttons
+      width $input-width
       margin-top 30px
 
     .comfirm,
     .cancel
-      margin-left $label-width
       padding 0
 
     .cancel

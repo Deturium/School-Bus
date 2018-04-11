@@ -14,11 +14,20 @@ const state = {
   },
 
   // Notification
-  notification: {
-    isShow: false,
-    title: "",
-    description: "",
-  },
+  notifications: [
+    // {
+    //   title: "aaa",
+    //   description: "dddd",
+    //   type: "",
+    //   survivalTime: 4
+    // },
+    // {
+    //   title: "ccc",
+    //   description: "eeeee",
+    //   type: "",
+    //   survivalTime: 0
+    // }
+  ],
 
   // UserInfo
   isLogIn: false,

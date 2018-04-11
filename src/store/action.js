@@ -29,7 +29,7 @@ async function zjusecFetch(url) {
 export default {
   async fetchAnnouncement({ state }) {
     const announcements = await zjusecFetch('announcement')
-    if (announcement)
+    if (announcements)
       state.announcements = announcements
   },
 
@@ -63,15 +63,35 @@ export default {
     // TODO:
 
     // flag error
-    commit('showNotification', {
+    commit('addNotification', {
       title: 'submit fail',
-      description: '革命尚未成功，同志仍需努力'
+      description: 'Check and try again!',
+      type: "",
+      survivalTime: 0
     })
-    setTimeout(() => commit('hideNotification'), 1000 * 7)
 
     // correct
     challenge.is_solved = true
     challenge.early_pwner.push(state.userInfo.name)
     state.userInfo.score += challenge.points
-  }
+  },
+
+  async logIn({commit}, {username, password}) {
+    // if (!(username && password))
+    //   return
+
+    // TODO:
+    if (password !== '') {
+      commit('logIn')
+      commit('hidePopupForm')
+      return
+    }
+
+    commit('addNotification', {
+      title: 'Log In Fail',
+      description: 'Check your username and password, try again!',
+      type: "",
+      survivalTime: 10
+    })
+  },
 }

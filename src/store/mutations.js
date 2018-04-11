@@ -1,9 +1,9 @@
 export default {
-  LogIn(state) {
+  logIn(state) {
     state.isLogIn = true
   },
 
-  LogOut(state) {
+  logOut(state) {
     state.isLogIn = false
   },
 
@@ -18,14 +18,7 @@ export default {
     state.popForm.isShow = false
   },
 
-  showNotification(state, {title, description}) {
-    state.notification.isShow = true
-    state.notification.title = title
-    state.notification.description = description
+  addNotification(state, payload) {
+    state.notifications.push(payload)
   },
-
-  hideNotification(state) {
-    state.notification.isShow = false
-  },
-
 }

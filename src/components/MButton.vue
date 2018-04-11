@@ -27,16 +27,16 @@ export default {
   font-size 14px
   font-weight bold
   border 0
-  border-radius 5px
+  border-radius 2px
   outline none
   cursor pointer
 
   // TODO: choose color
   color #ccc
-  background-color #444
+  background-color #333333
 
   &:hover
-    background-color #555
+    background-color #555555
 
   // remove dashed border in firefox
   &::-moz-focus-inner

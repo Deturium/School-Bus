@@ -1,0 +1,91 @@
+<template lang="pug">
+transition(
+  name="fade"
+)
+  .notification-item(
+    v-if="isSurvival"
+  )
+    h4(:style="{color: typeColor}") {{ title }}
+    p {{ description }}
+    svg.icon.close(
+      aria-hidden="true"
+      @click="close"
+    )
+      use(xlink:href="#icon-close")
+</template>
+
+<script>
+import { mapState } from 'vuex'
+
+export default {
+  name: "notification-item",
+  props: [
+    "title",
+    "description",
+    "type",
+    "survivalTime",
+  ],
+  data: function() {
+    return {
+      isSurvival: true
+    }
+  },
+  created() {
+    if (this.survivalTime) {
+      setTimeout(() => {
+        console.log("dsa")
+        this.close()
+      }, this.survivalTime * 1000)
+    }
+  },
+  computed: {
+    typeColor() {
+      return "white"
+    }
+  },
+  methods: {
+    close() {
+      this.isSurvival = false
+    }
+  },
+}
+</script>
+
+<style lang="stylus" scoped>
+.notification-item
+  position relative
+  margin 20px
+  padding 1px
+  background-color rgba(44, 44, 44, .8)
+  border-radius 5px
+
+  h4, p
+    margin 20px 30px
+
+  h4
+    font-size 16px
+    font-weight bold
+    color #fff
+
+  p
+    font-size 14px
+    color #ccc
+
+  .close
+    position absolute
+    top 20px
+    right 20px
+    color #fff
+    cursor pointer
+
+.fade-enter-active
+  transition all .5s
+.fade-leave-active
+  transition all .3s
+
+.fade-enter,
+.fade-leave-to
+  transform translateY(-30px)
+  opacity 0
+
+</style>

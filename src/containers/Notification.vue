@@ -1,74 +1,36 @@
 <template lang="pug">
-transition(
-  name="fade"
-)
-  .notification(
-    v-show="isShow"
+.notification
+  notification-item(
+    v-for="(n, i) in notifications"
+    :key="i"
+    :title="n.title"
+    :description="n.description"
+    :type="n.type"
+    :survivalTime="n.survivalTime"
   )
-    h4 {{ title }}
-    p {{ description }}
-    svg.icon.close(
-      aria-hidden="true"
-      @click="close"
-    )
-      use(xlink:href="#icon-close")
 </template>
 
 <script>
 import { mapState } from 'vuex'
+import NotificationItem from './NotificationItem'
 
 export default {
   name: "notification",
-  computed: mapState({
-    isShow: state => state.notification.isShow,
-    title: state => state.notification.title,
-    description: state => state.notification.description,
-  }),
-  methods: {
-    close() {
-      this.$store.commit('hideNotification')
-    }
+  computed: mapState([
+    "notifications"
+  ]),
+  components: {
+    NotificationItem
   },
 }
 </script>
 
 <style lang="stylus" scoped>
+
 .notification
   position fixed
-  right 20px
-  width 350px
-  background-color #444
+  right 10px
+  width 360px
   z-index 1000
-  opacity .9
-  border-radius 10px
-
-  h4, p
-    margin 20px 30px
-
-  h4
-    font-size 16px
-    font-weight bold
-    color #fff
-
-  p
-    font-size 14px
-    color #ddd
-
-  .close
-    position absolute
-    top 20px
-    right 20px
-    color #fff
-    cursor pointer
-
-.fade-enter-active
-  transition all .5s
-.fade-leave-active
-  transition all .3s
-
-.fade-enter,
-.fade-leave-to
-  transform translateY(-30px)
-  opacity 0
 
 </style>

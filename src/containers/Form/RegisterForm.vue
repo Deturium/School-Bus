@@ -2,7 +2,7 @@
 m-form(
   formTitle="Register"
   comfirmText='Register'
-  :comfirmHandle="RegisterHandle"
+  :comfirmHandle="registerHandle"
   :cancelHandle="cancelHandle"
 )
   m-form-item(

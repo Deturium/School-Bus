@@ -31,8 +31,10 @@ export default {
   },
   methods: {
     logInHandle() {
-      this.$store.commit('LogIn')
-      this.$store.commit('hidePopupForm')
+      this.$store.dispatch('logIn', {
+        username: this.username,
+        password: this.password
+      })
     },
     cancelHandle() {
       this.$store.commit('hidePopupForm')

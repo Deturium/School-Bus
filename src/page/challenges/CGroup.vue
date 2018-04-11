@@ -19,6 +19,7 @@
           v-if="isShow && checkFilterType(challenge)"
           :order="bodyOrder"
           :challenge="challenge"
+          :closeHandle="clickHandle"
         )
 </template>
 

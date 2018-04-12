@@ -34,10 +34,12 @@
   div.content
     m-input.ans-input(
       v-model="flag"
-      placeholder="AAA{here_is_your_flag}"
+      :type="type"
+      :placeholder="placeholder"
     )
     m-button.ans-button(
-      :text="challenge.is_solved ? 'Solved' : 'Submit'"
+      :text="buttonText"
+      :type="type"
       :clickHandle="submitHandle"
     )
 
@@ -74,6 +76,22 @@ export default {
     return {
       isShowHint: false,
       flag: "",
+      type: "",
+      placeholder: "",
+      buttonText: ""
+    }
+  },
+  activated: function() {
+    this.isShowHint = false
+    this.flag = ""
+    if (this.challenge.is_solved) {
+      this.type = "success"
+      this.placeholder = "Congratz, you have solved it."
+      this.buttonText = "Solved"
+    } else {
+      this.type = ""
+      this.placeholder = "AAA{here_is_your_flag}"
+      this.buttonText = "Submit"
     }
   },
   methods: {
@@ -86,13 +104,19 @@ export default {
 
       this.$store.dispatch('submitFlag', {
         flag: this.flag,
-        challenge: this.challenge
+        challenge: this.challenge,
+        onSuccess: this.onSuccess.bind(this),
+        onError: this.onError.bind(this)
       })
     },
-  },
-  activated: function() {
-    this.isShowHint = false
-    this.flag = ""
+    onSuccess() {
+      this.type = 'success'
+      this.buttonText = "Solved"
+    },
+    onError() {
+      this.type = 'error'
+      this.buttonText = "Retry"
+    },
   },
   components: {
     MInput, MButton
@@ -107,7 +131,7 @@ export default {
 .c-body
   position relative
   width 100%
-  margin 30px
+  margin 20px
   padding 40px
   background-color #181818
   color #eee
@@ -144,7 +168,7 @@ export default {
 
   .subtit
     display inline-block
-    margin 0 120px
+    margin 0 110px
     margin-top 30px
     font-size 22px
     font-weight lighter
@@ -155,7 +179,7 @@ export default {
     box-sizing border-box
     width 666px
     margin 10px auto 15px auto
-    padding-left 40px
+    padding-left 50px
     // padding-right 40px
     // border 1px solid #fff
     font-size 14px

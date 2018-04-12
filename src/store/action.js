@@ -1,20 +1,19 @@
 async function zjusecFetch(url) {
   const baseUrl = "/api/v1/"
 
-  console.log("fetch " + url)
+  // console.log("fetch " + url)
 
   try {
     const res = await fetch(baseUrl + url)
-      .then((res) => {
-        return res.json()
-      })
+      .then(res => res.json())
 
     if (res.Succeed) {
       return res["Message"]
     }
 
   } catch(e) {
-    console.log('Error: fetch fail')
+    // console.log(`Error: fetch ${url} fail`)
+    return null
   }
 
   // const xhr = new XMLHttpRequest()
@@ -25,73 +24,119 @@ async function zjusecFetch(url) {
   // xhr.send()
 }
 
+const networkErr = {
+  title: 'Network Error',
+  description: "Please check your network.",
+  type: "",
+  survivalTime: 7
+}
+
 
 export default {
-  async fetchAnnouncement({ state }) {
+
+  async fetchAnnouncement({state, commit}) {
     const announcements = await zjusecFetch('announcement')
-    if (announcements)
-      state.announcements = announcements
+    if (!announcements) {
+      commit('addNotification', networkErr)
+      return
+    }
+
+    state.announcements = announcements
   },
 
-  async fetchRank({ state }, type) {
+  async fetchRank({state, commit}, type) {
     type = type === 'ALL' ? '' : '/' + type.toLowerCase()
-    state.ranks = await zjusecFetch('ranks' + type)
+    const ranks = await zjusecFetch('ranks' + type)
+    if (!ranks) {
+      commit('addNotification', networkErr)
+      return
+    }
+
+    state.ranks = ranks
   },
 
-  async fetchChallenge({ state }) {
+  async fetchChallenge({state, commit}) {
     const fetchChallenges = await zjusecFetch('challenges')
-    const stateChallenges = []
+    if (!fetchChallenges) {
+      commit('addNotification', networkErr)
+      return
+    }
 
-    for (let cate of fetchChallenges) {
+    const stateChallenges = fetchChallenges.map((cate) => {
+      // flatMap
       const challengeArr = []
       for (let t of cate.types) {
         for (let c of t.challenges) {
+          // attach type info to each challenge
           c.type = t.type
           challengeArr.push(c)
         }
       }
-      stateChallenges.push({
+
+      return {
         category: cate.category,
         challenges: challengeArr
-      })
-    }
+      }
+    })
 
     state.challenges = stateChallenges
   },
 
-  async submitFlag({state, commit}, {flag, challenge}) {
-    // TODO:
+  async submitFlag({state, commit}, {flag, challenge, onSuccess, onError}) {
 
-    // flag error
-    commit('addNotification', {
-      title: 'submit fail',
-      description: 'Check and try again!',
-      type: "",
-      survivalTime: 0
-    })
-
-    // correct
-    challenge.is_solved = true
-    challenge.early_pwner.push(state.userInfo.name)
-    state.userInfo.score += challenge.points
-  },
-
-  async logIn({commit}, {username, password}) {
-    // if (!(username && password))
-    //   return
-
-    // TODO:
-    if (password !== '') {
-      commit('logIn')
-      commit('hidePopupForm')
+    // logIn check
+    if (!state.isLogIn) {
+      commit('addNotification', {
+        title: 'Un LogIn',
+        description: 'Please Log In first.',
+        type: "",
+        survivalTime: 12
+      })
       return
     }
 
+    // frontend check
+    if (flag) {
+
+      // TODO: backend check
+      if (1) {
+        // flag correct
+        onSuccess()
+        commit('solveChallenge', challenge)
+      }
+      return
+    }
+
+    // flag error
+    onError()
+    commit('addNotification', {
+      title: 'Submit Fail',
+      description: 'Please check and try again.',
+      type: "",
+      survivalTime: 7
+    })
+  },
+
+  async logIn({commit}, {username, password, onError}) {
+    // frontend check
+    if (username && password) {
+
+      // TODO: backend check
+      if (1) {
+        // log in success
+      commit('logIn')
+      commit('hidePopupForm')
+      return
+      }
+    }
+
+    // log in fail
+    onError()
     commit('addNotification', {
       title: 'Log In Fail',
-      description: 'Check your username and password, try again!',
+      description: 'Please check your username and password.',
       type: "",
-      survivalTime: 10
+      survivalTime: 7
     })
   },
 }

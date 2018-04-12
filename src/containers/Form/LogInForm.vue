@@ -8,11 +8,13 @@ m-form(
   m-form-item(
     labelName="Username"
     :value.sync="username"
+    :type="type"
   )
   m-form-item(
     labelName="Passw0rd"
     :value.sync="password"
-    type="password"
+    inputType="password"
+    :type="type"
   )
 
 </template>
@@ -26,15 +28,21 @@ export default {
   data: function() {
     return {
       username: "",
-      password: ""
+      password: "",
+
+      type: "",
     }
   },
   methods: {
     logInHandle() {
       this.$store.dispatch('logIn', {
         username: this.username,
-        password: this.password
+        password: this.password,
+        onError: this.onError.bind(this)
       })
+    },
+    onError() {
+      this.type = 'error'
     },
     cancelHandle() {
       this.$store.commit('hidePopupForm')

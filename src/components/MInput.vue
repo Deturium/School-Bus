@@ -2,12 +2,16 @@
 .m-input
   input(
     :value="value"
-    :type="type"
+    :type="inputType"
     :placeholder="placeholder"
     @input="inputHandle($event.target.value)"
   )
-  hr.line
-  hr.line.focus
+  hr.line(
+    :class="type"
+  )
+  hr.line.focus(
+    :class="type"
+  )
 </template>
 
 <script>
@@ -15,6 +19,7 @@ export default {
   name: "m-input",
   props: [
     "value",
+    "inputType",
     "type",
     "placeholder"
   ],
@@ -68,5 +73,10 @@ export default {
     transform scaleX(1)
     transition transform .45s cubic-bezier(.23, 1, .32, 1)
 
+  .success
+    background-color #558b2f
+
+  .error
+    background-color #bf3636
 </style>
 

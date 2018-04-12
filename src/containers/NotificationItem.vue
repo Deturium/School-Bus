@@ -33,7 +33,6 @@ export default {
   created() {
     if (this.survivalTime) {
       setTimeout(() => {
-        console.log("dsa")
         this.close()
       }, this.survivalTime * 1000)
     }
@@ -56,7 +55,7 @@ export default {
   position relative
   margin 20px
   padding 1px
-  background-color rgba(44, 44, 44, .8)
+  background-color rgba(44, 44, 44, .9)
   border-radius 5px
 
   h4, p

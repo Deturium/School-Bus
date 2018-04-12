@@ -94,7 +94,7 @@ export default {
 
 @import "../../stylus/mixins"
 
-$container-width = 1040px // 260 * 4
+$container-width = 960px // 240 * 4
 .c-group
 
   width $container-width

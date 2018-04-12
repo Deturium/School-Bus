@@ -21,4 +21,10 @@ export default {
   addNotification(state, payload) {
     state.notifications.push(payload)
   },
+
+  solveChallenge(state, challenge) {
+    challenge.is_solved = true
+    challenge.early_pwner.push(state.userInfo.name)
+    state.userInfo.score += challenge.points
+  },
 }

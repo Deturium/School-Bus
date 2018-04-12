@@ -1,5 +1,6 @@
 <template lang="pug">
 button.m-button(
+  :class="type"
   @click.prevent="clickHandle"
 ) {{ text }}
 </template>
@@ -9,6 +10,7 @@ export default {
   name: "m-button",
   props: [
     "text",
+    "type",
     "clickHandle"
   ],
 }
@@ -31,15 +33,26 @@ export default {
   outline none
   cursor pointer
 
-  // TODO: choose color
-  color #ccc
+  color #bbb
   background-color #333333
-
   &:hover
     background-color #555555
 
   // remove dashed border in firefox
   &::-moz-focus-inner
     border none
+
+.success
+  color #ddd
+  background-color #558b2f
+  &:hover
+    background-color #558b2f
+
+.error
+  color #ddd
+  background-color #bf3636
+  &:hover
+    background-color #d62b2b
+
 </style>
 

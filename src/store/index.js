@@ -10,7 +10,7 @@ const state = {
   // PopForm
   popForm: {
     isShow: false,
-    formName: "LogIn"
+    formName: ""
   },
 
   // Notification
@@ -32,6 +32,7 @@ const state = {
   // UserInfo
   isLogIn: false,
   userInfo: {
+    // TODO:
     name: "Clapeysron",
     rank: "5",
     score: 8250,

@@ -58,7 +58,7 @@ $box-width = 200px
   width $box-width
   height $box-width
   box-sizing border-box
-  margin 20px 30px
+  margin 20px
   padding 20px
   padding-bottom 0
   background-color #181818

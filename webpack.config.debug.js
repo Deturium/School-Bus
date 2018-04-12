@@ -51,6 +51,7 @@ module.exports = {
       filename: 'index.html',
       template: 'index.html',
       inject: true,
+      favicon: './static/favicon.ico',
     })
   ],
 

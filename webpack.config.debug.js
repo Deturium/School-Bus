@@ -69,7 +69,14 @@ module.exports = {
     historyApiFallback: true,
     open: true,
     proxy: {
-      "/api": "http://localhost:3000"
+      // "/api": "http://localhost:3000" // mock server
+      "/api": {
+        target: "https://www.zjusec.com",
+        changeOrigin: true,
+        // pathRewrite: {
+        //   '^/api/v1': ''
+        // },
+      },
     }
   },
 };

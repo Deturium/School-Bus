@@ -5,7 +5,7 @@
     h4.anno-tit {{ title }}
 
   p.anno-body(
-    v-show="isShow"
+    v-if="isShow"
     v-html="body"
   )
 
@@ -46,6 +46,9 @@ export default {
     margin-top 50px
     color #ddd
 
+    &:hover
+      color #fff
+
   .anno-time,
   .anno-tit
     margin 0
@@ -58,17 +61,22 @@ export default {
     margin-left 4em
     margin-right 1.5em
 
-  &:hover .anno-meta
-    color #fff
-
   .anno-body
+    // display flex
+    // flex-direction column
+    // align-items center
     margin-top 20px
     margin-bottom 80px
-
     text-align center
 
-  a
-    color currentColor
-    text-decoration none
+    img
+      width 580px
+      margin 15px
+
+    a
+      color currentColor
+      text-decoration none
+      &:hover
+        text-decoration underline
 
 </style>

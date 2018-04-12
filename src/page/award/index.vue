@@ -11,7 +11,8 @@
 
   transition(name="fade-in")
     p.prompt(v-show="showPrompt")
-      | 您今天已经签到，请明天再来~
+      //- | 您今天已经签到，请明天再来~
+      | 暂时还没写好哦~
 
   m-button.exchange(
     text="兑换"

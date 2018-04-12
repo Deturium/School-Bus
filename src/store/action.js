@@ -1,18 +1,19 @@
-async function zjusecFetch(url) {
+// utility func
+async function zjusecFetch(url, init) {
   const baseUrl = "/api/v1/"
 
-  // console.log("fetch " + url)
+  console.log("Fetch: " + baseUrl + url)
 
   try {
-    const res = await fetch(baseUrl + url)
-      .then(res => res.json())
+    const response = await fetch(baseUrl + url, init)
+    const res = await response.json()
 
     if (res.Succeed) {
       return res["Message"]
     }
 
   } catch(e) {
-    // console.log(`Error: fetch ${url} fail`)
+    console.log(`Error: fetch ${url} fail`)
     return null
   }
 
@@ -24,18 +25,65 @@ async function zjusecFetch(url) {
   // xhr.send()
 }
 
+async function GET(url) {
+
+  const init = {
+    // mode: "no-cors",
+    // headers: new Headers({
+    //   'Accept': 'application/json'
+    // }),
+  }
+
+  return await zjusecFetch(url, init)
+}
+
+async function POST(url, param) {
+
+  const init = {
+    method: 'POST',
+    body: Object.keys(params).map((key) => {
+        return encodeURIComponent(key) + '=' + encodeURIComponent(params[key]);
+    }).join('&'),
+  }
+
+  return await zjusecFetch(url, init)
+}
+
+
+// addNotification payload
 const networkErr = {
   title: 'Network Error',
   description: "Please check your network.",
   type: "",
+  survivalTime: 10
+}
+
+const logInErr = {
+  title: 'Log In Fail',
+  description: 'Please check your username and password.',
+  type: "",
+  survivalTime: 5
+}
+
+const submitFlagErr = {
+  title: 'Submit Fail',
+  description: 'Please check and try again.',
+  type: "",
   survivalTime: 7
+}
+
+const unLogInErr = {
+  title: 'Un LogIn',
+  description: 'Please Log In first.',
+  type: "",
+  survivalTime: 10
 }
 
 
 export default {
 
   async fetchAnnouncement({state, commit}) {
-    const announcements = await zjusecFetch('announcement')
+    const announcements = await GET('announcement/all')
     if (!announcements) {
       commit('addNotification', networkErr)
       return
@@ -45,8 +93,7 @@ export default {
   },
 
   async fetchRank({state, commit}, type) {
-    type = type === 'ALL' ? '' : '/' + type.toLowerCase()
-    const ranks = await zjusecFetch('ranks' + type)
+    const ranks = await GET('ranks/' + type.toLowerCase())
     if (!ranks) {
       commit('addNotification', networkErr)
       return
@@ -56,7 +103,7 @@ export default {
   },
 
   async fetchChallenge({state, commit}) {
-    const fetchChallenges = await zjusecFetch('challenges')
+    const fetchChallenges = await GET('challenges')
     if (!fetchChallenges) {
       commit('addNotification', networkErr)
       return
@@ -86,12 +133,7 @@ export default {
 
     // logIn check
     if (!state.isLogIn) {
-      commit('addNotification', {
-        title: 'Un LogIn',
-        description: 'Please Log In first.',
-        type: "",
-        survivalTime: 12
-      })
+      commit('addNotification', unLogInErr)
       return
     }
 
@@ -109,12 +151,7 @@ export default {
 
     // flag error
     onError()
-    commit('addNotification', {
-      title: 'Submit Fail',
-      description: 'Please check and try again.',
-      type: "",
-      survivalTime: 7
-    })
+    commit('addNotification', submitFlagErr)
   },
 
   async logIn({commit}, {username, password, onError}) {
@@ -124,19 +161,14 @@ export default {
       // TODO: backend check
       if (1) {
         // log in success
-      commit('logIn')
-      commit('hidePopupForm')
-      return
+        commit('logIn')
+        commit('hidePopupForm')
+        return
       }
     }
 
     // log in fail
     onError()
-    commit('addNotification', {
-      title: 'Log In Fail',
-      description: 'Please check your username and password.',
-      type: "",
-      survivalTime: 7
-    })
+    commit('addNotification', logInErr)
   },
 }

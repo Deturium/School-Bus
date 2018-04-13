@@ -5,9 +5,12 @@ m-form(
   :comfirmHandle="updateHandle"
   :cancelHandle="cancelHandle"
 )
+  .form-text
+    | Leave the field blank if you don't want to update.
   m-form-item(
     labelName="Old Passw0rd"
     :value.sync="oldPassword"
+    placeholder="required"
   )
   m-form-item(
     labelName="New Passw0rd"
@@ -39,7 +42,12 @@ export default {
   },
   methods: {
     updateHandle() {
-      this.$store.commit('hidePopupForm')
+      this.$store.dispatch('updateInfo', {
+        oldPassword: this.oldPassword,
+        newPassword: this.newPassword,
+        phone: this.phone,
+        comment: this.comment,
+      })
     },
     cancelHandle() {
       this.$store.commit('hidePopupForm')

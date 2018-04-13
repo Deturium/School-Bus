@@ -4,6 +4,7 @@
   m-input.form-input(
     v-model="transferValue"
     :inputType="inputType"
+    :placeholder="placeholder"
     :type="type"
   )
 </template>
@@ -18,6 +19,7 @@ export default {
     "labelName",
     "value",
     "inputType",
+    "placeholder",
     "type",
   ],
   data: function() {

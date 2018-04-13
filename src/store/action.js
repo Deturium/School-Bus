@@ -1,11 +1,13 @@
 // utility func
 async function zjusecFetch(url, init) {
-  const baseUrl = "/api/v1/"
+  const baseUrl = "/api/v1"
 
-  console.log("Fetch: " + baseUrl + url)
+  const requestURL = `${baseUrl}/${url}/`
+
+  console.log("Fetch: " + requestURL)
 
   try {
-    const response = await fetch(baseUrl + url, init)
+    const response = await fetch(requestURL, init)
     const res = await response.json()
 
     if (res.Succeed) {
@@ -32,18 +34,20 @@ async function GET(url) {
     // headers: new Headers({
     //   'Accept': 'application/json'
     // }),
+    credentials: 'include', // with cookie
   }
 
   return await zjusecFetch(url, init)
 }
 
-async function POST(url, param) {
+async function POST(url, params) {
 
   const init = {
     method: 'POST',
     body: Object.keys(params).map((key) => {
         return encodeURIComponent(key) + '=' + encodeURIComponent(params[key]);
     }).join('&'),
+    credentials: 'include',
   }
 
   return await zjusecFetch(url, init)
@@ -79,6 +83,19 @@ const unLogInErr = {
   survivalTime: 10
 }
 
+const updateInfoErr = {
+  title: 'Update Fail',
+  description: 'Please check and try again.',
+  type: "",
+  survivalTime: 7
+}
+
+const registerErr = {
+  title: 'Register Fail',
+  description: 'Please check and try again.',
+  type: "",
+  survivalTime: 7
+}
 
 export default {
 
@@ -159,6 +176,14 @@ export default {
     if (username && password) {
 
       // TODO: backend check
+      username = 'admin'
+      password = '123'
+
+      const userInfo = await POST('login', {
+        username,
+        password,
+      })
+
       if (1) {
         // log in success
         commit('logIn')
@@ -170,5 +195,48 @@ export default {
     // log in fail
     onError()
     commit('addNotification', logInErr)
+  },
+
+  async register({commit}, {stuNo}) {
+    // frontend check
+    if (stuNo) {
+
+      // TODO: backend check
+      const response = await POST('', {
+        stuNo,
+        password,
+      })
+
+      if (response) {
+        commit('hidePopupForm')
+        return
+      }
+    }
+
+    commit('addNotification', registerErr)
+  },
+
+  async updateInfo({commit}, {oldPassworld, newPassword, phone, comment}) {
+    // frontend check
+    if (oldPassworld) {
+
+      // TODO: backend check
+
+      const response = await POST('login', {
+        old_passworld: oldPassworld,
+        new_password: newPassworld,
+        phone,
+        comment,
+      })
+
+      if (response) {
+        // update success
+        commit('hidePopupForm')
+        return
+      }
+    }
+
+    // update fail
+    commit('addNotification', updateInfoErr)
   },
 }

@@ -1,7 +1,5 @@
 // Little Game Engine
 
-const log = console.log.bind(console)
-
 class Director {
 
     constructor(canvas, resource, option) {
@@ -21,14 +19,10 @@ class Director {
             return
         }
 
-        this.fps   = option.fps || 40
+        this.fps   = option.fps || 60
         this.pause = false
 
-        if (option.enablePause) {
-            this.listener.on('p', () => {
-                this.pause = !this.pause
-            }, true)
-        }
+        //todo: other option
 
     }
 
@@ -57,21 +51,33 @@ class Director {
     }
 
     _loop () {
+        const now = Date.now()
+
         this.listener.handleEvent()
-        if (!this.pause) {
+        if (!this.pause && now - this.timer >= 1000 / this.fps) {
+            this.timer = now
+
             this.update()
             this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
             this.draw()
         }
-        setTimeout(this._loop.bind(this), 1000 / this.fps)
+
+        requestAnimationFrame(this._loop.bind(this))
     }
 
     run() {
+        this.timer = Date.now()
         this.draw()
         // remind to bind 'this'
-        setTimeout(() => {
-            this._loop()
-        }, 1000 / this.fps)
+        requestAnimationFrame(this._loop.bind(this))
+    }
+
+    stop() {
+      this.pause = true
+    }
+
+    resume() {
+      this.pause = false
     }
 
     changeFPS(fps) {
@@ -98,6 +104,7 @@ class Listener {
         this._switchEvent = {}
 
         window.addEventListener('keydown',  (event) => {
+            // console.log(event.key)
             this.downKeys[event.key] = true
         })
 

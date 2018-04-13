@@ -46,10 +46,15 @@ export default {
     // font-family 'Roboto'
     font-size 16px
     font-weight bold
-    color #ddd
+    color #ccc
     background-color transparent
     border none
     outline none
+    text-align center
+
+    &::placeholder
+      color #555
+      font-weight normal
 
   .line
     position absolute

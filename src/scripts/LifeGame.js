@@ -7,20 +7,27 @@ import {
 
 // config color
 
-const borderColor = '#bdbdbd'
-const liveColor = '#424242'
-const deadColor = '#9e9e9e'
+// const borderColor = '#444'
+const borderColor = '#1f1f1f'
+const liveColor = '#444'
+const deadColor = '#1f1f1f'
+
+// config cell
+const cellLength = 40
+const border = 1
+
+import initState from './State404'
 
 
 // LifeGame
 
 class LifeGrid extends Sprite {
 
-    constructor(scene, cellLength, border) {
+    constructor(scene) {
         super(scene)
 
-        this.cellLength = cellLength || 40
-        this.border     = border || 2
+        this.cellLength = cellLength
+        this.border     = border
 
         this.createGrid()
     }
@@ -65,10 +72,32 @@ class LifeGrid extends Sprite {
         //     this.grid[x][y] = true
         // }
 
+        // random alive
+        // for (let x = 1; x < this.rows - 1; x++) {
+        //     for (let y = 1; y < this.cols - 1; y++) {
+        //         this.grid[x][y] = Math.random()*10 < 2 ? true : false
+        //     }
+        // }
+
+        // all dead
+        // for (let x = 1; x < this.rows - 1; x++) {
+        //     for (let y = 1; y < this.cols - 1; y++) {
+        //         this.grid[x][y] = false
+        //     }
+        // }
+
+
+        // init with initState
         for (let x = 1; x < this.rows - 1; x++) {
             for (let y = 1; y < this.cols - 1; y++) {
-                this.grid[x][y] = Math.random()*10 < 2 ? true : false
+                this.grid[x][y] = initState[x][y] ? true : false
             }
+        }
+
+        // add some random cell
+        const randomCnt = 10
+        for (let i = 0; i < randomCnt; i++) {
+            this.grid[~~(Math.random()*this.rows)][~~(Math.random()*this.cols)] = Math.random() < 0.5 ? true : false
         }
     }
 
@@ -136,7 +165,7 @@ class LifeGrid extends Sprite {
         }
 
         //swap
-        [this.grid, this.nextGrid] = [this.nextGrid, this.grid]
+        ;[this.grid, this.nextGrid] = [this.nextGrid, this.grid]
     }
 
     draw() {
@@ -150,7 +179,7 @@ class LifeGrid extends Sprite {
 
 class LifeGameScene extends Scene {
 
-    constructor(driector) {
+    constructor(driector, initState) {
         super(driector)
 
         this.createScene()
@@ -158,48 +187,77 @@ class LifeGameScene extends Scene {
     }
 
     createScene() {
-        this.lifeGrid = new LifeGrid(this)
-
+        this.lifeGrid = new LifeGrid(this, initState)
         this.addSprite(this.lifeGrid)
     }
 
     registerAction() {
-        // this.d.canvas.addEventListener('click', () => {
-            // const lifeGrid   = this.lifeGrid
+        this.d.canvas.addEventListener('click', () => {
+            const lifeGrid   = this.lifeGrid
 
-            // const mouse      = this.d.listener.mouse
-            // const cellLength = lifeGrid.cellLength
+            const mouse      = this.d.listener.mouse
+            const cellLength = lifeGrid.cellLength
 
-            // const i = Math.floor(mouse.y / cellLength)
-            // const j = Math.floor(mouse.x / cellLength)
-            // lifeGrid.grid[i][j] = !lifeGrid.grid[i][j]
+            const i = Math.floor(mouse.y / cellLength)
+            const j = Math.floor(mouse.x / cellLength)
+            lifeGrid.grid[i][j] = !lifeGrid.grid[i][j]
 
-            // this.d.draw()
-        // })
-
-        let timer = null
-
-        window.addEventListener('resize', () => {
-            if (timer)
-                clearTimeout(timer)
-
-            timer = setTimeout(() => {
-                this.lifeGrid.createGrid()
-                this.lifeGrid.draw()
-            }, 1500)
+            this.d.draw()
         })
+
+        // export grid state
+        this.d.canvas.addEventListener('contextmenu', (e) => {
+            e.preventDefault()
+
+            const lifeGrid = this.lifeGrid
+            const logGrid = new Array(this.rows)
+
+            for (let i = 0 ; i < lifeGrid.rows; i++) {
+                logGrid[i] = new Array(lifeGrid.cols)
+                for(let j = 0; j < lifeGrid.cols; j++) {
+                    logGrid[i][j] = lifeGrid.grid[i][j] ? 1 : 0
+                }
+            }
+
+            console.table(logGrid)
+        })
+
+        // game pause
+        this.d.listener.on('p', () => {
+            const driector = this.d
+
+            if (driector.pause) {
+              driector.resume()
+            } else {
+              driector.stop()
+            }
+        }, true)
+
+
+        // let timer = null
+
+        // window.addEventListener('resize', () => {
+        //     if (timer)
+        //         clearTimeout(timer)
+
+        //     timer = setTimeout(() => {
+        //         this.lifeGrid.createGrid()
+        //         this.lifeGrid.draw()
+        //     }, 1500)
+        // })
     }
 }
 
 
-function __main(canvas) {
-    const D = new Director(canvas, null, {
-      fps: 1,
-      enablePause: false
-    });
+function _main(canvas) {
+    const driector = new Director(canvas, null, {
+        fps: 1,
+    })
 
-    const scene = new LifeGameScene(D);
-    D.setScene(scene).run();
+    const scene = new LifeGameScene(driector, initState)
+    driector.setScene(scene)
+
+    return driector
 }
 
-export default __main
+export default _main

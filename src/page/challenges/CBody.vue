@@ -222,6 +222,7 @@ export default {
 
   .ans-input
     width 500px
+    text-align center
 
   .ans-button
     margin-left 20px

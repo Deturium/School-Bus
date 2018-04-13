@@ -12,7 +12,7 @@ const router = new Router()
 // api/v1/announcement
 const announcement = require('./mock/announcement.js')
 
-router.get('/api/v1/announcement', (ctx, next) => {
+router.get('/api/v1/announcement/*', (ctx, next) => {
   ctx.body = announcement
 })
 
@@ -20,7 +20,7 @@ router.get('/api/v1/announcement', (ctx, next) => {
 // api/v1/ranks
 const ranks = require('./mock/ranks.js')
 
-router.get('/api/v1/ranks', (ctx, next) => {
+router.get('/api/v1/ranks/*', (ctx, next) => {
   ctx.body = ranks
 })
 

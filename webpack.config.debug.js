@@ -14,8 +14,9 @@ module.exports = {
 
   output: {
     path: path.resolve(__dirname, './dist'),
+    publicPath: '/',
     filename: '[name].[hash:8].js',
-    publicPath: '/'
+    chunkFilename: 'chunks/[name].[hash:8].js',
   },
 
   module: {
@@ -73,9 +74,9 @@ module.exports = {
       "/api": {
         target: "https://www.zjusec.com",
         changeOrigin: true,
-        // pathRewrite: {
-        //   '^/api/v1': ''
-        // },
+        pathRewrite: {
+          '^/api/v1': ''
+        },
       },
     }
   },

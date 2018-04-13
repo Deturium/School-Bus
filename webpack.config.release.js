@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+// const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
 
@@ -16,8 +16,9 @@ module.exports = {
 
   output: {
     path: path.resolve(__dirname, './dist'),
+    publicPath: '/',
     filename: '[name].[hash:8].js',
-    publicPath: '/'
+    chunkFilename: 'chunks/[name].[hash:8].js',
   },
 
   module: {
@@ -26,7 +27,7 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
-          extractCSS: true
+          // extractCSS: true
         }
       },
       {
@@ -56,7 +57,7 @@ module.exports = {
       },
     }),
 
-    new ExtractTextPlugin('[name].[hash:8].css'),
+    // new ExtractTextPlugin('[name].[hash:8].css'),
   ],
 
   resolve: {

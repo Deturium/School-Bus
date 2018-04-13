@@ -76,6 +76,11 @@ $input-width = 260px
       align-items flex-start
       margin 8px 0
 
+    .form-text
+      margin-bottom 25px
+      font-size 12px
+      color #999
+
     .form-label
       font-size 14px
       color $font-color

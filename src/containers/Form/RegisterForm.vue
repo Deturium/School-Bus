@@ -3,15 +3,14 @@ m-form(
   formTitle="Register"
   comfirmText='Register'
   :comfirmHandle="registerHandle"
+  cancelText='Close'
   :cancelHandle="cancelHandle"
 )
+  .form-text
+    | This platform is only for ZJUer, so you must use zju mail to register.
   m-form-item(
     labelName="Stu. No"
     :value.sync="stuNo"
-  )
-  m-form-item(
-    labelName="Passw0rd"
-    :value.sync="password"
   )
 
 </template>
@@ -25,12 +24,13 @@ export default {
   data: function() {
     return {
       stuNo: "",
-      password: ""
     }
   },
   methods: {
     registerHandle() {
-      this.$store.commit('hidePopupForm')
+      this.$store.dispatch('register', {
+        stuNo: this.stuNo
+      })
     },
     cancelHandle() {
       this.$store.commit('hidePopupForm')

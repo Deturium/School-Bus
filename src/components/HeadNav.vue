@@ -1,5 +1,5 @@
 <template lang="pug">
-header.head
+header.head-nav
   //- for UserInfo
   slot
 
@@ -9,8 +9,7 @@ header.head
     router-link.item(tag="li" to="/scoreboard") scoreboard
     router-link.item(tag="li" to="/about") about & news
     router-link.item(tag="li" to="/award") award
-
-  img.lifegame(src="../assets/lifegame.png")
+  img.pic(src="../assets/lifegame.png")
 </template>
 
 <script>
@@ -24,22 +23,22 @@ export default {
 $text-color = #8e8e8e
 $text-color-hover = #ffffff
 
-.head
+.head-nav
   position relative
   width 100%
   margin 30px auto
   text-align center
 
-  .logo
+  >.logo
     width 100px
     margin 20px
 
-  .nav
+  >.nav
+    display flex
+    justify-content space-between
     width 600px
     margin 20px auto
     padding 0
-    display flex
-    justify-content space-between
 
   .item
     padding 3px
@@ -47,7 +46,6 @@ $text-color-hover = #ffffff
     text-transform uppercase
     color $text-color
     cursor pointer
-
     &:hover
       color $text-color-hover
 
@@ -56,6 +54,6 @@ $text-color-hover = #ffffff
     color $text-color-hover
     border-bottom 1px solid $text-color-hover
 
-  .lifegame
+  >.pic
     width 100%
 </style>

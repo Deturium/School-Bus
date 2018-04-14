@@ -1,10 +1,10 @@
 <template lang="pug">
-.anno
-  .anno-meta(@click="toggle")
-    time.anno-time Update {{ time }}
-    h4.anno-tit {{ title }}
+.anno-cp
+  .annometa(@click="toggle")
+    time.annotime Update {{ time }}
+    h4.annotit {{ title }}
 
-  p.anno-body(
+  p.annobody(
     v-if="isShow"
     v-html="body"
   )
@@ -34,34 +34,32 @@ export default {
 </script>
 
 <style lang="stylus">
-.anno
+.anno-cp
   margin 20px auto
   text-align left
 
-  .anno-meta
+  >.annometa
     display flex
     justify-content flex-start
     align-items center
-
     margin-top 50px
     color #ddd
-
     &:hover
       color #fff
 
-  .anno-time,
-  .anno-tit
-    margin 0
-    font-size 18px
-    font-weight bold
-    cursor pointer
+    >.annotit,
+    >.annotime
+      margin 0
+      font-size 18px
+      font-weight bold
+      cursor pointer
 
-  .anno-time
-    flex 0 0 auto
-    margin-left 4em
-    margin-right 1.5em
+    >.annotime
+      flex 0 0 auto
+      margin-left 4em
+      margin-right 1.5em
 
-  .anno-body
+  >.annobody
     // display flex
     // flex-direction column
     // align-items center

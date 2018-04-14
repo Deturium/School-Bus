@@ -49,12 +49,8 @@ class LifeGrid extends Sprite {
     this.nextGrid = new Array(this.rows)
 
     for (let i = 0; i < this.rows; i++) {
-      this.grid[i] = new Array(this.cols)
-      this.nextGrid[i] = new Array(this.cols)
-
-      for (let j = 0; j < this.cols; j++) {
-        this.grid[i][j] = this.nextGrid[i][j] = false
-      }
+      this.grid[i] = new Array(this.cols).fill(false)
+      this.nextGrid[i] = new Array(this.cols).fill(false)
     }
 
     this._init()
@@ -79,14 +75,6 @@ class LifeGrid extends Sprite {
     //     }
     // }
 
-    // all dead
-    // for (let x = 1; x < this.rows - 1; x++) {
-    //     for (let y = 1; y < this.cols - 1; y++) {
-    //         this.grid[x][y] = false
-    //     }
-    // }
-
-
     // init with initState
     for (let x = 1; x < this.rows - 1; x++) {
       for (let y = 1; y < this.cols - 1; y++) {
@@ -97,7 +85,7 @@ class LifeGrid extends Sprite {
     // add some random cell
     const randomCnt = 10
     for (let i = 0; i < randomCnt; i++) {
-      this.grid[~~(Math.random() * this.rows)][~~(Math.random() * this.cols)] = Math.random() < 0.5 ? true : false
+      this.grid[~~(Math.random()*this.rows)][~~(Math.random()*this.cols)] = Math.random() < 0.5 ? true : false
     }
   }
 
@@ -106,7 +94,7 @@ class LifeGrid extends Sprite {
         1. 如果一个生命周围的生命少于2个，它在回合结束时死亡
         2. 如果一个生命周围的生命超过3个，它在回合结束时死亡
         3. 如果一个死格子周围有3个生命，它在回合结束时获得生命
-        2. 如果一个生命周围有2或3个生命，它在回合结束时保持原样
+        4. 如果一个生命周围有2或3个生命，它在回合结束时保持原样
       */
 
     const grid = this.grid

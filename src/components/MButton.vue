@@ -1,6 +1,6 @@
 <template lang="pug">
 button.m-button(
-  :class="theme"
+  :class="theme && `-${theme}`"
   @click.prevent="clickHandle"
 ) {{ text }}
 </template>
@@ -18,9 +18,6 @@ export default {
 
 <style lang="stylus" scoped>
 .m-button
-  // display inline-flex
-  // justify-content center
-  // align-items center
   box-sizing border-box
   width 90px
   height 30px
@@ -42,17 +39,17 @@ export default {
   &::-moz-focus-inner
     border none
 
-.success
-  color #ddd
-  background-color #558b2f
-  &:hover
+  &.-success
+    color #ddd
     background-color #558b2f
+    &:hover
+      background-color #558b2f
 
-.error
-  color #ddd
-  background-color #bf3636
-  &:hover
-    background-color #d62b2b
+  &.-error
+    color #ddd
+    background-color #bf3636
+    &:hover
+      background-color #d62b2b
 
 </style>
 

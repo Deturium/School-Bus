@@ -1,19 +1,17 @@
 <template lang="pug">
-.form
-  .form-tit {{ formTitle }}
-  //- .lifegame
-  //-   img(src="../assets/lifegame.png")
+.m-form
+  .formtit {{ formTitle }}
 
-  //- slot for form-item
-  .form-items
+  .formitems
+    //- slot for form-item
     slot
 
-    .form-buttons
-      m-button.comfirm(
+    .formbuttons
+      m-button.-comfirm(
         :text="comfirmText ? comfirmText : 'Comfirm'"
         :clickHandle="comfirmHandle"
       )
-      m-button.cancel(
+      m-button.-cancel(
         :text="cancelText ? cancelText : 'Cancel'"
         :clickHandle="cancelHandle"
       )
@@ -46,57 +44,50 @@ $font-color = #bbb
 $label-width = 120px
 $input-width = 260px
 
-.form
+.m-form
   margin 30px auto
   // font-style italic
 
-  .form-tit
+  >.formtit
     font-size 30px
     font-weight bold
     text-align center
     color $font-color
 
-  // .lifegame
-  //   width 580px
-  //   overflow-x hidden
-  //   margin 20px 0
-  //   >img
-  //     height 50px
-
-  .form-items
+  >.formitems
     display flex
     flex-direction column
     align-items center
     margin 0 auto
     margin-top 25px
 
-    .form-item
-      display flex
-      flex-direction column
-      align-items flex-start
-      margin 8px 0
-
-    .form-text
+    .formtext
       margin-bottom 25px
       font-size 12px
       color #999
 
-    .form-label
-      font-size 14px
-      color $font-color
-
-    .form-input
-      width $input-width
-
-    .form-buttons
+    >.formbuttons
       width $input-width
       margin-top 30px
 
-    .comfirm,
-    .cancel
+    .-comfirm
       padding 0
 
-    .cancel
+    .-cancel
+      padding 0
       margin-left $input-width - 90px * 2
+
+.form-item
+  display flex
+  flex-direction column
+  align-items flex-start
+  margin 8px 0
+
+  >.formlabel
+    font-size 14px
+    color $font-color
+
+  >.forminput
+    width $input-width
 
 </style>

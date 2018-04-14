@@ -1,8 +1,8 @@
 <template lang="pug">
-footer.foot
-  img.lifegame(src="../assets/lifegame.png")
+footer.foot-nav
+  img.pic(src="../assets/lifegame.png")
   img.logo(src="../assets/AAA_logo.png")
-  p.foot-text Copyright &copy; 2018 ZJU AAA School-Bus  -  ALL RIGHTS RESERVED.
+  p.foottext Copyright &copy; 2018 ZJU AAA School-Bus  -  ALL RIGHTS RESERVED.
 </template>
 
 <script>
@@ -13,22 +13,22 @@ export default {
 
 <style lang="stylus">
 
-.foot
+.foot-nav
   width 100%
   margin 50px auto
   margin-bottom 0
   text-align center
   color #eee
 
-  .lifegame
+  >.pic
     width 100%
     margin 20px 0
 
-  .logo
+  >.logo
     width 100px
     margin 10px
 
-  .foot-text
+  >.foottext
     font-size 12px
     font-style italic
 </style>

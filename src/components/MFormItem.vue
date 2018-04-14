@@ -1,7 +1,7 @@
 <template lang="pug">
 .form-item
-  label.form-label {{ labelName }}
-  m-input.form-input(
+  label.formlabel {{ labelName }}
+  m-input.forminput(
     v-model="transferValue"
     :type="type"
     :placeholder="placeholder"

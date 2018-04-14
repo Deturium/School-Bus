@@ -32,12 +32,12 @@ export default {
 .rank-tr
   text-align center
 
-  > td
+  >td
     padding 15px
     font-weight bold
     color #ccc
 
-  .comment
+  >.comment
     font-weight normal
 
   &:hover

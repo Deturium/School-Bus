@@ -1,13 +1,11 @@
 <template lang="pug">
-transition(
-  name="fade"
-)
+transition(name="fade")
   .notification-item(
     v-if="isSurvival"
   )
-    h4(:style="{color: typeColor}") {{ title }}
-    p {{ description }}
-    svg.icon.close(
+    h4.title(:style="{color: typeColor}") {{ title }}
+    p.description {{ description }}
+    svg.icon.closeicon(
       aria-hidden="true"
       @click="close"
     )
@@ -62,18 +60,19 @@ export default {
   background-color rgba(44, 44, 44, .9)
   border-radius 5px
 
-  h4, p
+  >.title,
+  >.description
     margin 20px 30px
 
-  h4
+  >.title
     font-size 16px
     font-weight bold
 
-  p
+  >.description
     font-size 14px
     color #bbb
 
-  .close
+  >.closeicon
     position absolute
     top 20px
     right 20px

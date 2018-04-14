@@ -1,18 +1,17 @@
 <template lang="pug">
-table.develope-team
-  tbody
-    tr
-      td.duty 设计
-      td Clapeysron
-    tr
-      td.duty 前端
-      td Hydrogen
-    tr
-      td.duty 后端
-      td Himyth
-    tr
-      td.duty 运维
-      td ChenYuan
+table.develope-team: tbody
+  tr
+    td.duty 设计
+    td Clapeysron
+  tr
+    td.duty 前端
+    td Hydrogen
+  tr
+    td.duty 后端
+    td Himyth
+  tr
+    td.duty 运维
+    td ChenYuan
 </template>
 
 <script>

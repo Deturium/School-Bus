@@ -1,6 +1,6 @@
 <template lang="pug">
-.award
-  h2.tit - NHD 魔力值兑换 -
+.award-cp
+  h2.title - NHD 魔力值兑换 -
   h4.subtit 兑换规则
   ol.rules
     li 签到不消耗积分，但需要积分满足一定条件，需要的积分由本公式给出：
@@ -14,7 +14,7 @@
       //- | 您今天已经签到，请明天再来~
       | 暂时还没写好哦~
 
-  m-button.exchange(
+  m-button(
     text="兑换"
     :clickHandle="exchange"
   )
@@ -44,20 +44,20 @@ export default {
 <style lang="stylus">
 @import "../../stylus/mixins"
 
-.award
+.award-cp
   width 750px
   margin 0 auto
   text-align center
 
-  .tit
+  >.title
     title-mixins()
     margin-top 70px
 
-  .subtit
+  >.subtit
     subtit-mixins()
     margin-top 50px
 
-  .rules
+  >.rules
     margin-left 3em
     margin-bottom 30px
     text-align left
@@ -73,7 +73,7 @@ export default {
     code
       font-family "Consolas"
 
-  .prompt
+  >.prompt
     margin 30px
     font-size 16px
     font-weight bold

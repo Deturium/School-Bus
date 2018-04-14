@@ -5,7 +5,7 @@ m-form(
   :comfirmHandle="updateHandle"
   :cancelHandle="cancelHandle"
 )
-  .form-text
+  .formtext
     | Leave the field blank if you don't want to update.
   m-form-item(
     labelName="Old Passw0rd"

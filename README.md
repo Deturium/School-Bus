@@ -31,7 +31,7 @@
 
 1. pages
 
-- [x] challengs
+- [x] challenges
 - [x] scoreboard
 - [x] about
 - [x] award
@@ -40,7 +40,7 @@
 
 2. css
 
-- [x] styus mixins
+- [x] stylus mixins
 - [ ] css animition
 
 

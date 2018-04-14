@@ -9,22 +9,22 @@
     | &nbsp;/&nbsp;
     span(@click="register") Register
 
-  .wrapper
+  .avatarwrapper
     img.avatar(src="../assets/huahuo.png")
 
     ul.list(v-if="isLogIn")
-      li.list-item(
+      li.listitem(
         @click="updateInfo"
       ) Update Info
-      li.list-item(
+      li.listitem(
         @click="logOut"
       ) Log Out
 
     ul.list(v-else)
-      li.list-item(
+      li.listitem(
         @click="logIn"
       ) Log In
-      li.list-item(
+      li.listitem(
         @click="register"
       ) Register
 </template>
@@ -72,7 +72,7 @@ $list-bg-color = #111
   align-items center
   color white
 
-  .unlogin
+  >.unlogin
     font-size 16px
     font-weight bold
     >span
@@ -80,20 +80,20 @@ $list-bg-color = #111
       &:hover
         color #e1c79b
 
-  .login
+  >.login
     >p // name, rank, score
       margin 0
       text-align right
       font-size $font-size-small
       color $font-color
 
-    .name
+    >.name
       font-size $font-size-big
       font-weight bold
       color $font-color-light
 
-  .wrapper
-    .avatar
+  >.avatarwrapper
+    >.avatar
       box-sizing border-box
       width $avatar-width
       height $avatar-width
@@ -101,7 +101,7 @@ $list-bg-color = #111
       padding 10px
       border-radius 50%
 
-    .list
+    >.list
       position absolute
       top $avatar-width + 5
       right ($avatar-width / 2)
@@ -128,7 +128,7 @@ $list-bg-color = #111
         border-right $triangle-width solid transparent
         border-bottom $triangle-width solid $list-bg-color
 
-    .list-item
+    .listitem
       margin 8px
       list-style none
       font-size $font-size-small
@@ -139,9 +139,21 @@ $list-bg-color = #111
       &:hover
         color $font-color-light
 
-    &:hover .list
+    &:hover>.list
       opacity 1
 
+.form-item
+  display flex
+  flex-direction column
+  align-items flex-start
+  margin 8px 0
+
+  >.formlabel
+    font-size 14px
+    color $font-color
+
+  >.forminput
+    width $input-width
 
 </style>
 

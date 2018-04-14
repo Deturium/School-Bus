@@ -1,14 +1,14 @@
 <template lang="pug">
 table.rank-table
-  caption.table-tit - Rank Table -
+  caption.title - Rank Table -
   thead
-    tr.rank-head
+    tr.head
       th RANK
       th USER
       th POINTS
       th COMMENT
     //- used as margin-bottom
-    tr: th.margin-tr
+    tr: th.margintr
   tbody
     rank-tr(
       v-for="(r, i) in ranks"
@@ -45,19 +45,18 @@ $th-color = #8e8e8e
   margin 50px auto
   border-collapse collapse
 
-  .table-tit
+  .title
     title-mixins()
     margin 0
     margin-bottom 40px
 
-  .rank-head
+  .head
     border-bottom 1px solid $th-color
+    >th
+      padding-bottom 5px
+      color $th-color
 
-  th
-    padding-bottom 5px
-    color $th-color
-
-  .margin-tr
+  .margintr
     height 20px
 
 </style>

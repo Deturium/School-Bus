@@ -5,7 +5,7 @@ div.app-root
   popup-form
   head-nav
     user-info
-  .main-container
+  .maincontainer
     router-view
   foot-nav
 </template>
@@ -14,9 +14,9 @@ div.app-root
 import Icons from '@/Icons'
 import HeadNav from '@/HeadNav'
 import FootNav from '@/FootNav'
-import Notification from '@@/Notification'
-import PopupForm from '@@/PopupForm'
 import UserInfo from '@@/UserInfo'
+import PopupForm from '@@/PopupForm'
+import Notification from '@@/Notification'
 
 export default {
 	name: 'app',
@@ -46,7 +46,7 @@ body
   width $max-width
   margin 0 auto
 
-.main-container
-  min-height 80vh
-  margin 0 auto
+  >.maincontainer
+    min-height 80vh
+    margin 0 auto
 </style>

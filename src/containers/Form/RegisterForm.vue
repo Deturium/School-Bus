@@ -6,7 +6,7 @@ m-form(
   cancelText='Close'
   :cancelHandle="cancelHandle"
 )
-  .form-text
+  .formtext
     | This platform is only for ZJUer, so you must use zju mail to register.
   m-form-item(
     labelName="Stu. No"

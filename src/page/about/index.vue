@@ -1,6 +1,6 @@
 <template lang="pug">
-.about
-  h2.tit - News -
+.about-cp
+  h2.title - News -
   announcement(
     v-for="(anno, i) in announcements"
     v-if="i < 3"
@@ -25,8 +25,8 @@
   ) more news
 
   div(v-once)
-  h2.tit - About AAA -
-  img.team-icon(src="../../assets/AAA_logo_with_name.png")
+  h2.title - About AAA -
+  img.teamicon(src="../../assets/AAA_logo_with_name.png")
 
   p AAA (Azure Assassin Alliance) 战队是由浙江大学信息安全爱好者自发组织，
     | 浙江大学计算机学院支持建立的团队，队伍中每一位成员都对信息安全有无与伦比的热爱，
@@ -38,7 +38,7 @@
     | 希望有越来越多志同道合的朋友加入，愿 AAA 之火永不熄灭。
 
 
-  h2.tit - About 本平台 -
+  h2.title - About 本平台 -
   p 'School-Bus' 是一个面向所有 ZJU 学生开放的 CTF 练习平台，
     | 同学们能够在这个平台上学习和训练自己各方面的 Hacking 技能。
     | 本平台将涵盖 Pwnable, Reverse, Web, Crypto, Misc, Program 等全类型的题目，
@@ -48,7 +48,7 @@
     | 一串 'AAA{*******}' 格式的字符串，将这个字符串提交到比赛平台即可获得相应的分数
 
 
-  h2.tit - Rules & Tips -
+  h2.title - Rules & Tips -
   ol.rules
     li 禁止一切形式的拒绝服务攻击。（ 如果需要 Bruteforce 我们会在题目描述中单独说明
     li 无特殊说明 flag 的格式均为 AAA{**************}
@@ -60,12 +60,12 @@
       | Google is the best teacher in the world.
 
 
-  h2.tit - Contact -
+  h2.title - Contact -
   h4.subtit EMAIL
-    p.center aaa.zju@zju.gmail
+    p.-center aaa.zju@zju.gmail
 
   h4.subtit ZJU Security QQ群
-    p.center 完成任意一道 'Welcome' 类的题目<br>群号就在 flag 中
+    p.-center 完成任意一道 'Welcome' 类的题目<br>群号就在 flag 中
 
   h4.subtit Develop Team
   develope-team
@@ -108,21 +108,21 @@ export default {
 
 $max-width = 750px
 
-.about
+.about-cp
   position relative
   width $max-width
   margin 0 auto
 
-  .team-icon
+  >.teamicon
     display block
     margin 40px auto
     width 250px
 
-  .tit
+  >.title
     title-mixins()
     margin-top 70px
 
-  .more
+  >.more
     margin 40px auto
     width 100px
     height 30px
@@ -144,7 +144,7 @@ $max-width = 750px
     text-indent 2em
     text-align left
 
-  .rules
+  >.rules
     margin-left 2em
 
     >li
@@ -157,10 +157,10 @@ $max-width = 750px
     font-weight bold
     font-style normal
 
-  .subtit
+  >.subtit
     subtit-mixins()
 
-  .center
+  .-center
       margin-top 5px
       text-align center
       text-indent 0

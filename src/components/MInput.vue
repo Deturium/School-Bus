@@ -1,16 +1,16 @@
 <template lang="pug">
 .m-input
-  input(
+  input.inp(
     :value="value"
     :type="type"
     :placeholder="placeholder"
     @input="inputHandle($event.target.value)"
   )
   hr.line(
-    :class="theme"
+    :class="theme && `-${theme}`"
   )
-  hr.line.focus(
-    :class="theme"
+  hr.line.secondline(
+    :class="theme && `-${theme}`"
   )
 </template>
 
@@ -36,7 +36,7 @@ export default {
   display inline-block
   position relative
 
-  >input
+  >.inp
     display inline-block
     box-sizing border-box
     width 100%
@@ -57,7 +57,7 @@ export default {
       color #555
       font-weight normal
 
-  .line
+  >.line
     position absolute
     left 0
     right 0
@@ -67,22 +67,22 @@ export default {
     border none
     background-color #646464
 
-  .focus
+    &.-success
+      background-color #558b2f
+
+    &.-error
+      background-color #bf3636
+
+  >.secondline
     height 2px
     transform scaleX(0)
     background-color #979797
 
-  >input:focus+.line
+  >.inp:focus+.line
     visibility hidden
 
-  >input:focus~.focus
+  >.inp:focus~.secondline
     transform scaleX(1)
     transition transform .45s cubic-bezier(.23, 1, .32, 1)
-
-  .success
-    background-color #558b2f
-
-  .error
-    background-color #bf3636
 </style>
 

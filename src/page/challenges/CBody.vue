@@ -2,8 +2,9 @@
 .c-body(
   :style="{order: order}"
 )
-  h1.meta {{ challenge.title }}
-  .close-box(
+  h1.title {{ challenge.title }}
+
+  .closebox(
     @click="closeHandle(challenge.id)"
   )
     svg.icon(aria-hidden="true")
@@ -22,7 +23,7 @@
   h2.subtit.hint Hint&nbsp;&nbsp;
     svg.icon(
       aria-hidden="true"
-      :class="{rotate: isShowHint }"
+      :class="{'-rotate': isShowHint }"
       @click="toggleHint()"
     )
       use(xlink:href="#icon-more")
@@ -32,12 +33,12 @@
 
   h2.subtit Your Answer
   div.content
-    m-input.ans-input(
+    m-input.flaginput(
       v-model="flag"
       :theme="theme"
       :placeholder="placeholder"
     )
-    m-button.ans-button(
+    m-button.submitbutton(
       :text="buttonText"
       :theme="theme"
       :clickHandle="submitHandle"
@@ -46,7 +47,7 @@
   h2.subtit Completed
   div.content
     p
-      span.name(
+      span.pwnername(
         v-for="(pwner, i) in challenge.early_pwner"
         v-if="i < 10"
         :key="i"
@@ -132,7 +133,7 @@ export default {
   background-color #181818
   color #eee
 
-  .meta
+  >.title
     margin 0 auto
     text-align center
     font-size 36px
@@ -140,7 +141,7 @@ export default {
     font-style italic
     color #E1C79B
 
-  .close-box
+  >.closebox
     position absolute
     top 0
     right 0
@@ -153,16 +154,16 @@ export default {
     color #ccc
     cursor pointer
 
-    .icon
+    >.icon
       visibility hidden
 
-    &:hover .icon
+    &:hover>.icon
       visibility visible
       transform rotate(540deg)
       transition-duration 1.5s
       transition-timing-function linear
 
-  .subtit
+  >.subtit
     display inline-block
     margin 0 110px
     margin-top 30px
@@ -171,61 +172,61 @@ export default {
     // font-style italic
     text-align left
 
-  .content
-    box-sizing border-box
-    width 666px
-    margin 10px auto 15px auto
-    padding-left 50px
-    // padding-right 40px
-    // border 1px solid #fff
-    font-size 14px
-
-  p
-    margin .8em 0
-    line-height 1.7
-    // letter-spacing 1px
-    white-space pre-wrap
-    // word-wrap wrap
-    overflow hidden
-    text-overflow ellipsis
-
-  .links
-    margin-top 25px
-    margin-bottom -20px
-
-  .link
-    display inline-block
-    width 70px
-    height 26px
-    line-height 26px
-    margin-right 10px
-    text-align center
-    color #999
-    background-color #222
-    border-radius 2px
-    text-decoration none
-    &:hover
-      text-decoration underline
-
-  .rotate
-    transform rotate(90deg)
-
-  .hint .icon
+  >.hint .icon
     cursor pointer
     &:hover
       >svg
         visibility visible
 
-  .ans-input
-    width 500px
-    text-align center
+    &.-rotate
+      transform rotate(90deg)
 
-  .ans-button
-    margin-left 20px
 
-  .name
-    margin-right 16px
-    // font-weight bold
-    // font-style italic
-    color #aaa
+  >.content
+    box-sizing border-box
+    width 666px
+    margin 10px auto 15px auto
+    padding-left 50px
+    // border 1px solid #fff
+    font-size 14px
+
+    >p
+      margin .8em 0
+      line-height 1.7
+      // letter-spacing 1px
+      white-space pre-wrap
+      // word-wrap wrap
+      overflow hidden
+      text-overflow ellipsis
+
+    >.links
+      margin-top 25px
+      margin-bottom -20px
+
+    .link
+      display inline-block
+      width 70px
+      height 26px
+      line-height 26px
+      margin-right 10px
+      text-align center
+      color #999
+      background-color #222
+      border-radius 2px
+      text-decoration none
+      &:hover
+        text-decoration underline
+
+    >.flaginput
+      width 500px
+      text-align center
+
+    >.submitbutton
+      margin-left 20px
+
+    .pwnername
+      margin-right 16px
+      // font-weight bold
+      // font-style italic
+      color #aaa
 </style>

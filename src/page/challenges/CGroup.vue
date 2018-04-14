@@ -1,9 +1,7 @@
 <template lang="pug">
-.c-group(
-  v-show="filterChallenges.length"
-)
-  h2.tit - {{ category }} -
-  .flex
+.c-group(v-show="filterChallenges.length")
+  h2.title - {{ category }} -
+  .flexwrapper
     c-box(
       v-for="(c, i) in filterChallenges"
       :key="c.id"
@@ -11,16 +9,13 @@
       :challenge="c"
       :clickHandle="clickHandle"
     )
-    transition(
-      name="fade"
-    )
-      keep-alive
-        c-body(
-          v-if="isShow && checkFilterType(challenge)"
-          :order="bodyOrder"
-          :challenge="challenge"
-          :closeHandle="clickHandle"
-        )
+    transition(name="fade"): keep-alive
+      c-body(
+        v-if="isShow && checkFilterType(challenge)"
+        :order="bodyOrder"
+        :challenge="challenge"
+        :closeHandle="clickHandle"
+      )
 </template>
 
 <script>
@@ -95,15 +90,15 @@ export default {
 @import "../../stylus/mixins"
 
 $container-width = 960px // 240 * 4
-.c-group
 
+.c-group
   width $container-width
   margin 0 auto
 
-  .tit
+  >.title
     title-mixins()
 
-  .flex
+  >.flexwrapper
     display flex
     flex-wrap wrap
 

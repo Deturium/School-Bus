@@ -2,7 +2,7 @@
 ul.type-bar
   li.item(
     v-for="t in types"
-    :class="{ chose: t == selected }"
+    :class="{ '-chose': t == selected }"
     @click="typeChangeHandle(t)"
   )
     | {{ t }}
@@ -26,21 +26,20 @@ $text-color = #8e8e8e
 $text-color-hover = #ffffff
 
 .type-bar
-  padding 0
   display flex
   justify-content center
+  padding 0
 
-  .item
+  >.item
     margin 0 25px
-    list-style none
-    text-transform uppercase
-    cursor pointer
     color $text-color
-
+    list-style none
+    // text-transform uppercase
+    cursor pointer
     &:hover
       color $text-color-hover
 
-  .chose
+  >.-chose
     font-weight bold
     color $text-color-hover
     border-bottom 1px solid $text-color-hover

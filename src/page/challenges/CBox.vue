@@ -4,7 +4,7 @@
   ref="theBox"
 )
   p.title(
-    :class="{solved: challenge.is_solved, small: isTitleTooLong}"
+    :class="{'-solved': challenge.is_solved, '-small': isTitleTooLong}"
     @click="clickHandle(challenge.id, order)"
   ) {{ challenge.title }}
 
@@ -53,23 +53,22 @@ export default {
 $box-width = 200px
 
 .c-box
-  width $box-width
-  height $box-width
-  box-sizing border-box
-  margin 20px
-  padding 20px
-  padding-bottom 0
-  background-color #181818
-
   display flex
   flex-direction column
   align-items center
 
-  >p
-    font-style italic
-    font-weight bold
+  box-sizing border-box
+  width $box-width
+  height $box-width
+  margin 20px
+  padding 20px
+  padding-bottom 0
 
-  .title
+  font-style italic
+  font-weight bold
+  background-color #181818
+
+  >.title
     flex-grow 2
     display flex
     align-items center
@@ -79,22 +78,21 @@ $box-width = 200px
     word-wrap break-word
     line-height 1.1
     cursor pointer
-
     &:hover
       color #E1C79B
 
-  .solved
-    color #E1C79B
+    &.-solved
+      color #E1C79B
 
-  .small
-    font-size 24px
+    &.-small
+      font-size 24px
 
-  .type
+  >.type
     margin 0px
     font-size 20px
     color #ccc
 
-  .points
+  >.points
     margin 5px
     font-size 12px
     font-weight normal

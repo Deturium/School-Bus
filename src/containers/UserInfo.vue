@@ -40,16 +40,16 @@ export default {
   ]),
   methods: {
     logIn() {
-      this.$store.commit('showPopupForm', 'LogIn')
+      this.$store.commit('SHOW_POPUPFORM', 'LogIn')
     },
     logOut() {
-      this.$store.commit('logOut')
+      this.$store.commit('LOG_OUT')
     },
     register() {
-      this.$store.commit('showPopupForm', 'Register')
+      this.$store.commit('SHOW_POPUPFORM', 'Register')
     },
     updateInfo() {
-      this.$store.commit('showPopupForm', 'UpdateInfo')
+      this.$store.commit('SHOW_POPUPFORM', 'UpdateInfo')
     }
   }
 }

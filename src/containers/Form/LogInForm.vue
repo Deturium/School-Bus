@@ -38,14 +38,12 @@ export default {
       this.$store.dispatch('logIn', {
         username: this.username,
         password: this.password,
-        onError: this.onError.bind(this)
+      }).catch(() => {
+        this.type = 'error'
       })
     },
-    onError() {
-      this.type = 'error'
-    },
     cancelHandle() {
-      this.$store.commit('hidePopupForm')
+      this.$store.commit('HIDE_POPUPFORM')
     },
   },
   components: {

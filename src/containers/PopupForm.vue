@@ -24,7 +24,7 @@ export default {
   }),
   methods: {
     blurHandle() {
-      this.$store.commit('hidePopupForm')
+      this.$store.commit('HIDE_POPUPFORM')
     }
   },
   components: {

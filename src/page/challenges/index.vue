@@ -36,7 +36,9 @@ export default {
     }
   },
   created() {
-    this.$store.dispatch('fetchChallenge')
+    if (!this.$store.state.challenges.length) {
+      this.$store.dispatch('fetchChallenge')
+    }
   },
   components: {
     FliterBar, CGroup

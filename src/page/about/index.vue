@@ -87,7 +87,9 @@ export default {
     "announcements"
   ]),
   created: function() {
-    this.$store.dispatch('fetchAnnouncement')
+    if (!this.$store.state.announcements.length) {
+      this.$store.dispatch('fetchAnnouncement')
+    }
   },
   methods: {
     showMore() {

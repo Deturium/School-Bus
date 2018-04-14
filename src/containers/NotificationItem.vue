@@ -39,7 +39,11 @@ export default {
   },
   computed: {
     typeColor() {
-      return "white"
+      const colorDict = {
+        'HINT': '#fff',
+        'ERROR': '#f12e2e',
+      }
+      return colorDict[this.type]
     }
   },
   methods: {
@@ -64,11 +68,10 @@ export default {
   h4
     font-size 16px
     font-weight bold
-    color #fff
 
   p
     font-size 14px
-    color #ccc
+    color #bbb
 
   .close
     position absolute

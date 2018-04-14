@@ -22,7 +22,7 @@ class Director {
         this.fps   = option.fps || 60
         this.pause = false
 
-        //todo: other option
+        //TODO: other option
 
     }
 
@@ -85,7 +85,7 @@ class Director {
     }
 
     _load(resource) {
-        //todo: load resource
+        //TODO: load resource
 
     }
 }

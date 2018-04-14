@@ -35,7 +35,7 @@
 - [x] scoreboard
 - [x] about
 - [x] award
-- [ ] 404
+- [x] 404
 
 
 2. css
@@ -50,10 +50,11 @@
 - [x] challenges
 - [x] ranks
 - [x] announcements
+- [ ] submit flag
 
 
 4. others
 
-- [ ] favicion
+- [x] favicion
 - [ ] user avator
 - [ ] CSRF

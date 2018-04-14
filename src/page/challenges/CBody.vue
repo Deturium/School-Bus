@@ -105,17 +105,13 @@ export default {
       this.$store.dispatch('submitFlag', {
         flag: this.flag,
         challenge: this.challenge,
-        onSuccess: this.onSuccess.bind(this),
-        onError: this.onError.bind(this)
+      }).then(() => {
+        this.type = 'success'
+        this.buttonText = "Solved"
+      }).catch(() => {
+        this.type = 'error'
+        this.buttonText = "Retry"
       })
-    },
-    onSuccess() {
-      this.type = 'success'
-      this.buttonText = "Solved"
-    },
-    onError() {
-      this.type = 'error'
-      this.buttonText = "Retry"
     },
   },
   components: {

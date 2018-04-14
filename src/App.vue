@@ -30,9 +30,9 @@ export default {
 $max-width = 1160px
 
 // TODO:
-// @font-face
-//   font-family 'CenturyGothic'
-//   src url('./assets/CenturyGothic.ttf') format('truetype')
+@font-face
+  font-family 'CenturyGothic'
+  src url('./assets/CenturyGothic.ttf') format('truetype')
 
 body
   font-size 14px

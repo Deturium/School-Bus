@@ -1,66 +1,14 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+
+import state from './state'
 import mutations from './mutations'
 import actions from './action'
 
 Vue.use(Vuex)
 
-const state = {
-
-  // PopForm
-  popForm: {
-    isShow: false,
-    formName: ""
-  },
-
-  // Notification
-  notifications: [
-    // {
-    //   title: "aaa",
-    //   description: "dddd",
-    //   type: "",
-    //   survivalTime: 4
-    // },
-    // {
-    //   title: "ccc",
-    //   description: "eeeee",
-    //   type: "",
-    //   survivalTime: 0
-    // }
-  ],
-
-  // UserInfo
-  isLogIn: false,
-  userInfo: {
-    // TODO:
-    name: "Clapeysron",
-    rank: "5",
-    score: 8250,
-  },
-
-  // challenges
-  challenges: [
-
-  ],
-
-  // scoreboard
-  ranks: [
-
-  ],
-
-  // about & news
-  announcements: [
-
-  ],
-}
-
-const getters = {
-
-}
-
 export default new Vuex.Store({
   state,
-  getters,
+  mutations,
 	actions,
-	mutations
 })

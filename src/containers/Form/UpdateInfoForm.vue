@@ -10,6 +10,7 @@ m-form(
   m-form-item(
     labelName="Old Passw0rd"
     :value.sync="oldPassword"
+    inputType="password"
     placeholder="required"
   )
   m-form-item(
@@ -37,7 +38,7 @@ export default {
       oldPassword: "",
       newPassword: "",
       phone: "",
-      comment: ""
+      comment: "",
     }
   },
   methods: {
@@ -50,7 +51,7 @@ export default {
       })
     },
     cancelHandle() {
-      this.$store.commit('hidePopupForm')
+      this.$store.commit('HIDE_POPUPFORM')
     },
   },
   components: {

@@ -2,265 +2,265 @@
 
 class Director {
 
-    constructor(canvas, resource, option) {
-        this.canvas   = canvas
-        this.ctx      = canvas.getContext('2d')
-        this.scenes   = []
-        this.listener = new Listener(this)
+  constructor(canvas, resource, option) {
+    this.canvas = canvas
+    this.ctx = canvas.getContext('2d')
+    this.scenes = []
+    this.listener = new Listener(this)
 
-        // handle option
-        this._init(option)
+    // handle option
+    this._init(option)
 
-        this._load(resource)
+    this._load(resource)
+  }
+
+  _init(option) {
+    if (!option) {
+      return
     }
 
-    _init(option) {
-        if (!option) {
-            return
-        }
+    this.fps = option.fps || 60
+    this.pause = false
 
-        this.fps   = option.fps || 60
-        this.pause = false
+    //TODO: other option
 
-        //TODO: other option
+  }
 
+  update() {
+    const scenes = this.scenes
+    scenes[scenes.length - 1].update()
+  }
+
+  draw() {
+    const scenes = this.scenes
+    scenes[scenes.length - 1].draw()
+  }
+
+  setScene(scene) {
+    this.scenes[0] = scene
+    return this
+  }
+
+  pushScene(scene) {
+    this.scenes.push(scene)
+    return this
+  }
+
+  popScene() {
+    return this.scenes.pop()
+  }
+
+  _loop() {
+    const now = Date.now()
+
+    this.listener.handleEvent()
+    if (!this.pause && now - this.timer >= 1000 / this.fps) {
+      this.timer = now
+
+      this.update()
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
+      this.draw()
     }
 
-    update() {
-        const scenes = this.scenes
-        scenes[scenes.length-1].update()
-    }
+    requestAnimationFrame(this._loop.bind(this))
+  }
 
-    draw() {
-        const scenes = this.scenes
-        scenes[scenes.length-1].draw()
-    }
+  run() {
+    this.timer = Date.now()
+    this.draw()
+    // remind to bind 'this'
+    requestAnimationFrame(this._loop.bind(this))
+  }
 
-    setScene(scene) {
-        this.scenes[0] = scene
-        return this
-    }
+  stop() {
+    this.pause = true
+  }
 
-    pushScene(scene) {
-        this.scenes.push(scene)
-        return this
-    }
+  resume() {
+    this.pause = false
+  }
 
-    popScene() {
-        return this.scenes.pop()
-    }
+  changeFPS(fps) {
+    this.fps = fps
+  }
 
-    _loop () {
-        const now = Date.now()
+  _load(resource) {
+    //TODO: load resource
 
-        this.listener.handleEvent()
-        if (!this.pause && now - this.timer >= 1000 / this.fps) {
-            this.timer = now
-
-            this.update()
-            this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
-            this.draw()
-        }
-
-        requestAnimationFrame(this._loop.bind(this))
-    }
-
-    run() {
-        this.timer = Date.now()
-        this.draw()
-        // remind to bind 'this'
-        requestAnimationFrame(this._loop.bind(this))
-    }
-
-    stop() {
-      this.pause = true
-    }
-
-    resume() {
-      this.pause = false
-    }
-
-    changeFPS(fps) {
-        this.fps = fps
-    }
-
-    _load(resource) {
-        //TODO: load resource
-
-    }
+  }
 }
 
 class Listener {
 
-    constructor(director) {
-        this.d        = director
-        this.downKeys = {}
-        this.switches = {}
-        this.mouse    = {
-            x: 0,
-            y: 0
-        }
-        this._pressEvents = {}
-        this._switchEvent = {}
+  constructor(director) {
+    this.d = director
+    this.downKeys = {}
+    this.switches = {}
+    this.mouse = {
+      x: 0,
+      y: 0
+    }
+    this._pressEvents = {}
+    this._switchEvent = {}
 
-        window.addEventListener('keydown',  (event) => {
-            // console.log(event.key)
-            this.downKeys[event.key] = true
-        })
+    window.addEventListener('keydown', (event) => {
+      // console.log(event.key)
+      this.downKeys[event.key] = true
+    })
 
-        window.addEventListener('keyup',  (event) => {
-            this.downKeys[event.key] = false
-            this.switches[event.key] = true
-        })
+    window.addEventListener('keyup', (event) => {
+      this.downKeys[event.key] = false
+      this.switches[event.key] = true
+    })
 
-        this.d.canvas.addEventListener('click', (event) => {
-            this.mouse.x = event.offsetX
-            this.mouse.y = event.offsetY
-        })
+    this.d.canvas.addEventListener('click', (event) => {
+      this.mouse.x = event.offsetX
+      this.mouse.y = event.offsetY
+    })
+  }
+
+  // register event on Diretor
+  on(key, callback, isSwitch) {
+    if (isSwitch) {
+      this._switchEvent[key] = callback
+    } else {
+      this._pressEvents[key] = callback
+    }
+    return this
+  }
+
+  off(key, isSwitch) {
+    if (isSwitch) {
+      delete this._switchEvent[key]
+    } else {
+      delete this._pressEvents[key]
+    }
+    return this
+  }
+
+  handleEvent() {
+    for (let key in this.downKeys) {
+      if (this.downKeys[key] && this._pressEvents[key]) {
+        this._pressEvents[key]()
+      }
     }
 
-    // register event on Diretor
-    on(key, callback, isSwitch) {
-        if (isSwitch) {
-            this._switchEvent[key] = callback
-        } else {
-            this._pressEvents[key] = callback
-        }
-        return this
+    for (let key in this.switches) {
+      if (this.switches[key] && this._switchEvent[key]) {
+        this._switchEvent[key]()
+        this.switches[key] = false
+      }
     }
-
-    off(key, isSwitch) {
-        if (isSwitch) {
-            delete this._switchEvent[key]
-        } else {
-            delete this._pressEvents[key]
-        }
-        return this
-    }
-
-    handleEvent() {
-        for (let key in this.downKeys) {
-            if (this.downKeys[key] && this._pressEvents[key]) {
-                this._pressEvents[key]()
-            }
-        }
-
-        for (let key in this.switches) {
-            if (this.switches[key] && this._switchEvent[key]) {
-                this._switchEvent[key]()
-                this.switches[key] = false
-            }
-        }
-    }
+  }
 }
 
 class Scene {
 
-    constructor(director) {
-        if (new.target === Scene) {
-            throw new Error('class Scene should be inherited')
-        }
-
-        this.d       = director
-        this.ctx     = director.ctx
-        this.sprites = []
-        this._pressEvents = {}
-        this._switchEvent = {}
+  constructor(director) {
+    if (new.target === Scene) {
+      throw new Error('class Scene should be inherited')
     }
 
-    _handleEvent() {
-        const downKeys = this.d.listener.downKeys
-        const switches = this.d.listener.switches
+    this.d = director
+    this.ctx = director.ctx
+    this.sprites = []
+    this._pressEvents = {}
+    this._switchEvent = {}
+  }
 
-        for (let key in downKeys) {
-            if (downKeys[key] && this._pressEvents[key]) {
-                this._pressEvents[key]()
-            }
-        }
+  _handleEvent() {
+    const downKeys = this.d.listener.downKeys
+    const switches = this.d.listener.switches
 
-        for (let key in switches) {
-            if (switches[key] && this._switchEvent[key]) {
-                this._switchEvent[key]()
-                switches[key] = false
-            }
-        }
+    for (let key in downKeys) {
+      if (downKeys[key] && this._pressEvents[key]) {
+        this._pressEvents[key]()
+      }
     }
 
-    update() {
-        this._handleEvent()
-
-        // update sprites in this scene
-        for (let spr of this.sprites) {
-            spr.update()
-        }
+    for (let key in switches) {
+      if (switches[key] && this._switchEvent[key]) {
+        this._switchEvent[key]()
+        switches[key] = false
+      }
     }
+  }
 
-    draw() {
-        for (let spr of this.sprites) {
-            spr.draw()
-        }
-    }
+  update() {
+    this._handleEvent()
 
-    addSprite(sprite) {
-        this.sprites.push(sprite)
-        return this
+    // update sprites in this scene
+    for (let spr of this.sprites) {
+      spr.update()
     }
+  }
 
-    removeSprite(sprite) {
-        this.sprites.splice(this.sprites.indexOf(sprite), 1)
-        return this
+  draw() {
+    for (let spr of this.sprites) {
+      spr.draw()
     }
+  }
 
-    // register event on Scene
-    on(key, callback, isSwitch) {
-        if (isSwitch) {
-            this._switchEvent[key] = callback
-        } else {
-            this._pressEvents[key] = callback
-        }
-        return this
-    }
+  addSprite(sprite) {
+    this.sprites.push(sprite)
+    return this
+  }
 
-    off(key, isSwitch) {
-        if (isSwitch) {
-            delete this._switchEvent[key]
-        } else {
-            delete this._pressEvents[key]
-        }
-        return this
+  removeSprite(sprite) {
+    this.sprites.splice(this.sprites.indexOf(sprite), 1)
+    return this
+  }
+
+  // register event on Scene
+  on(key, callback, isSwitch) {
+    if (isSwitch) {
+      this._switchEvent[key] = callback
+    } else {
+      this._pressEvents[key] = callback
     }
+    return this
+  }
+
+  off(key, isSwitch) {
+    if (isSwitch) {
+      delete this._switchEvent[key]
+    } else {
+      delete this._pressEvents[key]
+    }
+    return this
+  }
 }
 
 class Sprite {
 
-    constructor(scene) {
-        if (new.target === Sprite) {
-            throw new Error('class Sprite should be inherited')
-        }
-        this.scene = scene
+  constructor(scene) {
+    if (new.target === Sprite) {
+      throw new Error('class Sprite should be inherited')
     }
+    this.scene = scene
+  }
 
-    add() {
-        this.scene.sprites.push(this)
-    }
+  add() {
+    this.scene.sprites.push(this)
+  }
 
-    remove() {
-        this.scene.sprites.splice(this.scene.elements.indexOf(this), 1)
-    }
+  remove() {
+    this.scene.sprites.splice(this.scene.elements.indexOf(this), 1)
+  }
 
-    update() {
+  update() {
 
-    }
+  }
 
-    draw() {
+  draw() {
 
-    }
+  }
 }
 
 //export
 
 export {
-    Director,
-    Scene,
-    Sprite
+  Director,
+  Scene,
+  Sprite
 }

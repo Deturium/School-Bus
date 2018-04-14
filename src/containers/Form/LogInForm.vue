@@ -8,13 +8,13 @@ m-form(
   m-form-item(
     labelName="Username"
     :value.sync="username"
-    :type="type"
+    :theme="theme"
   )
   m-form-item(
     labelName="Passw0rd"
     :value.sync="password"
-    inputType="password"
-    :type="type"
+    type="password"
+    :theme="theme"
   )
 
 </template>
@@ -30,7 +30,7 @@ export default {
       username: "",
       password: "",
 
-      type: "",
+      theme: "",
     }
   },
   methods: {
@@ -39,7 +39,7 @@ export default {
         username: this.username,
         password: this.password,
       }).catch(() => {
-        this.type = 'error'
+        this.theme = 'error'
       })
     },
     cancelHandle() {

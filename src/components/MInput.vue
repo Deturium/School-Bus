@@ -2,15 +2,15 @@
 .m-input
   input(
     :value="value"
-    :type="inputType"
+    :type="type"
     :placeholder="placeholder"
     @input="inputHandle($event.target.value)"
   )
   hr.line(
-    :class="type"
+    :class="theme"
   )
   hr.line.focus(
-    :class="type"
+    :class="theme"
   )
 </template>
 
@@ -19,9 +19,9 @@ export default {
   name: "m-input",
   props: [
     "value",
-    "inputType",
     "type",
-    "placeholder"
+    "placeholder",
+    "theme",
   ],
   methods: {
     inputHandle(val) {
@@ -51,6 +51,7 @@ export default {
     border none
     outline none
     text-align center
+    letter-spacing 1px
 
     &::placeholder
       color #555

@@ -1,6 +1,6 @@
 <template lang="pug">
 button.m-button(
-  :class="type"
+  :class="theme"
   @click.prevent="clickHandle"
 ) {{ text }}
 </template>
@@ -10,7 +10,7 @@ export default {
   name: "m-button",
   props: [
     "text",
-    "type",
+    "theme",
     "clickHandle"
   ],
 }

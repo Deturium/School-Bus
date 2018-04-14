@@ -10,7 +10,7 @@ m-form(
   m-form-item(
     labelName="Old Passw0rd"
     :value.sync="oldPassword"
-    inputType="password"
+    type="password"
     placeholder="required"
   )
   m-form-item(

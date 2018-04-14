@@ -34,12 +34,12 @@
   div.content
     m-input.ans-input(
       v-model="flag"
-      :type="type"
+      :theme="theme"
       :placeholder="placeholder"
     )
     m-button.ans-button(
       :text="buttonText"
-      :type="type"
+      :theme="theme"
       :clickHandle="submitHandle"
     )
 
@@ -76,7 +76,7 @@ export default {
     return {
       isShowHint: false,
       flag: "",
-      type: "",
+      theme: "",
       placeholder: "",
       buttonText: ""
     }
@@ -85,11 +85,11 @@ export default {
     this.isShowHint = false
     this.flag = ""
     if (this.challenge.is_solved) {
-      this.type = "success"
+      this.theme = "success"
       this.placeholder = "Congratz, you have solved it."
       this.buttonText = "Solved"
     } else {
-      this.type = ""
+      this.theme = ""
       this.placeholder = "AAA{here_is_your_flag}"
       this.buttonText = "Submit"
     }
@@ -106,10 +106,10 @@ export default {
         flag: this.flag,
         challenge: this.challenge,
       }).then(() => {
-        this.type = 'success'
+        this.theme = 'success'
         this.buttonText = "Solved"
       }).catch(() => {
-        this.type = 'error'
+        this.theme = 'error'
         this.buttonText = "Retry"
       })
     },

@@ -41,7 +41,7 @@ export default {
     typeColor() {
       const colorDict = {
         'HINT': '#fff',
-        'ERROR': '#f12e2e',
+        'ERROR': '#e83434',
       }
       return colorDict[this.type]
     }

@@ -31,6 +31,9 @@ export default {
     //   type: string,
     //   survivalTime: number
     // }
+    if (state.notifications.length > 15) {
+      state.notifications = state.notifications.slice(10)
+    }
     state.notifications.push(payload)
   },
 

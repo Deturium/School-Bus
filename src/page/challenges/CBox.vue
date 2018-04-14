@@ -29,11 +29,9 @@ export default {
     if (this.challenge.id !== parseInt(this.$route.params.id, 10)) {
       return
     }
-
     this.clickHandle(this.challenge.id, this.order)
-
+    // scroll to crruent challenge
     this.$nextTick(function (){
-      // scroll to crruent challenge
       const rect = this.$refs.theBox.getBoundingClientRect()
       window.scrollTo(0, rect.top + window.pageYOffset - 40)
     })

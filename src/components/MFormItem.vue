@@ -3,9 +3,9 @@
   label.form-label {{ labelName }}
   m-input.form-input(
     v-model="transferValue"
-    :inputType="inputType"
-    :placeholder="placeholder"
     :type="type"
+    :placeholder="placeholder"
+    :theme="theme"
   )
 </template>
 
@@ -18,9 +18,9 @@ export default {
   props: [
     "labelName",
     "value",
-    "inputType",
-    "placeholder",
     "type",
+    "placeholder",
+    "theme",
   ],
   data: function() {
     return {

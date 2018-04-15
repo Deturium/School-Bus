@@ -30,30 +30,46 @@ export default {
 $max-width = 1160px
 
 @font-face
-  font-family Roboto
-  src url('../static/fonts/Roboto-Regular.ttf') format('truetype')
+  font-family GOTHIC
+  src url('../static/fonts/GOTHIC.ttf') format('truetype')
 @font-face
-  font-family Roboto
-  src url('../static/fonts/Roboto-Bold.ttf') format('truetype')
+  font-family GOTHIC
+  src url('../static/fonts/GOTHICB.ttf') format('truetype')
   font-weight bold
 @font-face
-  font-family Roboto
-  src url('../static/fonts/Roboto-Italic.ttf') format('truetype')
+  font-family GOTHIC
+  src url('../static/fonts/GOTHICI.ttf') format('truetype')
   font-style italic
 @font-face
-  font-family Roboto
-  src url('../static/fonts/Roboto-BoldItalic.ttf') format('truetype')
+  font-family GOTHIC
+  src url('../static/fonts/GOTHICBI.ttf') format('truetype')
   font-weight bold
   font-style italic
 
+// @font-face
+//   font-family Roboto
+//   src url('../static/fonts/Roboto-Regular.ttf') format('truetype')
+// @font-face
+//   font-family Roboto
+//   src url('../static/fonts/Roboto-Bold.ttf') format('truetype')
+//   font-weight bold
+// @font-face
+//   font-family Roboto
+//   src url('../static/fonts/Roboto-Italic.ttf') format('truetype')
+//   font-style italic
+// @font-face
+//   font-family Roboto
+//   src url('../static/fonts/Roboto-BoldItalic.ttf') format('truetype')
+//   font-weight bold
+//   font-style italic
+
 body
-  font-size 14px
-  // font-family "Century Gothic" // font choose by Clapeysron
-  font-family Roboto, \
+  font-family GOTHIC, Roboto, \
     system, -apple-system, BlinkMacSystemFont, \
     "Helvetica Neue", Helvetica, \
     "PingFang SC", "Hiragino Sans GB", \
     "Microsoft YaHei"
+  font-size 14px
   background-color #1F1F1F
 
 .app-root

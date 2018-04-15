@@ -22,7 +22,7 @@ export default {
   width 90px
   height 30px
   line-height 30px
-  font-family 'Roboto'
+  font-family 'GOTHIC'
   font-size 14px
   font-weight bold
   border 0

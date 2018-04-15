@@ -43,7 +43,7 @@ export default {
     height 30px
     line-height 30px
     padding 0 10px
-    // font-family 'Roboto'
+    font-family 'Roboto'
     font-size 16px
     font-weight bold
     color #ccc

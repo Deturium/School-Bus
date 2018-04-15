@@ -29,20 +29,34 @@ export default {
 <style lang="stylus">
 $max-width = 1160px
 
-// TODO:
 @font-face
-  font-family 'CenturyGothic'
-  src url('./assets/CenturyGothic.ttf') format('truetype')
+  font-family Roboto
+  src url('../static/fonts/Roboto-Regular.ttf') format('truetype')
+@font-face
+  font-family Roboto
+  src url('../static/fonts/Roboto-Bold.ttf') format('truetype')
+  font-weight bold
+@font-face
+  font-family Roboto
+  src url('../static/fonts/Roboto-Italic.ttf') format('truetype')
+  font-style italic
+@font-face
+  font-family Roboto
+  src url('../static/fonts/Roboto-BoldItalic.ttf') format('truetype')
+  font-weight bold
+  font-style italic
 
 body
   font-size 14px
-  font-family 'CenturyGothic', 'Century Gothic', \
+  // font-family "Century Gothic" // font choose by Clapeysron
+  font-family Roboto, \
     system, -apple-system, BlinkMacSystemFont, \
-    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei"
+    "Helvetica Neue", Helvetica, \
+    "PingFang SC", "Hiragino Sans GB", \
+    "Microsoft YaHei"
   background-color #1F1F1F
 
 .app-root
-  // position relative
   width $max-width
   margin 0 auto
 

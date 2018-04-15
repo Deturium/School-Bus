@@ -130,6 +130,7 @@ export default {
   width 100%
   margin 20px
   padding 40px
+  padding-bottom 25px
   background-color #181818
   color #eee
 

@@ -50,7 +50,7 @@ export default {
 
 <style lang="stylus">
 
-$box-width = 200px
+$box-width = 200px // 200 + 20*2 = 240px
 
 .c-box
   display flex
@@ -64,8 +64,8 @@ $box-width = 200px
   padding 20px
   padding-bottom 0
 
-  font-style italic
   font-weight bold
+  // font-style italic
   background-color #181818
 
   >.title

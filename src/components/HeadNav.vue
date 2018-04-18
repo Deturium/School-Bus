@@ -3,7 +3,7 @@ header.head-nav
   //- for UserInfo
   slot
 
-  img.logo(src="../assets/AAA_logo.png")
+  img.logonew(src="../assets/AAA_logo_new.png")
   ul.nav
     router-link.item(tag="li" to="/challenges") challenges
     router-link.item(tag="li" to="/scoreboard") scoreboard
@@ -29,9 +29,9 @@ $text-color-hover = #ffffff
   margin 30px auto
   text-align center
 
-  >.logo
-    width 100px
-    margin 20px
+  >.logonew
+    width 230px
+    margin 5px
 
   >.nav
     display flex

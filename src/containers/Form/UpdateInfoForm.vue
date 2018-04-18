@@ -1,35 +1,40 @@
 <template lang="pug">
 m-form(
   formTitle="Update Info"
+  promptText="Leave the field blank if you don't want to update."
   comfirmText='Update'
   :comfirmHandle="updateHandle"
   :cancelHandle="cancelHandle"
 )
-  .formtext
-    | Leave the field blank if you don't want to update.
-  m-form-item(
-    labelName="Old Passw0rd"
-    :value.sync="oldPassword"
-    type="password"
-    placeholder="required"
-  )
-  m-form-item(
-    labelName="New Passw0rd"
-    :value.sync="newPassword"
-  )
-  m-form-item(
-    labelName="Phone"
-    :value.sync="phone"
-  )
-  m-form-item(
-    labelName="Comment"
-    :value.sync="comment"
-  )
+
+  m-form-item(label="Old Passw0rd")
+    m-input(
+      v-model="oldPassword"
+      type="password"
+      placeholder="required"
+    )
+
+  m-form-item(label="New Passw0rd")
+    m-input(
+      v-model="newPassword"
+    )
+
+  m-form-item(label="Phone")
+    m-input(
+      v-model="phone"
+    )
+
+  m-form-item(label="Comment")
+    m-input(
+      v-model="comment"
+    )
+
 </template>
 
 <script>
 import MForm from '@/MForm'
 import MFormItem from '@/MFormItem'
+import MInput from '@/MInput'
 
 export default {
   name: "update-info-form",
@@ -55,7 +60,7 @@ export default {
     },
   },
   components: {
-    MForm, MFormItem
+    MForm, MFormItem, MInput
   }
 }
 </script>

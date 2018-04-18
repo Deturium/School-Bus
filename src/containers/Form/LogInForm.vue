@@ -5,23 +5,25 @@ m-form(
   :comfirmHandle="logInHandle"
   :cancelHandle="cancelHandle"
 )
-  m-form-item(
-    labelName="Username"
-    :value.sync="username"
-    :theme="theme"
-  )
-  m-form-item(
-    labelName="Passw0rd"
-    :value.sync="password"
-    type="password"
-    :theme="theme"
-  )
+  m-form-item(label="Username")
+    m-input(
+      v-model="username"
+      :theme="theme"
+    )
+
+  m-form-item(label="Passw0rd")
+    m-input(
+      v-model="password"
+      type="password"
+      :theme="theme"
+    )
 
 </template>
 
 <script>
 import MForm from '@/MForm'
 import MFormItem from '@/MFormItem'
+import MInput from '@/MInput'
 
 export default {
   name: "log-in-form",
@@ -47,7 +49,7 @@ export default {
     },
   },
   components: {
-    MForm, MFormItem
+    MForm, MFormItem, MInput
   }
 }
 </script>

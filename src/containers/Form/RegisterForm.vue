@@ -2,22 +2,23 @@
 m-form(
   formTitle="Register"
   comfirmText='Register'
+  promptText="This platform is only for ZJUer, so you must use zju mail to register."
   :comfirmHandle="registerHandle"
   cancelText='Close'
   :cancelHandle="cancelHandle"
 )
-  .formtext
-    | This platform is only for ZJUer, so you must use zju mail to register.
-  m-form-item(
-    labelName="Stu. No"
-    :value.sync="stuNo"
-  )
+
+  m-form-item(label="Stu. No")
+    m-input(
+      v-model="stuNo"
+    )
 
 </template>
 
 <script>
 import MForm from '@/MForm'
 import MFormItem from '@/MFormItem'
+import MInput from '@/MInput'
 
 export default {
   name: "register-form",
@@ -37,7 +38,7 @@ export default {
     },
   },
   components: {
-    MForm, MFormItem
+    MForm, MFormItem, MInput
   }
 }
 </script>

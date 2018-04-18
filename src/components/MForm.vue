@@ -1,20 +1,20 @@
 <template lang="pug">
 .m-form
   .formtit {{ formTitle }}
+  .formtext(v-if="promptText") {{ promptText }}
 
   .formitems
-    //- slot for form-item
     slot
 
-    .formbuttons
-      m-button.-comfirm(
-        :text="comfirmText ? comfirmText : 'Comfirm'"
-        :clickHandle="comfirmHandle"
-      )
-      m-button.-cancel(
-        :text="cancelText ? cancelText : 'Cancel'"
-        :clickHandle="cancelHandle"
-      )
+  .formbuttons
+    m-button(
+      :text="comfirmText ? comfirmText : 'Comfirm'"
+      :clickHandle="comfirmHandle"
+    )
+    m-button(
+      :text="cancelText ? cancelText : 'Cancel'"
+      :clickHandle="cancelHandle"
+    )
 
 </template>
 
@@ -27,9 +27,10 @@ export default {
   name: "my-form",
   props: [
     "formTitle",
+    "promptText",
     "comfirmText",
-    "cancelText",
     "comfirmHandle",
+    "cancelText",
     "cancelHandle"
   ],
   components: {
@@ -40,9 +41,7 @@ export default {
 
 <style lang="stylus">
 
-$font-color = #bbb
-$label-width = 120px
-$input-width = 260px
+$formitem-width = 256px
 
 .m-form
   margin 30px auto
@@ -52,42 +51,26 @@ $input-width = 260px
     font-size 30px
     font-weight bold
     text-align center
-    color $font-color
+    color #bbb
+
+  >.formtext
+    margin 25px auto
+    font-size 12px
+    color #999
 
   >.formitems
     display flex
     flex-direction column
     align-items center
+    width $formitem-width
     margin 0 auto
     margin-top 25px
 
-    .formtext
-      margin-bottom 25px
-      font-size 12px
-      color #999
-
-    >.formbuttons
-      width $input-width
-      margin-top 30px
-
-    .-comfirm
-      padding 0
-
-    .-cancel
-      padding 0
-      margin-left $input-width - 90px * 2
-
-.form-item
-  display flex
-  flex-direction column
-  align-items flex-start
-  margin 8px 0
-
-  >.formlabel
-    font-size 14px
-    color $font-color
-
-  >.forminput
-    width $input-width
+  >.formbuttons
+    display flex
+    justify-content space-between
+    width $formitem-width
+    margin 0 auto
+    margin-top 30px
 
 </style>

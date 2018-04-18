@@ -1,45 +1,30 @@
 <template lang="pug">
 .form-item
-  label.formlabel {{ labelName }}
-  m-input.forminput(
-    v-model="transferValue"
-    :type="type"
-    :placeholder="placeholder"
-    :theme="theme"
-  )
+  label.formlabel {{ label }}
+  slot
 </template>
 
 <script>
-import MInput from '@/MInput'
-import MButton from '@/MButton'
-
 export default {
   name: "m-form-item",
   props: [
-    "labelName",
-    "value",
-    "type",
-    "placeholder",
-    "theme",
+    "label",
   ],
-  data: function() {
-    return {
-      transferValue: this.value
-    }
-  },
-  watch: {
-    transferValue() {
-      this.$emit('update:value', this.transferValue)
-    }
-  },
-  components: {
-    MInput, MButton
-  },
 }
 </script>
 
-<style lang="stylus" scoped>
+<style lang="stylus">
+.form-item
+  display flex
+  flex-direction column
+  align-items flex-start
+  width 100%
+  margin 8px 0
 
-// see Form.vue
+  >.formlabel
+    font-size 14px
+    color #bbb
 
+  >.m-input
+    width 100%
 </style>

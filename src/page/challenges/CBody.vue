@@ -29,7 +29,8 @@
       use(xlink:href="#icon-more")
 
   div.content
-    p(v-if="isShowHint") {{ challenge.hint ? challenge.hint : 'No hint (╯°口°)╯(┴—┴'}}
+    p(v-if="isShowHint") {{ challenge.hint ? challenge.hint : 'NO HINT'}}
+      code(v-if="!challenge.hint") {{ "  (╯°口°)╯(┴—┴" }}
 
   h2.subtit Your Answer
   div.content

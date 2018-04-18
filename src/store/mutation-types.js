@@ -1,6 +1,8 @@
 export const LOG_IN = 'LOG_IN'
 export const LOG_OUT = 'LOG_OUT'
 
+export const UPDATE_USERINFO = 'UPDATE_USERINFO'
+
 export const SHOW_POPUPFORM = 'SHOW_POPUPFORM'
 export const HIDE_POPUPFORM = 'HIDE_POPUPFORM'
 

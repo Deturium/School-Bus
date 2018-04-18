@@ -2,6 +2,7 @@
 m-form(
   formTitle="Log In"
   comfirmText='Log In'
+  cancelText='Reset Pw'
   :comfirmHandle="logInHandle"
   :cancelHandle="cancelHandle"
 )
@@ -45,7 +46,7 @@ export default {
       })
     },
     cancelHandle() {
-      this.$store.commit('HIDE_POPUPFORM')
+      this.$store.commit('SHOW_POPUPFORM', 'ForgetPw')
     },
   },
   components: {

@@ -1,7 +1,7 @@
 async function zjusecFetch(url, init) {
   const baseUrl = "/api/v1"
 
-  const requestURL = `${baseUrl}/${url}/`
+  const requestURL = `${baseUrl}/${url}`
 
   console.log("Fetch: " + requestURL)
 

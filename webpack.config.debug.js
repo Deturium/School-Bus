@@ -32,11 +32,6 @@ module.exports = {
       //     'css-loader'
       //   ],
       // },
-      // {
-      //   test: /\.js$/,
-      //   loader: 'babel-loader',
-      //   exclude: /node_modules/
-      // },
       {
         test: /\.(png|jpg|gif|svg|ttf)$/,
         loader: 'file-loader',
@@ -70,14 +65,14 @@ module.exports = {
     historyApiFallback: true,
     open: true,
     proxy: {
-      // "/api": "http://localhost:3000" // mock server
       "/api": {
-        target: "https://www.zjusec.com",
+        // target: "https://www.zjusec.com",
+        target: "http://localhost:5000",
         changeOrigin: true,
         pathRewrite: {
-          '^/api/v1': ''
+          // '^/api/v1': ''
         },
       },
     }
   },
-};
+}

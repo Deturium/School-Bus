@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 // const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
@@ -17,8 +18,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/',
-    filename: '[name].[hash:8].js',
-    chunkFilename: 'chunks/[name].[hash:8].js',
+    filename: 'js/[name].[hash:8].js',
+    chunkFilename: 'js/[name].[hash:8].js',
   },
 
   module: {
@@ -31,6 +32,11 @@ module.exports = {
         }
       },
       {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/
+      },
+      {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
@@ -41,7 +47,7 @@ module.exports = {
         test: /\.(ttf)$/,
         loader: 'file-loader',
         options: {
-          name: 'font/[name].[hash:8].[ext]'
+          name: 'font/[name].[ext]'
         }
       },
     ]
@@ -69,10 +75,17 @@ module.exports = {
 
   resolve: {
     alias: {
-      // 'vue$': 'vue/dist/vue.esm.js',
       '@': path.resolve('src/components'),
       '@@': path.resolve('src/containers'),
     },
     extensions: ['*', '.js', '.vue', '.json']
   },
-};
+
+  optimization: {
+		minimizer: [
+			new UglifyJsPlugin({
+        parallel: true,
+      })
+    ],
+  }
+}

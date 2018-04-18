@@ -3,8 +3,8 @@ import scoreboard from '../page/scoreboard'
 import about from '../page/about'
 import award from '../page/award'
 // import notFound from '../page/notFound'
-const notFound = () => import('../page/notFound')
-// const notFound = r => require.ensure([], () => r(require('../page/notFound')), 'game404')
+// const notFound = () => import('../page/notFound')
+const notFound = r => require.ensure([], () => r(require('../page/notFound')), '404')
 
 export default [
   {

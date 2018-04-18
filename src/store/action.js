@@ -5,7 +5,7 @@ import * as np from './notification-payloads'
 export default {
 
   async fetchChallenge({commit}) {
-    const fetchChallenges = await GET('challenges')
+    const fetchChallenges = await GET('challenges/')
     if (!fetchChallenges) {
       commit('ADD_NOTIFICATION', np.networkErr)
       return
@@ -30,7 +30,7 @@ export default {
   },
 
   async fetchRank({commit}, type) {
-    const ranks = await GET('ranks/' + type.toLowerCase())
+    const ranks = await GET('ranks/' + type.toLowerCase() + '/')
     if (!ranks) {
       commit('ADD_NOTIFICATION', np.networkErr)
       return
@@ -54,21 +54,20 @@ export default {
   async logIn({commit}, {username, password}) {
     // frontend check
     if (username && password) {
-      const response = await POST('login', {
+      const response = await POST('login/', {
         username,
         password,
       })
 
-      // TODO: mock date now
-      const userInfo = {
+      commit('UPDATE_USERINFO', {
         name: "Clapeysron",
         rank: 5,
         point: 8250,
-      }
+      })
 
       if (1) {
         // log in success
-        commit('LOG_IN', userInfo)
+        commit('LOG_IN')
         commit('HIDE_POPUPFORM')
         return
       }

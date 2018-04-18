@@ -21,7 +21,7 @@
       ) {{ `Link ${i}` }}
 
   h2.subtit.hint Hint&nbsp;&nbsp;
-    svg.icon(
+    svg.icon.-delay(
       aria-hidden="true"
       :class="{'-rotate': isShowHint }"
       @click="toggleHint()"
@@ -29,8 +29,9 @@
       use(xlink:href="#icon-more")
 
   div.content
-    p(v-if="isShowHint") {{ challenge.hint ? challenge.hint : 'NO HINT'}}
-      code(v-if="!challenge.hint") {{ "  (╯°口°)╯(┴—┴" }}
+    transition(name='hint')
+      p(v-if="isShowHint") {{ challenge.hint ? challenge.hint : 'NO HINT'}}
+        code(v-if="!challenge.hint") {{ "  (╯°口°)╯(┴—┴" }}
 
   h2.subtit Your Answer
   div.content
@@ -194,7 +195,7 @@ export default {
 
     >p
       margin .8em 0
-      line-height 1.7
+      line-height 1.6
       // letter-spacing 1px
       white-space pre-wrap
       // word-wrap wrap
@@ -231,4 +232,17 @@ export default {
       // font-weight bold
       // font-style italic
       color #aaa
+
+  .-delay
+    transition-property transform
+    transition-duration .5s
+
+  .hint-enter-active
+    transition all 1s
+  .hint-leave-active
+    transition all .5s
+
+  .hint-enter,
+  .hint-leave-to
+    opacity 0
 </style>

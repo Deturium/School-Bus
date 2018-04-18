@@ -25,8 +25,8 @@ export default {
     margin 20px 0
 
   >.logo
-    width 100px
-    margin 10px
+    width 120px
+    margin 5px
 
   >.foottext
     font-size 12px

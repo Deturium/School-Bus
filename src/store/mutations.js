@@ -1,18 +1,21 @@
 import * as t from './mutation-types'
 
 export default {
-  [t.LOG_IN](state, userInfo) {
+  [t.LOG_IN](state) {
     state.isLogIn = true
+  },
+
+  [t.LOG_OUT](state) {
+    state.isLogIn = false
+  },
+
+  [t.UPDATE_USERINFO](state, userInfo) {
     // userInfo = {
     //   name: string,
     //   rank: number,
     //   score: number,
     // }
     state.userInfo = userInfo
-  },
-
-  [t.LOG_OUT](state) {
-    state.isLogIn = false
   },
 
   [t.SHOW_POPUPFORM](state, formName) {

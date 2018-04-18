@@ -82,11 +82,11 @@ export default {
 .fade-enter-active
   transition all .5s
 .fade-leave-active
-  transition all .3s
+  transition all .2s
 
 .fade-enter,
 .fade-leave-to
-  transform translateY(-30px)
+  transform translateX(40px)
   opacity 0
 
 </style>

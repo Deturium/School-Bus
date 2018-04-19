@@ -12,7 +12,23 @@ m-form(
     m-input(
       v-model="stuNo"
     )
-
+  m-form-item(label="Username")
+    m-input(
+      v-model="username"
+    )
+  m-form-item(label="Password")
+    m-input(
+      v-model="password"
+    )
+  m-form-item(label="Phone")
+    m-input(
+      v-model="phone"
+    )
+  m-form-item(label="Comment")
+    m-input(
+      v-model="comment"
+      placeholder="(not required)"
+    )
 </template>
 
 <script>
@@ -25,12 +41,20 @@ export default {
   data: function() {
     return {
       stuNo: "",
+      username: "",
+      password: "",
+      phone: "",
+      comment: "",
     }
   },
   methods: {
     registerHandle() {
       this.$store.dispatch('register', {
-        stuNo: this.stuNo
+        stuNo: this.stuNo,
+        username: this.username,
+        password: this.password,
+        phone: this.phone,
+        comment: this.comment,
       })
     },
     cancelHandle() {

@@ -43,7 +43,7 @@ export default {
       this.$store.commit('SHOW_POPUPFORM', 'LogIn')
     },
     logOut() {
-      this.$store.commit('LOG_OUT')
+      this.$store.dispatch('logOut')
     },
     register() {
       this.$store.commit('SHOW_POPUPFORM', 'Register')

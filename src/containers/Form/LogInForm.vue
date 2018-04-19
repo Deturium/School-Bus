@@ -17,6 +17,7 @@ m-form(
       v-model="password"
       type="password"
       :theme="theme"
+      :keyEnterHandle="logInHandle"
     )
 
 </template>

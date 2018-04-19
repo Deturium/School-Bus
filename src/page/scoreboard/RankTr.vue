@@ -38,6 +38,8 @@ export default {
     color #ccc
 
   >.comment
+    max-width 250px
+    word-break break-all
     font-weight normal
 
   &:hover

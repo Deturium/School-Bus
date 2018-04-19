@@ -70,6 +70,7 @@ export default {
 
   >.description
     font-size 14px
+    white-space pre-wrap
     color #bbb
 
   >.closeicon

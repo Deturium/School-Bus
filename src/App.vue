@@ -22,7 +22,10 @@ export default {
 	name: 'app',
 	components: {
     HeadNav, FootNav, PopupForm, Notification, UserInfo, Icons
-	}
+  },
+  created() {
+    this.$store.dispatch('autoLogIn')
+  }
 }
 </script>
 
@@ -45,23 +48,6 @@ $max-width = 1160px
   src url('../static/fonts/GOTHICBI.ttf') format('truetype')
   font-weight bold
   font-style italic
-
-// @font-face
-//   font-family Roboto
-//   src url('../static/fonts/Roboto-Regular.ttf') format('truetype')
-// @font-face
-//   font-family Roboto
-//   src url('../static/fonts/Roboto-Bold.ttf') format('truetype')
-//   font-weight bold
-// @font-face
-//   font-family Roboto
-//   src url('../static/fonts/Roboto-Italic.ttf') format('truetype')
-//   font-style italic
-// @font-face
-//   font-family Roboto
-//   src url('../static/fonts/Roboto-BoldItalic.ttf') format('truetype')
-//   font-weight bold
-//   font-style italic
 
 body
   font-family GOTHIC, Roboto, \

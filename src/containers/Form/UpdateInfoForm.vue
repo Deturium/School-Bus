@@ -11,7 +11,7 @@ m-form(
     m-input(
       v-model="oldPassword"
       type="password"
-      placeholder="required"
+      placeholder="(required)"
     )
 
   m-form-item(label="New Passw0rd")

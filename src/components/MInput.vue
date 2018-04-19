@@ -5,6 +5,7 @@
     :type="type"
     :placeholder="placeholder"
     @input="inputHandle($event.target.value)"
+    @keyup.enter="enterHandle"
   )
   hr.line(
     :class="theme && `-${theme}`"
@@ -22,10 +23,14 @@ export default {
     "type",
     "placeholder",
     "theme",
+    "keyEnterHandle"
   ],
   methods: {
     inputHandle(val) {
       this.$emit('input', val)
+    },
+    enterHandle() {
+      this.keyEnterHandle && this.keyEnterHandle()
     }
   }
 }

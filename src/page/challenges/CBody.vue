@@ -174,6 +174,7 @@ export default {
     font-weight lighter
     // font-style italic
     text-align left
+    color #bbb
 
   >.hint .icon
     cursor pointer
@@ -188,10 +189,12 @@ export default {
   >.content
     box-sizing border-box
     width 666px
-    margin 10px auto 15px auto
-    padding-left 50px
+    margin 10px 0 15px 110px
+    padding-left 35px
+    padding-right 20px
     // border 1px solid #fff
     font-size 14px
+    color #ddd
 
     >p
       margin .8em 0
@@ -221,7 +224,7 @@ export default {
         text-decoration underline
 
     >.flaginput
-      width 500px
+      width 480px
       text-align center
 
     >.submitbutton

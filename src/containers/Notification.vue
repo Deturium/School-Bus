@@ -30,7 +30,9 @@ export default {
 .notification
   position fixed
   right 10px
-  width 360px
+  // width 280px
+  min-width 280px
+  max-width 380px
   z-index 1000
 
 </style>

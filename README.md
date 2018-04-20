@@ -1,60 +1,59 @@
 # [School-Bus](https://www.zjusec.com/)
 
-### Frontend part
 
-浙江大学AAA战队CTF练习平台新前端
+__浙江大学AAA战队CTF练习平台前端 V2__
 
 
-### What is 'AAA'?
+### What is 'AAA' ?
 
-  AAA (Azure Assassin Alliance) 战队是由浙江大学信息安全爱好者自发组织，
+AAA (Azure Assassin Alliance) 战队是由浙江大学信息安全爱好者自发组织，
 浙江大学计算机学院支持建立的团队，队伍中每一位成员都对信息安全有无与伦比的热爱，
 因此对 CTF 比赛总是充满了激情
 
 
-### What is 'School-Bus'?
+### What is 'School-Bus' ?
 
-  'School-Bus' 是一个面向所有 ZJU 学生开放的 CTF 练习平台，
-同学们能够在这个平台上学习和训练自己各方面的 Hacking 技能
+'School-Bus' 是一个面向所有 __ZJU__ 学生开放的 CTF 练习平台，
+同学们能够在这个平台上学习和训练自己各方面的 Hacking 技能，
 本平台将涵盖 Pwnable, Reverse, Web, Crypto, Misc, Program 等全类型的题目，
 我们将会持续更新，同时对于表现出色的同学也会给予一定的奖励
 
 
-### Preview
+### Portal
 
-校内预览：http://10.214.23.218:3000
+[https://zjusec.com/](https://zjusec.com/)
+
+
+### Preview
 
 ![about](./images/about&news.png)
 
 
-### TODO
+### Technology stack
 
-1. pages
+__框架__
+- __vue__
+- vue-router
+- vuex
 
-- [x] challenges
-- [x] scoreboard
-- [x] about
-- [x] award
-- [x] 404
+__模板/预处理器__
+- pug
+- stylus
 
+__构建__
+- __webpack__
 
-2. css
+__依赖管理__
+- yarn
 
-- [x] stylus mixins
-- [ ] css animition
+### Join Us
 
-
-3. api
-
-- [ ] log in & out
-- [x] challenges
-- [x] ranks
-- [x] announcements
-- [ ] submit flag
+欢迎加入我们！
+有任何BUG和意见都可以向我们反馈
 
 
-4. others
+### Contact 
 
-- [x] favicion
-- [ ] user avator
-- [ ] CSRF
+- __admin:__  AAA (aaa.zju#gmail)
+- __QQ Group:__ 完成任意一道 'Welcome' 类的题目，群号就在 flag 中
+- Just contact with me

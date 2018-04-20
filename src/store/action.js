@@ -23,7 +23,21 @@ export default {
     commit('UPDATE_ANNOUNCEMENTS', announcements)
   },
 
+  async fetchUserInfo({commit}, username) {
+    const res = await GET('member/info/', {username})
+    if (res["Succeed"]) {
+      const info = res["Message"]
+      commit('UPDATE_USERINFO', {
+        name: info.username,
+        rank: info.rank,
+        score: info.point,
+      })
+      return Promise.resolve(info)
 
+    } else {
+      return Promise.reject()
+    }
+  },
 
   async logIn({dispatch, commit}, {username, password}) {
     if (username && password) {
@@ -34,13 +48,8 @@ export default {
 
       if (res['Succeed']) {
         // log in success
-        const res = await GET('member/info/', {username})
-        const retInfo = res["Message"]
-        commit('UPDATE_USERINFO', {
-          name: retInfo.username,
-          rank: retInfo.rank,
-          score: retInfo.point,
-        })
+        dispatch('fetchUserInfo', username)
+
         commit('LOG_IN')
         localStorage.setItem('username', username)
         commit('HIDE_POPUPFORM')
@@ -66,19 +75,13 @@ export default {
     return Promise.reject()
   },
 
-  async autoLogIn({commit}) {
+  async autoLogIn({dispatch, commit}) {
     const username = localStorage.getItem('username')
     if (username) {
-      const res = await GET('member/info/', {username})
-      if (res["Succeed"]) {
-        const retInfo = res["Message"]
-        commit('UPDATE_USERINFO', {
-          name: retInfo.username,
-          rank: retInfo.rank,
-          score: retInfo.point,
+      dispatch('fetchUserInfo', username)
+        .then( () => {
+          commit('LOG_IN')
         })
-        commit('LOG_IN')
-      }
     }
   },
 
@@ -118,9 +121,9 @@ export default {
     }
   },
 
-  async resetPassword({commit}, {stdNo, username}) {
+  async resetPassword({commit}, {stuNo, username}) {
     const res = await POST('password/reset/', {
-      student_id: stdNo,
+      student_id: stuNo,
       username,
     })
     if (res["Succeed"]) {
@@ -183,11 +186,7 @@ export default {
 
 
 
-  async submitFlag({state, commit}, {flag, challenge}) {
-    // logIn check
-    // if (!state.isLogIn) {
-    //   return Promise.reject()
-    // }
+  async submitFlag({state, dispatch, commit}, {flag, challenge}) {
 
     if (flag) {
       const res = await POST('flag/check/', {
@@ -198,6 +197,7 @@ export default {
       if (res["Succeed"]) {
         // flag correct
         commit('SLOVE_CHALLENGE', challenge)
+        dispatch('fetchUserInfo', state.userInfo.name)
         return Promise.resolve()
 
       } else {

@@ -17,6 +17,7 @@ m-form(
   m-form-item(label="New Passw0rd")
     m-input(
       v-model="newPassword"
+      type="password"
     )
 
   m-form-item(label="Phone")

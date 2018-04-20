@@ -2,7 +2,7 @@
 .m-input
   input.inp(
     :value="value"
-    :type="type"
+    :type="inputType"
     :placeholder="placeholder"
     @input="inputHandle($event.target.value)"
     @keyup.enter="enterHandle"
@@ -13,6 +13,12 @@
   hr.line.secondline(
     :class="theme && `-${theme}`"
   )
+  svg.icon.showpw(
+    aria-hidden="true"
+    v-if="type === 'password'"
+    @click="togglePw()"
+  )
+    use(xlink:href="#icon-eye")
 </template>
 
 <script>
@@ -25,12 +31,20 @@ export default {
     "theme",
     "keyEnterHandle"
   ],
+  data: function() {
+    return {
+      inputType: this.type ? this.type : "text"
+    }
+  },
   methods: {
     inputHandle(val) {
       this.$emit('input', val)
     },
     enterHandle() {
       this.keyEnterHandle && this.keyEnterHandle()
+    },
+    togglePw() {
+      this.inputType = this.inputType === 'password' ? 'text' : 'password'
     }
   }
 }
@@ -61,6 +75,13 @@ export default {
     &::placeholder
       color #555
       font-weight normal
+
+  >.showpw
+    position absolute
+    right 5px
+    top 10px
+    color #ccc
+    cursor pointer
 
   >.line
     position absolute

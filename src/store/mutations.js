@@ -55,6 +55,6 @@ export default {
   [t.SLOVE_CHALLENGE](state, challenge) {
     challenge.is_solved = true
     challenge.early_pwner.push(state.userInfo.name)
-    state.userInfo.score += challenge.points
+    // state.userInfo.score += challenge.points
   },
 }

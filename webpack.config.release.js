@@ -17,9 +17,9 @@ module.exports = {
 
   output: {
     path: path.resolve(__dirname, './dist'),
-    publicPath: '/static/',
-    filename: 'js/[name].[hash:8].js',
-    chunkFilename: 'js/[name].[hash:8].js',
+    publicPath: '/',
+    filename: 'static/js/[name].[hash:8].js',
+    chunkFilename: 'static/js/[name].[hash:8].js',
   },
 
   module: {
@@ -40,14 +40,14 @@ module.exports = {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
-          name: 'img/[name].[hash:8].[ext]'
+          name: 'static/img/[name].[hash:8].[ext]'
         }
       },
       {
         test: /\.(ttf)$/,
         loader: 'file-loader',
         options: {
-          name: 'font/[name].[ext]'
+          name: 'static/font/[name].[ext]'
         }
       },
     ]

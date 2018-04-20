@@ -4,6 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
 
+  devtool: 'eval-source-map',
+
   mode: "development",
 
   context: path.resolve(__dirname, './'),

@@ -47,6 +47,7 @@
     )
 
   h2.subtit Completed
+    span.pwnedtimes {{ challenge.pwned_times ? `${challenge.pwned_times} times` : '' }}
   div.content
     p
       span.pwnername(
@@ -171,10 +172,10 @@ export default {
     margin 0 110px
     margin-top 30px
     font-size 22px
-    font-weight lighter
+    font-weight normal
     // font-style italic
     text-align left
-    color #bbb
+    color #ccc
 
   >.hint .icon
     cursor pointer
@@ -194,7 +195,7 @@ export default {
     padding-right 20px
     // border 1px solid #fff
     font-size 14px
-    color #ddd
+    color #aaa
 
     >p
       margin .8em 0
@@ -234,7 +235,12 @@ export default {
       margin-right 16px
       // font-weight bold
       // font-style italic
-      color #aaa
+
+  .pwnedtimes
+    margin-left 2em
+    font-size 16px
+    // font-style italic
+    color #555
 
   .-delay
     transition-property transform

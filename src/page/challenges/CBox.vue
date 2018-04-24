@@ -76,8 +76,10 @@ $box-width = 200px // 200 + 20*2 = 240px
     color #646464
     text-align center
     word-wrap break-word
+    // word-break break-all
     line-height 1.1
     cursor pointer
+
     &:hover
       color #E1C79B
 

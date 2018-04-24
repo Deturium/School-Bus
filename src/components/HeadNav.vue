@@ -30,7 +30,7 @@ $text-color-hover = #ffffff
   text-align center
 
   >.logonew
-    width 230px
+    width 180px
     margin 5px
 
   >.nav

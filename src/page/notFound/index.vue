@@ -34,7 +34,7 @@ export default {
 
   >.intro
     font-size 16px
-    line-height 1.8
+    line-height 1.5
     color #ccc
     text-align center
 </style>

@@ -1,7 +1,7 @@
 <template lang="pug">
 .anno-cp
   .annometa(@click="toggle")
-    time.annotime Update {{ time }}
+    time.annotime {{ time }}
     h4.annotit {{ title }}
 
   p.annobody(
@@ -56,7 +56,7 @@ export default {
 
     >.annotime
       flex 0 0 auto
-      margin-left 4em
+      margin-left 5em
       margin-right 1.5em
 
   >.annobody

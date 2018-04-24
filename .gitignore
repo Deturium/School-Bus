@@ -3,7 +3,4 @@ node_modules
 dist
 yarn-error.log
 
-scp.md
-interfaces.md
-
-mock
+api

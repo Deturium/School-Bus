@@ -1,7 +1,9 @@
-# [School-Bus]
+# School-Bus
 
 
 __浙江大学AAA战队CTF练习平台前端 V2__
+
+
 
 
 ### What is 'AAA' ?
@@ -27,7 +29,9 @@ AAA (Azure Assassin Alliance) 战队是由浙江大学信息安全爱好者自�
 ### Preview
 
 ![challenges](./images/challenges.png)
+
 ![about](./images/about&news.png)
+
 
 ### Technology stack
 
@@ -46,14 +50,25 @@ __构建__
 __依赖管理__
 - yarn
 
+
+### Develop Team
+
+|   Role   |     ID     |
+| :------: | :--------: |
+| Designer | Clapeysron |
+| Frontend |  Hydrogen  |
+| Backend  |   Himyth   |
+|   Ops    |  ChenYuan  |
+
+
 ### Join Us
 
 欢迎加入我们！
+
 有任何BUG和意见都可以向我们反馈
 
 
-### Contact
+__Contact__
 
 - __admin:__  AAA (aaa.zju#gmail)
 - __QQ Group:__ 完成任意一道 'Welcome' 类的题目，群号就在 flag 中
-- Just contact with me

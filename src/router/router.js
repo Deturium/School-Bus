@@ -16,6 +16,11 @@ export default [
     component: challenges,
   },
   {
+    // compatible School-Bus-V1's url
+    path: '/play',
+    redirect: route => `/challenges/${route.query.q}`
+  },
+  {
     path: '/scoreboard/:type?',
     component: scoreboard,
   },

@@ -68,8 +68,8 @@ module.exports = {
     open: true,
     proxy: {
       "/api": {
-        target: "https://www.zjusec.com",
-        // target: "http://localhost:5000",
+        // target: "https://zjusec.com",
+        target: "http://localhost:5000",
         changeOrigin: true,
         pathRewrite: {
           // '^/api/v1': ''
